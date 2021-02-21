@@ -1,0 +1,39 @@
+{% assign is_nofollow = include.is_nofollow %}
+{% unless is_nofollow %}
+  {% if include.internal_link contains '://' %}
+    {% assign is_nofollow = true %}
+  {% endif %}
+{% endunless %}
+
+{% assign rel = 'noopener noreferrer' %}
+{% if is_nofollow %}
+  {% assign rel = 'nofollow ' | append: rel %}
+{% endif %}
+
+{% assign target = '_blank' %}
+
+{% unless include.domain %}
+  {% assign domain = include.internal_link | replace: 'https://', '' | replace: 'http://', '' | split: '/' | first %}
+  {% if domain == '' %}
+    {% assign domain = site.url | replace: 'http://', '' | replace: 'https://', '' %}
+    {% assign target = '_self' %}
+  {% endif %}
+{% endunless %}
+
+<div class="related-link-wrap">
+    <a class="related-link" href="{{ include.internal_link }}" target="{{ target }}" rel="{{ rel }}">
+      <div class="related-link-icon">
+        <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg>
+      </div>
+      <div class="link-title-wrap">
+        <div class="link-title">
+          <div class="link-title-text">{{ include.title }}</div>
+        </div>
+      </div>
+      <div class="display-link-wrap">
+        <div class="display-link">
+          <span class="display-link-text">{{ domain }}</span>
+        </div>
+      </div>
+    </a>
+</div>

@@ -1,0 +1,19 @@
+{% feed_meta %}
+
+{% for lang in site.data.languages %}
+  {% if lang.enabled and page.lang != lang.code %}
+    {% if lang.code == 'ko' %}
+      <link rel="alternate" href="{{ site.url }}{{ page.url | replace: 'index.html', '' }}" hreflang="{{ lang.code }}">
+    {% else %}
+      <link rel="alternate" href="{{ site.url }}/{{ lang.code }}{{ page.url | replace: 'index.html', '' }}" hreflang="{{ lang.code }}">
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=1.0">
+<link rel="apple-touch-icon" href="{{ '/assets/logo/icon.png' | relative_url }}">
+<!-- <link rel="manifest" href="{{ '/assets/manifest.json' | relative_url }}"> -->
+
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
+<link rel="stylesheet" href="/assets/css/index.css">

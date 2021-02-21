@@ -1,0 +1,72 @@
+<div class="sidebar-wrap">
+  <div class="sidebar">
+    <section class="doc-search-sidebar">
+      <header class="sidebar-header">
+        <button class="expand-button">
+          <span class="expand-icon">
+            {{ site.data.svgs.expand }}
+          </span>
+          <span class="expand-all-text">Expand All</span>
+        </button>
+      </header>
+      <nav class="sidebar-content">
+        {% assign primary_category = site.data.menu %}
+        <ul class="primary-categories">
+          {% for pcate in primary_category %}
+          <li class="primary-category-title">
+            <span class="primary-category-wrap">
+              <span class="primary-category-wrap-inner">
+                <span class="primary-category-link-wrap">
+                  <a class="primary-category-link unselectable">{{ pcate.name }} <span class="post-counter">{{ site.categories[pcate.id].size }}</span></a>
+                </span>
+              </span>
+              <button class="expand-button">
+                {% if page.permalink contains pcate.id %}
+                  {% assign expanded = 'expanded' %}
+                {% else %}
+                  {% assign expanded = '' %}
+                {% endif %}
+                <span class="expand-icon {{ expanded }}">{{ site.data.svgs.arrow_left }}</span>
+              </button>
+            </span>
+            <ul class="secondary-categories {{ expanded }}">
+            {% for scate in pcate.child %}
+            <li class="secondary-category-title">
+              {% if page.permalink contains scate.id %}
+                {% assign sexpanded = 'expanded' %}
+              {% else %}
+                {% assign sexpanded = '' %}
+              {% endif %}
+              <span class="secondary-category-wrap">
+                  <span class="secondary-category-wrap-inner {{ sexpanded }}">
+                    <span class="secondary-category-link-wrap">
+                      <a class="secondary-category-link" href="/{{ pcate.id }}/{{ scate.id }}/">{{ scate.name }} <span class="post-counter">{{ site.categories[scate.id].size }}</span></a>
+                    </span>
+                  </span>
+                  <button class="expand-button">
+                    <span class="expand-icon {{ sexpanded }}">{{ site.data.svgs.arrow_left }}</span>
+                  </button>
+                </span>
+                <ul class="category-posts {{ sexpanded }}">
+                  {% for categorized_post in site.categories[scate.id] %}
+                  <li class="category-post-wrap">
+                    {% if page.permalink == categorized_post.permalink %}
+                    <span class="category-post active">{{ categorized_post.title }}</span>
+                    {% else %}
+                    <span class="category-post">
+                      <a class="category-post-link" href="{{ categorized_post.permalink }}">{{ categorized_post.title }}</a>
+                    </span>
+                    {% endif %}
+                  </li>
+                  {% endfor %}
+                </ul>
+            </li>
+            {% endfor %}
+            </ul>
+          </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </section>
+  </div>
+</div>

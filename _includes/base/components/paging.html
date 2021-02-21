@@ -1,0 +1,41 @@
+<div class="paging">
+  {% assign prev_link = paginator.previous_page_path %}
+  {% assign next_link = paginator.next_page_path %}
+  
+  {% if prev_link %}
+    {% assign prev_tag = 'a' %}
+    {% capture prev_href %}href="{{ prev_link }}"{% endcapture %}
+  {% else %}
+    {% assign prev_tag = 'span' %}
+    {% capture prev_href %}{% endcapture %}
+  {% endif %}
+
+  {% if next_link %}
+    {% assign next_tag = 'a' %}
+    {% capture next_href %}href="{{ next_link }}"{% endcapture %}
+  {% else %}
+    {% assign next_tag = 'span' %}
+    {% capture next_href %}{% endcapture %}
+  {% endif %}
+  
+  <{{ prev_tag }} class="card-link-wrap" {{ prev_href }}>
+    <div class="card-icon left">
+      <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></g></svg>
+    </div>
+    <div class="card-header">
+      <div class="card-desc left">
+        <span>Previous</span>
+      </div>
+    </div>
+  </{{ prev_tag }}>
+  <{{ next_tag }} class="card-link-wrap" {{ next_href }}>
+    <div class="card-header">
+      <div class="card-desc">
+        <span>Next</span>
+      </div>
+    </div>
+    <div class="card-icon">
+      <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg>
+    </div>
+  </{{ next_tag }}>
+</div>

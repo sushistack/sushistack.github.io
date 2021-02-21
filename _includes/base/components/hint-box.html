@@ -1,0 +1,22 @@
+
+{% assign hint_tpye = 'hint_' | append:include.type %}
+
+<div class="hint-container {{ include.type }}">
+  <div class="hint-type {{ include.type }}">
+    {{ site.data.svgs[hint_tpye] }}
+  </div>
+  <div class="hint-body-container">
+    <div class="hint-body">
+      {% if include.list %}
+      <ol class="hint-list">
+      {% assign list = include.list | split: '|' %}
+      {% for list_text in list %}
+        <li>{{ list_text }}</li>
+      {% endfor %}
+      </ol>
+      {% else %}
+        <span class="hint-body-text">{{ include.text }}</span>
+      {% endif %}
+    </div>
+  </div>
+</div>

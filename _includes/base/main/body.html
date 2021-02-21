@@ -1,0 +1,8 @@
+<div class="content-body list-body">
+  <div class="post-card-list">
+    {% for post in paginator.posts %}
+      {% include base/components/card.html post=post %}
+    {% endfor %}
+  </div>
+  {% include base/components/paging.html %}
+</div>

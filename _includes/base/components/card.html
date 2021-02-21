@@ -1,0 +1,15 @@
+{% assign post = inlcude.post %}
+
+<a class="card-link-wrap" href="{{ post.permalink }}" rel="noopener noreferrer">
+  <div class="card-header">
+    <div class="card-title">
+      <span>{{ post.title }}</span>
+    </div>
+    <div class="card-desc">
+      <span>{{ post.excerpt }}</span>
+    </div>
+  </div>
+  <div class="card-icon">
+    {{ site.data.svgs[post.icon] }}
+  </div>
+</a>

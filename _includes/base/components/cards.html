@@ -1,0 +1,5 @@
+<div class="post-card-list">
+  {% for post in include.posts %}
+    {% include base/components/card.html post=post %}
+  {% endfor %}
+</div>

@@ -1,0 +1,27 @@
+{% assign pathes = page.permalink | remove: 'index.html' | split: '/' %}
+
+
+<div class="content-header">
+  <nav class="nav-category {{ include.nav_none }}">
+    {% for path in pathes %}
+      {% if forloop.first %}
+        <a href="/">Home</a>
+        <span class="path-icon">{{ site.data.svgs.arrow_left }}</span>
+      {% elsif forloop.last %}
+        <span class="path-current">{{ path }}</span>
+      {% else %}
+        <span>{{ path }}</span>
+        <span class="path-icon">{{ site.data.svgs.arrow_left }}</span>
+      {% endif %}
+    {% endfor %}
+  </nav>
+    <h1 class="{{ include.class }}">{{ page.title }}</h1>
+    {% if page.date %}
+    <small class="post-date-container">
+      <span class="post-date">
+        {{ site.data.svgs.date }}
+        <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date:'%Y.%m.%d' }}</time>
+      </span>
+    </small>
+    {% endif %}
+</div>

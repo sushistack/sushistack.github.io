@@ -1,0 +1,8 @@
+{% assign post = include.post %}
+
+<div class="related-posts">
+  <div class="related-posts-heading">
+    <span class="related-posts-text">Related Posts</span>
+  </div>
+  {% include base/components/cards.html posts=post.relateds %}
+</div>

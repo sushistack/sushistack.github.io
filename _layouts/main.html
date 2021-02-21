@@ -1,0 +1,16 @@
+---
+layout: main
+---
+{% assign plugins = site.plugins | default:site.gems %}
+{% assign lang_index = page.lang_index %}
+{% assign lang = page.lang %}
+<!DOCTYPE html>
+<html lang="{{ page.lang | default:site.lang }}">
+  <head>
+    {% include base/head/index.html %}
+  </head>
+  <body>
+    {% include base/body/header.html %}
+    {% include base/main/index.html %}
+  </body>
+</html>

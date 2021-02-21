@@ -1,0 +1,53 @@
+title: Deeplify
+
+keywords: ['개발', '웹 개발', '개발자', 'development', 'web development', 'developer']
+
+baseurl: ''
+
+domain: 'deeplify.dev'
+
+url: 'https://deeplify.dev'
+
+lang: ko
+
+timezone: Asia/Seoul
+
+collections:
+  category:
+    output: true
+
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-optional-front-matter
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-include-cache
+  - jekyll-toc
+  - jekyll-paginate-v2
+  - fastimage
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+
+optional_front_matter:
+  remove_originals: true
+
+incremental: true
+
+pagination:
+  enabled: true
+  debug: false
+  collection: 'posts'
+  per_page: 8
+  permalink: '/page/:num/'
+  sort_reverse: true

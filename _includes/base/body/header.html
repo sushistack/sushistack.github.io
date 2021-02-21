@@ -1,0 +1,49 @@
+<header class="page-header">
+  <nav class="nav">
+    <div class="buger-menu">
+      <button type="button" class="burger-button">
+        <span class="burger-menu-icon"></span>
+      </button>
+    </div>
+    <div class="nav-logo" href="/">
+      <a href="/">
+        {{ site.data.svgs.logo }}
+        <span class="logo-text">DEEPLIFY</span>
+      </a>
+    </div>
+    <div class="header-menu">
+      {% assign menu = site.data.menu %}
+      {% for item in menu %}
+        <ul class="nav-menu">
+          <li>
+            <h3 class="hide">{{ item.name }}</h3>
+            {% if item.child.size > 0 %}
+            <button type="button" class="nav-menu-button">
+              {{ item.name }}
+              {{ site.data.svgs.arrow_bottom }}
+            </button>
+            <div class="drop-down sub-menu">
+            <ul class="nav-sub-menu">
+              {% for sub in item.child %}
+              <li>
+                <a href="/{{ item.id }}/{{ sub.id }}/">{{ sub.name }}</a>
+              </li>
+              {% endfor %}
+            </ul>
+              
+            </div>
+            {% else %}
+            <a href="/{{ item.id }}/">{{ item.name }}</a>
+            {% endif %}
+          </li>
+        </ul>
+      {% endfor %}
+    </div>
+    <div class="menu-search">
+      <button type="button" aria-expanded="false" class="search-button">
+        <span class="search-icon">{{ site.data.svgs.search }}</span>
+        <span class="search-close-icon">{{ site.data.svgs.close }}</span>
+      </button>
+    </div>
+  </nav>
+</header>
