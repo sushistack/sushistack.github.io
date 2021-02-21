@@ -10,8 +10,11 @@ pipelines:
           - git config --global user.name "deeplify"
           - bundle install
           - JEKYLL_ENV=production bundle exec jekyll build
+          - git add . && git commit -m "updates"
           - git checkout -b master
           - git filter-branch --subdirectory-filter _site/ -- --all
+          - rm -rf bitbucket-pipelines.yml
+          - git add . && git commit -m "updates"
           - git push -f origin master
           
 definitions:
