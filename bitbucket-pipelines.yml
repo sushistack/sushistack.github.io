@@ -1,0 +1,22 @@
+image: ruby
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - bundler
+        script:
+          - git config --global user.email "navy.applee@gmail.com"
+          - git config --global user.name "deeplify"
+          - bundler --version
+          - bundle install
+          - JEKYLL_ENV=production bundle exec jekyll build
+          - cd _site
+          - pwd
+          - git checkout -b master
+          - git add . && git commit -m "New version - $BITBUCKET_COMMIT"
+          - git push -f origin master
+          
+definitions:
+  caches:
+    bundler: vendor/bundle
