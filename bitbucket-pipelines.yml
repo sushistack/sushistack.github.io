@@ -12,7 +12,6 @@ pipelines:
           - JEKYLL_ENV=production bundle exec jekyll build
           - git checkout -b master
           - git filter-branch --subdirectory-filter _site/ -- --all
-          - git add . && git commit -m "New version - $BITBUCKET_COMMIT"
           - git push -f origin master
           
 definitions:
