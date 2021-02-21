@@ -13,7 +13,7 @@ pipelines:
           - JEKYLL_ENV=production bundle exec jekyll build
           - cd _site
           - pwd
-          - git checkout master
+          - git checkout -b master
           - git add . && git commit -m "New version - $BITBUCKET_COMMIT"
           - git push -f origin master
           
