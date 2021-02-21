@@ -387,7 +387,7 @@ public class TutorialScheduler {
 
 위 처럼, Job Parameter에 동일한 값이 세팅되도록 하면, 두 번째부터 실행되는 Job의 Step은 실행되지 않습니다.
 
-{% include base/components/link.html title='deeplify/spring-batch-tutorial at tutorial#1' internal_link='https://github.com/deeplify/spring-batch-tutorial/tree/tutorial%231' %}
+{% include base/components/link.html title='deeplify / batch-tutorial — Bitbucket' internal_link='https://bitbucket.org/deeplify/batch-tutorial/src/6a09f8627970edcec2682a6a308daf07fed48bf4/?at=tutorial%231' %}
 
 지금까지 진행한 모든 예제 코드들은 위 링크를 통해서 프로젝트 전체를 확인하실 수 있습니다.
 
