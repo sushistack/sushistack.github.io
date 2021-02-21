@@ -8,12 +8,10 @@ pipelines:
         script:
           - git config --global user.email "navy.applee@gmail.com"
           - git config --global user.name "deeplify"
-          - bundler --version
           - bundle install
           - JEKYLL_ENV=production bundle exec jekyll build
-          - cd _site
-          - pwd
           - git checkout -b master
+          - git filter-branch --subdirectory-filter _site/ -- --all
           - git add . && git commit -m "New version - $BITBUCKET_COMMIT"
           - git push -f origin master
           
