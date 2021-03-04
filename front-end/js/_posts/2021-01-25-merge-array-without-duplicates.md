@@ -49,7 +49,7 @@ console.log(a3);
 
 ```js
 var a = [1, 2, 3, 3, 4, 5, 6];
-var unique = a.filter((item, pos) => c.indexOf(item) === pos);
+var unique = a.filter((item, pos) => a.indexOf(item) === pos);
 
 console.log(unique);
 // [1, 2, 3, 4, 5, 6]
@@ -64,7 +64,8 @@ var a
 var a1 = [1, 2, 3];
 var a2 = [3, 4, 5, 6];
 
-var unique = a1.concat(a2).filter((item, pos) => c.indexOf(item) === pos);
+var merged = a1.concat(a2)
+var unique = merged.filter((item, pos) => merged.indexOf(item) === pos);
 
 console.log(unique);
 // [1, 2, 3, 4, 5, 6]
