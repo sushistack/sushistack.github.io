@@ -64,7 +64,7 @@ var a
 var a1 = [1, 2, 3];
 var a2 = [3, 4, 5, 6];
 
-var merged = a1.concat(a2)
+var merged = a1.concat(a2);
 var unique = merged.filter((item, pos) => merged.indexOf(item) === pos);
 
 console.log(unique);
