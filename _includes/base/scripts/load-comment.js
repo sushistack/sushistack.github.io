@@ -43,7 +43,7 @@ var loadComment = function (parent) {
   loadScript(
     {
       src: 'https://utteranc.es/client.js',
-      repo: 'negativee/utterance-deeplify',
+      repo: 'alreadyJ/utterance.deeplify',
       theme: 'github-light',
       'issue-term': 'pathname',
       crossorigin: 'anonymous',
