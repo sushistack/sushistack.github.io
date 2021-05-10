@@ -50,7 +50,7 @@ org.springframework.boot.web.server.PortInUseException: Port 8080 is already in 
 
 ```diff
 # application.yml
-server.port: 8081
++ server.port: 8081
 ```
 
 스프링 또는 스프링부트에서 위와 같이 설정해주시면 어플리케이션의 포트를 변경할 수 있습니다.
@@ -67,7 +67,7 @@ server.port: 8081
 netstat -ano
 ```
 
-{% include base/components/hint-box.html type='success' list='netstat: 현재 TCP/IP 네트워크 연결 상태 확인|a: 모든 연결 및 수신 대기 포트를 표시|n: 주소 및 포트 번호를 숫자 형식으로 표시|o: 각 연결의 소유자 프로세스 ID를 표시' %}
+{% include base/components/hint-box.html type='info' list='netstat: 현재 TCP/IP 네트워크 연결 상태 확인|a: 모든 연결 및 수신 대기 포트를 표시|n: 주소 및 포트 번호를 숫자 형식으로 표시|o: 각 연결의 소유자 프로세스 ID를 표시' %}
 
 ```text
 프로토콜  /    로컬 주소    /  외부 주소   /    상태     /  PID
@@ -90,7 +90,7 @@ taskkill /f /pid 12345
 lsof -n -i -P | grep 8080
 ```
 
-{% include base/components/hint-box.html type='success' list='lsof: 현재 실행중인 프로세스를 확인한다.|-n: 호스트네임을 제거한다.|-i: IPv[46] 파일들을 선택한다.|-P: 포트의 이름을 제거한다.' %}
+{% include base/components/hint-box.html type='info' list='lsof: 현재 실행중인 프로세스를 확인한다.|-n: 호스트네임을 제거한다.|-i: IPv[46] 파일들을 선택한다.|-P: 포트의 이름을 제거한다.' %}
 
 ```text
 COMMAND   PID    USER  FD    TYPE DEVICE    SIZE/OFF   NODE NAME
