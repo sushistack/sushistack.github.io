@@ -32,8 +32,6 @@ javascript를 통해서 노드를 복사해야하는 경우가 있습니다. 노
 </div>
 ```
 
-<hr/>
-
 ### Swallow copy
 
 #### Javascript
@@ -44,6 +42,7 @@ var clonedContainer = container.CloneNode();
 
 document.body.appendChild(clonedContainer);
 ```
+
 #### Result
 
 ```javascript
@@ -57,7 +56,6 @@ console.log(clonedContainer);
   there is nothing.
 </div>
 ```
-<hr/>
 
 ### Deep Copy
 
