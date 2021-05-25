@@ -1119,7 +1119,7 @@ span.card-link-wrap:hover {
 .link-title > .link-title-text {
   text-overflow: ellipsis;
   overflow-x: hidden;
-  line-height: 16px;
+  line-height: 18px;
 }
 
 .related-link > .display-link-wrap {
