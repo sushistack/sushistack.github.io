@@ -39,6 +39,8 @@ console.log(a3);
 // expected output: Array [1, 2, 3, 3, 4, 5, 6]
 ```
 
+{% include base/components/google/infeed-ad.html slot=site.data.ad.second.infeed %}
+
 #### Ref
 
 {% include base/components/link.html title='Array.prototype.concat() - JavaScript | MDN' internal_link='https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat' %}

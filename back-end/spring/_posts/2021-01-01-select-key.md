@@ -89,6 +89,8 @@ class Hobby(
 )
 ```
 
+{% include base/components/google/infeed-ad.html slot=site.data.ad.second.infeed %}
+
 ### selectKey가 사용되는 사례
 
 1. AUTO_INCREMENT가 적용되지 않은 테이블에 id를 계산해서 넣고 싶은 경우

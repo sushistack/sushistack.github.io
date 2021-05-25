@@ -72,6 +72,8 @@ HTML에서 여러 개의 공백을 추가하는 방법을 일반적인 스페이
 
 4개의 공백만큼 잘 떨어져서 출력되는 것을 확인하실 수 있습니다.
 
+{% include base/components/google/infeed-ad.html slot=site.data.ad.second.infeed %}
+
 ### NBPS를 포함한 문자열을 다음줄로 이동
 
 방금 전에 NBPS는 여러 개의 공백만 추가하는 기능 외에 원래의 기능인 NBPS를 포함한 문자열이 긴 경우 다음줄로 이동시키는 기능이 있다고 말씀드렸습니다.

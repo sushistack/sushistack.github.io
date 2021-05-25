@@ -84,6 +84,8 @@ tags:
 
 위에 나열한 원칙 및 가이드 말고도 배치를 사용하는 방법에 따라 주의해야할 사항들이 더 있습니다. 하지만 단순한 구조의 배치를 사용한다면 위의 **원칙과 가이드**만으로도 충분히 잘 설계된 배치 프로젝트를 작성하실 수 있을 것이라고 생각합니다.
 
+{% include base/components/google/infeed-ad.html slot=site.data.ad.second.infeed %}
+
 ## 스프링 배치 예제
 
 스프링 배치가 무엇이고 탄생하게 된 배경, 어떤 경우에 사용하는지, 어떤 구조로 되어 있는지 그리고 간략한 원칙과 가이드까지 소개해드렸습니다.
@@ -144,6 +146,8 @@ tags:
 - H2 Database: 메모리 DB를 사용하기 위해 추가
 - Spring Batch: 스프링 배치 프레임워크 사용하기 위해 추가
 - Quartz Scheduler: 배치를 주기적으로 실행시키기 위한 트리거로 사용하기 위해서 추가
+
+{% include base/components/google/infeed-ad.html slot=site.data.ad.third.infeed %}
 
 #### 2. Gradle 확인
 

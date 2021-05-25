@@ -86,6 +86,8 @@ div 영역을 중앙에 배치하는 방향에 따라 다양한 방법이 존재
 
 이 방법의 키포인트는 `div.outer` 영역에 대해서 display 속성을 `flex`, justify-content 속성을 `center`로 설정하시거나 justify-content 속성 없이 `div.inner` 영역에 margin 속성을 `0 auto`로 설정해주시면 됩니다.
 
+{% include base/components/google/infeed-ad.html slot=site.data.ad.second.infeed %}
+
 #### position과 transform 속성 이용하여 가로 정렬
 
 {% include base/components/jsfiddle/index.html src='//jsfiddle.net/deeplify/5sjf29h1/10/embed/result,html,css/dark/' %}
@@ -160,6 +162,8 @@ div 영역은 위와 동일한 상태로 구성하였고, 이 세로 정렬 `ver
 ```
 
 `div.outer` 영역에 flex 속성과 align-items를 적용하여 세로 정렬이 가능합니다. 또는 align-items 속성이 없이도 `div.inner` 영역에 margin 속성을 `auto 0`으로 설정하여 적용 가능합니다.
+
+{% include base/components/google/infeed-ad.html slot=site.data.ad.third.infeed %}
 
 #### position과 transform 속성 이용하여 세로 정렬
 

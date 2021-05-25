@@ -60,6 +60,8 @@ sitcky 속성은 필수적으로 `top`, `bottom`, `left`, `right`들 중에 하�
 
 위 예제에서는 `top: 99px`, `left: 155px`으로 설정하여 브라우저 또는 디바이스의 최상단으로부터 `(x=155px, y=99px)`으로 고정된 위치에 보여지게 됩니다. 만약 position 속성을 fixed로 설정하고, 위치를 설정하지 않으면 `(x=0, y=0)`으로 설정한 것처럼 보여지게 됩니다.
 
+{% include base/components/google/infeed-ad.html slot=site.data.ad.second.infeed %}
+
 #### sticky 속성
 
 ```css

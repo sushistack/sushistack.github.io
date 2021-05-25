@@ -42,6 +42,8 @@ providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 
 `starter-tomcat`을 이용하면 따로 톰캣을 다운 받거나 설정할 필요 없이 바로 실행이 가능하게 해주는 굉장히 편리한 의존성입니다.
 
+{% include base/components/google/infeed-ad.html slot=site.data.ad.second.infeed %}
+
 ### Gradle jar 패키징
 
 gradle로 jar를 패키징하는 방법은 간단합니다. 다음과 같이 진행해주시면 패키징된 jar 파일을 얻을 수 있습니다.
@@ -69,6 +71,8 @@ bootJar 작업이 끝나면 위 사진과 같은 위치에 jar 파일이 생성�
 ### 서버에서 jar 파일 배포
 
 서버에 jar 파일이 있고, 환경은 `CentOS 7` 기준으로 가정하고 배포하는 과정을 설명 드리도록 하겠습니다.
+
+{% include base/components/google/infeed-ad.html slot=site.data.ad.third.infeed %}
 
 #### jdk 설치 하기
 
