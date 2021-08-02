@@ -1,6 +1,6 @@
 ---
 layout: post
-published: false
+published: true
 title: "[Spring Boot] OAuth2 소셜(구글, 페이스북, 네이버, 카카오) 로그인 완벽 가이드"
 icon: spring
 description: >
