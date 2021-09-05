@@ -1,10 +1,10 @@
 ---
 layout: post
 published: true
-title: "[Spring Boot] OAuth2 소셜(구글, 페이스북, 네이버, 카카오) 로그인 완벽 가이드"
+title: "[Spring Boot] OAuth2 소셜 로그인 가이드 (구글, 페이스북, 네이버, 카카오)"
 icon: spring
 description: >
-  스프링부트와 OAuth2 소셜
+  스프링부트를 이용하여 구글, 페이스북, 네이버, 카카오 OAuth2 로그인 구현하는 방법에 대해서 소개합니다.
 author: deeplify
 toc: true
 permalink: /back-end/spring/oauth2-social-login
