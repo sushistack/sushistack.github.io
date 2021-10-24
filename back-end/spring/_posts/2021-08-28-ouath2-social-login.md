@@ -2058,6 +2058,88 @@ public class ApiResponse<T> {
 }
 ```
 
+##### HeaderUtil
+
+```java
+public class HeaderUtil {
+
+    private final static String HEADER_AUTHORIZATION = "Authorization";
+    private final static String TOKEN_PREFIX = "Bearer ";
+
+    public static String getAccessToken(HttpServletRequest request) {
+        String headerValue = request.getHeader(HEADER_AUTHORIZATION);
+
+        if (headerValue == null) {
+            return null;
+        }
+
+        if (headerValue.startsWith(TOKEN_PREFIX)) {
+            return headerValue.substring(TOKEN_PREFIX.length());
+        }
+
+        return null;
+    }
+}
+```
+
+##### CookieUtil
+
+```java
+public class CookieUtil {
+
+    public static Optional<Cookie> getCookie(HttpServletRequest request, String name) {
+        Cookie[] cookies = request.getCookies();
+
+        if (cookies != null && cookies.length > 0) {
+            for (Cookie cookie : cookies) {
+                if (name.equals(cookie.getName())) {
+                    return Optional.of(cookie);
+                }
+            }
+        }
+        return Optional.empty();
+    }
+
+    public static void addCookie(HttpServletResponse response, String name, String value, int maxAge) {
+        Cookie cookie = new Cookie(name, value);
+        cookie.setPath("/");
+        cookie.setHttpOnly(true);
+        cookie.setMaxAge(maxAge);
+
+        response.addCookie(cookie);
+    }
+
+    public static void deleteCookie(HttpServletRequest request, HttpServletResponse response, String name) {
+        Cookie[] cookies = request.getCookies();
+
+        if (cookies != null && cookies.length > 0) {
+            for (Cookie cookie : cookies) {
+                if (name.equals(cookie.getName())) {
+                    cookie.setValue("");
+                    cookie.setPath("/");
+                    cookie.setMaxAge(0);
+                    response.addCookie(cookie);
+                }
+            }
+        }
+    }
+
+    public static String serialize(Object obj) {
+        return Base64.getUrlEncoder()
+                .encodeToString(SerializationUtils.serialize(obj));
+    }
+
+    public static <T> T deserialize(Cookie cookie, Class<T> cls) {
+        return cls.cast(
+                SerializationUtils.deserialize(
+                        Base64.getUrlDecoder().decode(cookie.getValue())
+                )
+        );
+    }
+
+}
+```
+
 ## 맺음
 
 포스팅을 나누지 않고 한 번에 작성하다보니 엄청나게 긴 포스팅이 되었습니다. 나눠서 하는 것보다는 이 포스팅 하나만 보면 OAuth 로그인을 구현할 수 있으면 좋겠다는 생각에 이렇게 작성하게되었습니다.
