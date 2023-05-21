@@ -39,13 +39,13 @@ tags:
 
 순차적인 Flow와 조건적 Flow를 예제를 통해서 알아보도록 하겠습니다.
 
-{% include base/components/link.html title='deeplify/batch-tutorial at tutorial#2' internal_link='https://github.com/deepIify/batch-tutorial/tree/tutorial%231' %}
+{% include base/components/link.html title='sushistack/batch-tutorial at tutorial#2' internal_link='https://github.com/sushistack/batch-tutorial/tree/tutorial%231' %}
 
 먼저 지난 글에서 작성했던, `tutorial#1` 브랜치로부터 새로 브랜치를 생성하여 진행하도록 하겠습니다.
 
 {% include base/components/hint-box.html type='info' text='이번 글에서 작성되는 모든 코드들은 pring-batch-tutorial의 tutorial#2 브랜치에서 확인 가능합니다.' %}
 
-{% include base/components/link.html title='deeplify/batch-tutorial at tutorial#2' internal_link='https://github.com/deepIify/batch-tutorial/tree/tutorial%232' %}
+{% include base/components/link.html title='sushistack/batch-tutorial at tutorial#2' internal_link='https://github.com/sushistack/batch-tutorial/tree/tutorial%232' %}
 
 첫 번째로 `TutorialConfig` 클래스에 아래와 같이 람다로 작성된 Tasklet으로 만들어진 Step을 3개 작성했습니다.
 

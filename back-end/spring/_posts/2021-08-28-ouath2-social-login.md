@@ -421,11 +421,11 @@ REST API 기반으로 OAuth 로그인을 구현하기 위해서는 프론트엔�
 
 #### 프론트엔드 (Vue Project)
 
-{% include base/components/link.html title='deeplify/oauth-login-fe: OAuth login fe vue project' internal_link='https://github.com/deepIify/oauth-login-fe' %}
+{% include base/components/link.html title='sushistack/oauth-login-fe: OAuth login fe vue project' internal_link='https://github.com/sushistack/oauth-login-fe' %}
 
 #### 백엔드 (Spring Boot Project)
 
-{% include base/components/link.html title='deeplify/oauth-login-be: OAuth login be spring boot project' internal_link='https://github.com/deepIify/oauth-login-be' %}
+{% include base/components/link.html title='sushistack/oauth-login-be: OAuth login be spring boot project' internal_link='https://github.com/sushistack/oauth-login-be' %}
 
 ### 프론트엔드 OAuth 로그인
 

@@ -43,7 +43,7 @@ var loadComment = function (parent) {
   loadScript(
     {
       src: 'https://utteranc.es/client.js',
-      repo: 'deepIify/utterance.deeplify',
+      repo: 'sushistack/utterance.deeplify',
       theme: 'github-light',
       'issue-term': 'pathname',
       crossorigin: 'anonymous',
