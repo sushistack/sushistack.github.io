@@ -370,8 +370,8 @@ $ gh ls -R ~/github-cli-tutorial
 
 {% include base/components/link.html title='GitHub CLI | Take GitHub to the command line' internal_link='https://cli.github.com' %}
 
-{% include base/components/link.html title='GitHub - cli/cli: GitHub’s official command line tool' internal_link='https://github.com/cli/cli' %}
+{% include base/components/link.html title='GitHub - cli/cli: GitHub\'s official command line tool' internal_link='https://github.com/cli/cli' %}
 
 {% include base/components/link.html title='GitHub - wuwe1/gh-ls: List contents of GitHub repo' internal_link='https://github.com/wuwe1/gh-ls' %}
 
-{% include base/components/link.html title='GitHub 공식 CLI gh :: Outsider's Dev Story' internal_link='https://blog.outsider.ne.kr/1498' %}
+{% include base/components/link.html title='GitHub 공식 CLI gh :: Outsider\'s Dev Story' internal_link='https://blog.outsider.ne.kr/1498' %}
