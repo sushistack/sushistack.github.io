@@ -14,6 +14,8 @@ tags:
   - cli
 ---
 
+Github를 CLI 환경에서 사용할 수 있도록 해주는 Github CLI에 대해서 알아보도록 하겠습니다.
+
 ![github-cli01](/assets/images/github-cli01.png)
 
  > GitHub와의 상호작용을 커맨드라인에서 사용할 수 있게 해주는 도구.
