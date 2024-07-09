@@ -9,6 +9,8 @@ author: deeplify
 comments: false
 toc: true
 permalink: /career
+tags:
+  - '경력기술서'
 ---
 
 ## 소개
