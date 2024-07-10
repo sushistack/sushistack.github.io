@@ -1,0 +1,25 @@
+<article class="content-article">
+    <div class="table-of-content">
+      <h2 class="toc-title">
+        <span class="toc-icon">{{ site.data.svgs.toc }}</span>
+        <span>Table of Contents</span>
+      </h2>
+      <div class="toc-body">
+        {{ content | toc_only }}
+      </div>
+    </div>
+    <div class="content-body">
+    {{ content | lazy_images | add_code_copier | add_table_wrapper }}
+    <div class="after-post-tags">
+      <ul class="tags">
+        {% assign sorted_tags = page.tags | sort %}
+        {% for tag in sorted_tags %}
+        <li>
+          <span>#{{ tag }}</span>{% unless forloop.last %},{% endunless %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    </div>
+</article>
+  
