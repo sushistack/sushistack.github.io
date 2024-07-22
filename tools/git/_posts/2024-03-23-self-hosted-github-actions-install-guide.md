@@ -1,7 +1,7 @@
 ---
 layout: post
-published: false
-title: Self hosted Github Actions Runner 설치 가이드
+published: true
+title: Self hosted Github Actions Runner 설치 가이드 (With. Docker)
 icon: github
 description: >
   Self hosted Github Actions 설치하는 방법을 알아보도록 하겠습니다.
@@ -33,15 +33,15 @@ tags:
 
 우선 러너 그룹은 Enterprise에서만 사용 가능합니다. 러너들의 그룹을 설정하는 이유는 리소스 관리와 캐시의 사용성 등을 위함입니다. 예를 들어 java 빌드용 러너가 있을 수 있고, python 빌드용 러너가 있을 수 있습니다.
 
-![gh-action-runner-01](/assets/images/gh-actions-runner-01.png)
+![gh-action-runner-01](/assets/images/gh-actions-runner-01.jpg)
 
 위 사진과 같이 Orgaization의 설정으로 이동합니다.
 
-![gh-action-runner-02](/assets/images/gh-actions-runner-02.png)
+![gh-action-runner-02](/assets/images/gh-actions-runner-02.jpg)
 
 왼쪽 메뉴의 Actions > Runner Groups로 이동하여 `New runner group`을 눌러줍니다.
 
-![gh-action-runner-03](/assets/images/gh-actions-runner-03.png)
+![gh-action-runner-03](/assets/images/gh-actions-runner-03.jpg)
 
 러너 그룹 이름과 해당 그룹이 사용될 repository, workflow에 대한 접근 권한 설정을 할 수 있습니다.
 
@@ -49,11 +49,11 @@ tags:
 
 Self-hosted Runner 의 경우, github 설정 페이지를 통해서 생성할 수도 있고 PAT(Personal-Access-Token)을 이용하여 외부에서 설치하면서 연동할 수도 있습니다.
 
-![gh-action-runner-04](/assets/images/gh-actions-runner-04.png)
+![gh-action-runner-04](/assets/images/gh-actions-runner-04.jpg)
 
 위 사진과 같이 왼쪽 메뉴에서 Actions > Runners로 이동하여 `New runner`를 눌러줍니다.
 
-![gh-action-runner-05](/assets/images/gh-actions-runner-05.png)
+![gh-action-runner-05](/assets/images/gh-actions-runner-05.jpg)
 
 위와 같이 러너를 설치 가이드가 상세하게 작성되어 있습니다.
 
@@ -292,7 +292,7 @@ runner_1  | 2024-03-23 Listening for Jobs
 
 compose 명령어 실행 시, 위 처럼 떳다면 러너가 정상적으로 설치 및 연결되었다는 의미 입니다.
 
-![gh-action-runner-06](/assets/images/gh-actions-runner-06.png)
+![gh-action-runner-06](/assets/images/gh-actions-runner-06.jpg)
 
 위 사진과 같이 설정 > Actions > Runners 로 이동하여 러너의 연결 상태 등을 확인 할 수 있습니다.
 
