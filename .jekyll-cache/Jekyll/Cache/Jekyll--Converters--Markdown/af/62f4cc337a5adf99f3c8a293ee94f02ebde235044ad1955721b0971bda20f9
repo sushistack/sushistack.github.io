@@ -1,0 +1,2 @@
+I"�<p>자바스크립트에서 배열을 사용할 때, 은근히 많이 사용하게 되는 빌트인 함수 또는 커스텀 함수들이 있습니다. 일반적으로 배열에 <code class="language-plaintext highlighter-rouge">Number</code> 타입의 리터럴 값이 있는 경우, <strong>최소값</strong>, <strong>최대값</strong>, <strong>평균값</strong>을 구해야하는 요구사항들이 많다고 생각합니다.</p>
+:ET

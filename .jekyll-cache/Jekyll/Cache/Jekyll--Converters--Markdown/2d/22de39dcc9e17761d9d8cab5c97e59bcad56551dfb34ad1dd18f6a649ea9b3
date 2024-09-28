@@ -1,0 +1,94 @@
+I"e<p>맥(macOS) 또는 윈도우(windows) 환경에서 각각 설치된 파이썬의 버전을 확인하는 방법에 대해서 알아보겠습니다. 설치되지 않은 경우 설치 후, 확인할 수 있습니다.</p>
+
+<h2 id="파이썬-버전-확인">파이썬 버전 확인</h2>
+
+<p>파이썬 버전을 확인하는 방법을 맥과 윈도우 각각의 환경에서 파이썬이 설치되어 있는 경우와 아닌 경우로 나누어서 소개해드리도록 하겠습니다.</p>
+
+<h3 id="파이썬이-설치된-경우">파이썬이 설치된 경우</h3>
+
+<blockquote>
+  <p>맥 (macOS) &amp; 윈도우 (windows)</p>
+</blockquote>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python <span class="nt">--version</span>
+</code></pre></div></div>
+
+<h3 id="파이썬이-설치되지-않은-경우">파이썬이 설치되지 않은 경우</h3>
+
+<blockquote>
+  <p>맥 (macOS)</p>
+</blockquote>
+
+<p>맥에서는 기본적으로 <code class="language-plaintext highlighter-rouge">Python 2.7.x</code> 버전이 설치되어 있습니다.</p>
+
+<p>하지만 파이썬2의 경우, 더 이상 유지보수 되고있지 않습니다. 따라서 <strong>Homebrew</strong>라는 맥 전용 패키지 매니저를 통해서 파이썬 2.7.x를 파이썬 3.8.x대로 업그레이드 해주어야합니다. (python 2.7.x to pyton 3.8.x)</p>
+
+<ul>
+  <li>Homebrew 설치</li>
+</ul>
+
+<p>아래 링크를 통해서 Homebrew를 설치해줍니다.</p>
+
+<div class="related-link-wrap">
+    <a class="related-link" href="https://brew.sh" target="_blank" rel="nofollow noopener noreferrer">
+      <div class="related-link-icon">
+        
+        <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg>
+        
+      </div>
+      <div class="link-title-wrap">
+        <div class="link-title">
+          <div class="link-title-text">The Missing Package Manager for macOS (or Linux) — Homebrew</div>
+        </div>
+      </div>
+      <div class="display-link-wrap">
+        <div class="display-link">
+          <span class="display-link-text">brew.sh</span>
+        </div>
+      </div>
+    </a>
+</div>
+
+<ul>
+  <li>파이썬 업그레이드</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew update <span class="o">&amp;&amp;</span> brew upgrade python
+</code></pre></div></div>
+
+<blockquote>
+  <p>윈도우 (windows)</p>
+</blockquote>
+
+<ul>
+  <li>파이썬 3.8.x 다운로드</li>
+</ul>
+
+<p>아래 링크를 통해서 파이썬을 다운 받으실 수 있습니다.</p>
+
+<div class="related-link-wrap">
+    <a class="related-link" href="https://www.python.org/downloads" target="_blank" rel="nofollow noopener noreferrer">
+      <div class="related-link-icon">
+        
+        <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg>
+        
+      </div>
+      <div class="link-title-wrap">
+        <div class="link-title">
+          <div class="link-title-text">Download Python | Python.org</div>
+        </div>
+      </div>
+      <div class="display-link-wrap">
+        <div class="display-link">
+          <span class="display-link-text">www.python.org</span>
+        </div>
+      </div>
+    </a>
+</div>
+
+<p>설치를 완료한 이후에 다시 버전 확인 명령어를 입력하여 확인 하시면 됩니다.</p>
+
+<h2 id="맺음">맺음</h2>
+
+<p>간단하게 맥 (macOS) 또는 윈도우 (windows) 환경에서 각각 파이썬 버전을 확인하는 방법에 대해서 알아보았습니다. 궁금하신 점이나 이상한 점 있으시면 아래 댓글 부탁드리겠습니다.</p>
+:ET

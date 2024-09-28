@@ -1,0 +1,171 @@
+I"@<p>웹 개발을 하다보면 다양한 요구사항이 생기기 마련입니다. 그 중에서도 아주 빈도가 높은 편은 아니지만 많이 요구되는 기능이 숫자 <strong>소수점 처리</strong>에 대한 것입니다.</p>
+
+<p>보통 숫자를 표시하는 경우, 예를 들어 퍼센티지를 나타내는 등의 여러가지 지표를 보여줄 때 사용하게 됩니다.</p>
+
+<p>이 번 포스팅에서는 자바스크립트에서 <code class="language-plaintext highlighter-rouge">소수점 처리하는 방법</code>에 대해서 알아보도록 하겠습니다.</p>
+
+<h2 id="자바스크립트-소수점-자리수-처리-하는-방법">자바스크립트 소수점 자리수 처리 하는 방법</h2>
+
+<p>자바스크립트에서 소수점을 처리하기 위해서 사용되는 함수는 다양하게 존재합니다. 가장 간단하면서 많은 사람들이 일반적으로 사용하는 방법은 빌트인 객체인 <code class="language-plaintext highlighter-rouge">Math</code> 객체와 <code class="language-plaintext highlighter-rouge">Number</code> 객체를 이용하는 것입니다.</p>
+
+<blockquote>
+  <ul>
+    <li>Math.ceil(x): 주어진 값에 소수점 올림하여 정수를 반환</li>
+    <li>Math.floor(x): 주어진 값에 소수점 내림하여 정수를 반환</li>
+    <li>Math.round(x): 주어진 값에 소수점 반올림하여 정수를 반환</li>
+    <li>Number.prototype.toFixed(x): 주어진 값의 길이만큼 소수점 자리수를 반올림하여 반환</li>
+  </ul>
+</blockquote>
+
+<h3 id="소수점-자리수-올림">소수점 자리수 올림</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">number1</span> <span class="o">=</span> <span class="mf">1.3434</span>
+<span class="kd">const</span> <span class="nx">number2</span> <span class="o">=</span> <span class="mf">10.4321</span>
+<span class="kd">const</span> <span class="nx">number3</span> <span class="o">=</span> <span class="mf">100.5342</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">number1</span><span class="p">))</span>   <span class="c1">// 2</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">number2</span><span class="p">))</span>   <span class="c1">// 11</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">number3</span><span class="p">))</span>   <span class="c1">// 101</span>
+</code></pre></div></div>
+
+<h3 id="소수점-자리수-내림">소수점 자리수 내림</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">number1</span> <span class="o">=</span> <span class="mf">1.3434</span>
+<span class="kd">const</span> <span class="nx">number2</span> <span class="o">=</span> <span class="mf">10.4321</span>
+<span class="kd">const</span> <span class="nx">number3</span> <span class="o">=</span> <span class="mf">100.5342</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">number1</span><span class="p">))</span>   <span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">number2</span><span class="p">))</span>   <span class="c1">// 10</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">number3</span><span class="p">))</span>   <span class="c1">// 100</span>
+</code></pre></div></div>
+
+<h3 id="소수점-자리수--반올림">소수점 자리수  반올림</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">number1</span> <span class="o">=</span> <span class="mf">1.3434</span>
+<span class="kd">const</span> <span class="nx">number2</span> <span class="o">=</span> <span class="mf">10.4321</span>
+<span class="kd">const</span> <span class="nx">number3</span> <span class="o">=</span> <span class="mf">100.5342</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">number1</span><span class="p">))</span>   <span class="c1">// 1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">number2</span><span class="p">))</span>   <span class="c1">// 10</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="nx">number3</span><span class="p">))</span>   <span class="c1">// 101</span>
+</code></pre></div></div>
+
+<h3 id="소수점-자리수-제거">소수점 자리수 제거</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">number1</span> <span class="o">=</span> <span class="mf">1.34313</span>
+<span class="kd">const</span> <span class="nx">number2</span> <span class="o">=</span> <span class="mf">1.35756</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">number1</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>   <span class="c1">// 1.34</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">number2</span><span class="p">.</span><span class="nx">toFixed</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>   <span class="c1">// 1.3576</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">Number.prototype.toFixed()</code> 함수를 사용할 경우, 기본적으로 반올림이 원칙입니다. 따라서 올림이나 내림을 적용하려면 약간의 조작이 필요합니다.</p>
+
+<h3 id="소수점-자리수-제어-심화">소수점 자리수 제어 심화</h3>
+
+<p><code class="language-plaintext highlighter-rouge">toFixed()</code> 함수를 사용하게 될 경우, 주어진 숫자의 뒷자리로부터 반올림하여 반환해주기 때문에 만약 특정 자리수에서 올림 또는 내림을 해야하는 상황이 있다면 다음과 같이 따로 구현을 해줄 수 있습니다.</p>
+
+<h4 id="특정-자리수에서-올림">특정 자리수에서 올림</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">number</span> <span class="o">=</span> <span class="mf">1.003</span>  <span class="c1">// 소수점 세째 자리에서 올림하여 1.01으로 만들고 싶음</span>
+
+<span class="kd">const</span> <span class="nx">temp1</span> <span class="o">=</span> <span class="nx">number</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="kd">const</span> <span class="nx">temp2</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">temp</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">temp2</span> <span class="o">/</span> <span class="mi">100</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>   <span class="c1">// 1.01</span>
+</code></pre></div></div>
+
+<h4 id="특정-자리수에서-내림">특정 자리수에서 내림</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">number</span> <span class="o">=</span> <span class="mf">1.005</span>  <span class="c1">// 소수점 세째 자리에서 내림하여 1.00으로 만들고 싶음</span>
+
+<span class="kd">const</span> <span class="nx">temp1</span> <span class="o">=</span> <span class="nx">number</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="kd">const</span> <span class="nx">temp2</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">temp</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">temp2</span> <span class="o">/</span> <span class="mi">100</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>   <span class="c1">// 1.00</span>
+</code></pre></div></div>
+
+<h3 id="참고-문서">참고 문서</h3>
+
+<div class="related-link-wrap">
+    <a class="related-link" href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil" target="_blank" rel="nofollow noopener noreferrer">
+      <div class="related-link-icon">
+         <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="24" height="24" viewBox="0 0 200.000000 200.000000" preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,200.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"><path d="M0 1000 l0 -1000 1000 0 1000 0 0 1000 0 1000 -1000 0 -1000 0 0 -1000z m1033 624 c58 -17 111 -26 142 -24 103 6 124 4 158 -15 34 -18 43 -32 81 -127 18 -44 39 -59 152 -104 144 -57 185 -77 195 -96 16 -29 22 -169 10 -214 -18 -67 -51 -106 -105 -125 -26 -10 -56 -25 -66 -34 -29 -26 -79 -28 -149 -6 -126 41 -235 19 -286 -58 -30 -45 -49 -155 -61 -348 l-7 -113 -26 6 c-99 23 -277 113 -363 184 -98 80 -136 118 -137 132 -1 9 12 50 28 90 l30 73 -100 3 c-54 1 -99 6 -99 10 0 4 30 39 66 77 l66 70 -121 3 c-67 1 -121 6 -121 10 0 4 32 42 71 84 l70 77 -121 3 -121 3 62 65 c287 303 316 326 453 372 106 35 180 36 299 2z" /></g></svg>
+        
+      </div>
+      <div class="link-title-wrap">
+        <div class="link-title">
+          <div class="link-title-text">Math.ceil() - JavaScript | MDN</div>
+        </div>
+      </div>
+      <div class="display-link-wrap">
+        <div class="display-link">
+          <span class="display-link-text">developer.mozilla.org</span>
+        </div>
+      </div>
+    </a>
+</div>
+
+<div class="related-link-wrap">
+    <a class="related-link" href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/floor" target="_blank" rel="nofollow noopener noreferrer">
+      <div class="related-link-icon">
+         <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="24" height="24" viewBox="0 0 200.000000 200.000000" preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,200.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"><path d="M0 1000 l0 -1000 1000 0 1000 0 0 1000 0 1000 -1000 0 -1000 0 0 -1000z m1033 624 c58 -17 111 -26 142 -24 103 6 124 4 158 -15 34 -18 43 -32 81 -127 18 -44 39 -59 152 -104 144 -57 185 -77 195 -96 16 -29 22 -169 10 -214 -18 -67 -51 -106 -105 -125 -26 -10 -56 -25 -66 -34 -29 -26 -79 -28 -149 -6 -126 41 -235 19 -286 -58 -30 -45 -49 -155 -61 -348 l-7 -113 -26 6 c-99 23 -277 113 -363 184 -98 80 -136 118 -137 132 -1 9 12 50 28 90 l30 73 -100 3 c-54 1 -99 6 -99 10 0 4 30 39 66 77 l66 70 -121 3 c-67 1 -121 6 -121 10 0 4 32 42 71 84 l70 77 -121 3 -121 3 62 65 c287 303 316 326 453 372 106 35 180 36 299 2z" /></g></svg>
+        
+      </div>
+      <div class="link-title-wrap">
+        <div class="link-title">
+          <div class="link-title-text">Math.floor() - JavaScript | MDN</div>
+        </div>
+      </div>
+      <div class="display-link-wrap">
+        <div class="display-link">
+          <span class="display-link-text">developer.mozilla.org</span>
+        </div>
+      </div>
+    </a>
+</div>
+
+<div class="related-link-wrap">
+    <a class="related-link" href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Math/round" target="_blank" rel="nofollow noopener noreferrer">
+      <div class="related-link-icon">
+         <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="24" height="24" viewBox="0 0 200.000000 200.000000" preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,200.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"><path d="M0 1000 l0 -1000 1000 0 1000 0 0 1000 0 1000 -1000 0 -1000 0 0 -1000z m1033 624 c58 -17 111 -26 142 -24 103 6 124 4 158 -15 34 -18 43 -32 81 -127 18 -44 39 -59 152 -104 144 -57 185 -77 195 -96 16 -29 22 -169 10 -214 -18 -67 -51 -106 -105 -125 -26 -10 -56 -25 -66 -34 -29 -26 -79 -28 -149 -6 -126 41 -235 19 -286 -58 -30 -45 -49 -155 -61 -348 l-7 -113 -26 6 c-99 23 -277 113 -363 184 -98 80 -136 118 -137 132 -1 9 12 50 28 90 l30 73 -100 3 c-54 1 -99 6 -99 10 0 4 30 39 66 77 l66 70 -121 3 c-67 1 -121 6 -121 10 0 4 32 42 71 84 l70 77 -121 3 -121 3 62 65 c287 303 316 326 453 372 106 35 180 36 299 2z" /></g></svg>
+        
+      </div>
+      <div class="link-title-wrap">
+        <div class="link-title">
+          <div class="link-title-text">Math.round() - JavaScript | MDN</div>
+        </div>
+      </div>
+      <div class="display-link-wrap">
+        <div class="display-link">
+          <span class="display-link-text">developer.mozilla.org</span>
+        </div>
+      </div>
+    </a>
+</div>
+
+<div class="related-link-wrap">
+    <a class="related-link" href="https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed" target="_blank" rel="nofollow noopener noreferrer">
+      <div class="related-link-icon">
+         <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="24" height="24" viewBox="0 0 200.000000 200.000000" preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,200.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"><path d="M0 1000 l0 -1000 1000 0 1000 0 0 1000 0 1000 -1000 0 -1000 0 0 -1000z m1033 624 c58 -17 111 -26 142 -24 103 6 124 4 158 -15 34 -18 43 -32 81 -127 18 -44 39 -59 152 -104 144 -57 185 -77 195 -96 16 -29 22 -169 10 -214 -18 -67 -51 -106 -105 -125 -26 -10 -56 -25 -66 -34 -29 -26 -79 -28 -149 -6 -126 41 -235 19 -286 -58 -30 -45 -49 -155 -61 -348 l-7 -113 -26 6 c-99 23 -277 113 -363 184 -98 80 -136 118 -137 132 -1 9 12 50 28 90 l30 73 -100 3 c-54 1 -99 6 -99 10 0 4 30 39 66 77 l66 70 -121 3 c-67 1 -121 6 -121 10 0 4 32 42 71 84 l70 77 -121 3 -121 3 62 65 c287 303 316 326 453 372 106 35 180 36 299 2z" /></g></svg>
+        
+      </div>
+      <div class="link-title-wrap">
+        <div class="link-title">
+          <div class="link-title-text">Number.prototype.toFixed() - JavaScript | MDN</div>
+        </div>
+      </div>
+      <div class="display-link-wrap">
+        <div class="display-link">
+          <span class="display-link-text">developer.mozilla.org</span>
+        </div>
+      </div>
+    </a>
+</div>
+
+<h2 id="맺음">맺음</h2>
+
+<p>이번 글에서는 간단하게 자바스크립트에서 소수점을 제어하는 다양한 방법들을 배워보았습니다. 혹시나 글에 이상한 점이 있다거나 궁금하신 점이 있으신 경우, 댓글 달아주시면 감사하겠습니다.</p>
+:ET

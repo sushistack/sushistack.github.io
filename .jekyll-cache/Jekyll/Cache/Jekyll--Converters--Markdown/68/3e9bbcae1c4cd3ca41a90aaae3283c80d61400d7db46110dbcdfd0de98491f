@@ -1,0 +1,65 @@
+I"[<p>이번 글에서는 Mysql을 설치 에러 중 하나인 <strong>Can’t open and lock privilege tables</strong> 에러가 발생하는 원인에 대해서 알아보고 해결 방법까지 소개해드리는 시간을 가져보겠습니다.</p>
+
+<h2 id="cant-open-and-lock-privilege-tables">Can’t open and lock privilege tables</h2>
+
+<p>버전 별로 에러 메시지가 다를 수 있습니다. Mysql 5.x 기준으로 설명드리도록 하겠습니다.</p>
+
+<h3 id="에러-내용">에러 내용</h3>
+
+<h4 id="mysql-57-이하">Mysql 5.7 이하</h4>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ERROR] Fatal error: Can't open and lock privilege tables: Table 'mysql.host' doesn't exist
+</code></pre></div></div>
+
+<h4 id="mysql-57-이상">Mysql 5.7 이상</h4>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ERROR] Fatal error: Can't open and lock privilege tables: Table 'mysql.user' doesn't exist
+</code></pre></div></div>
+
+<p>위 에러 메시지는 Mysql을 설치할 때 주로 발생합니다. 대부분의 이유는 예전에 설치 했었던게 남아 있던가 아니면 최초 설치시에 취소를 한 경우 일 것입니다.</p>
+
+<h3 id="에러-발생-원인">에러 발생 원인</h3>
+
+<p>이 에러의 발생원인은 <code class="language-plaintext highlighter-rouge">datadir</code>로 설정된 디렉토리 안에 비어 있지 않기 때문입니다. datadir은 Mysql initailize 하는 과정에서 필요한 데이터들이 저장되는 공간입니다.</p>
+
+<h4 id="datadir-확인하는-방법">datadir 확인하는 방법</h4>
+
+<ul>
+  <li>Linux</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/etc/my.conf
+</code></pre></div></div>
+
+<ul>
+  <li>Windows</li>
+</ul>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; C:\ProgramData\MySQL\MySQL Server {version}\my.ini
+</code></pre></div></div>
+<p>datadir은 Mysql 설정파일을 통해 확인을 하실 수 있습니다. 설정파일의 위치는 OS 별로 다르기 때문에 다음에서 해당하는 OS에 따라 설정파일을 확인해주시면 됩니다.</p>
+
+<h3 id="에러-해결-방법">에러 해결 방법</h3>
+
+<ul>
+  <li>설정 파일 확인</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>vi <span class="o">{</span>path<span class="o">}</span>/<span class="o">{</span>to<span class="o">}</span>/my.conf
+</code></pre></div></div>
+
+<ul>
+  <li>datadir 디렉토리 삭제</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> <span class="o">{</span>datadir<span class="o">}</span>
+</code></pre></div></div>
+
+<p>MySQL 설정 파일에 있는 <code class="language-plaintext highlighter-rouge">datadir</code>을 확인하시고, 해당 디렉토리를 삭제해주시면 됩니다.</p>
+
+<h2 id="맺음">맺음</h2>
+
+<p>간단하게 <code class="language-plaintext highlighter-rouge">Can't open and lock privilege tables</code> 에러에 대해서 알아보고 해결하는 방법에 대해서도 소개해 드렸습니다. 혹시 궁금하신 점이나 이상한 점이 있으면 댓글 부탁드리겠습니다.</p>
+
+<p>감사합니다.</p>
+:ET

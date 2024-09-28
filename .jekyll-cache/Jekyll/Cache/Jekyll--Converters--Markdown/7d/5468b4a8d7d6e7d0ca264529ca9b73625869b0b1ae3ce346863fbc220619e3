@@ -1,0 +1,78 @@
+I"�<p>웹 페이지 개발을 하다보면 다양한 요구사항들이 생기기 마련입니다. 저도 자바스크립트의 다양한 함수에 대해서 공부를 진행하면서 여러가지 고민을 하게됩니다.</p>
+
+<p>제가 했던 고민들 중 js의 문자열과 관련된 문제 중 하나인 문자열 내의 특정 문자의 개수를 세는 방법에 대해서 소개해드리려고 합니다.</p>
+
+<h2 id="문자열의-특정-문자-개수-세는-방법">문자열의 특정 문자 개수 세는 방법</h2>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">aaabbbaaabababaaaabaa</span><span class="dl">'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>위와 같은 형태의 문자열이 있을 때, <code class="language-plaintext highlighter-rouge">a</code>의 개수와 <code class="language-plaintext highlighter-rouge">b</code>의 개수를 알고 싶다면 어떻게 해야할까요?</p>
+
+<h3 id="stringprototypeindexof">String.prototype.indexOf()</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">str</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">searchValue</span><span class="p">[,</span> <span class="nx">fromIndex</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>자바스크립트의 문자열과 관련된 <code class="language-plaintext highlighter-rouge">indexOf</code>라는 빌트인 함수가 있습니다. 이 함수는 문자열 내의 <code class="language-plaintext highlighter-rouge">특정 문자</code>를 포함하는 <strong>가장 첫 번째 인덱스</strong>를 반환합니다.</p>
+
+<p>이 함수를 적절하게 이용하면 앞서 질문드렸던 문제를 해결할 수 있습니다.</p>
+
+<h4 id="fromindex-사용-방법">fromIndex 사용 방법</h4>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">abbabbbba</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span>     <span class="c1">// 0</span>
+<span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>  <span class="c1">// 3</span>
+<span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>  <span class="c1">// 3</span>
+<span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>  <span class="c1">// 8</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">indexOf</code>의 두 번째 파라미터인 <code class="language-plaintext highlighter-rouge">fromIndex</code>를 사용하면 위와 같이 검색의 시작 위치를 변경할 수 있습니다.</p>
+
+<h3 id="문자열-내의-특정-문자-개수-세기-예제">문자열 내의 특정 문자 개수 세기 예제</h3>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">aaabbbaaabababaaaabaa</span><span class="dl">'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">searchChar</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// 찾으려는 문자</span>
+<span class="kd">var</span> <span class="nx">pos</span> <span class="o">=</span> <span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">searchChar</span><span class="p">);</span> <span class="c1">//pos는 0의 값을 가집니다.</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="nx">pos</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+  <span class="nx">pos</span> <span class="o">=</span> <span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">searchChar</span><span class="p">,</span> <span class="nx">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span> <span class="c1">// 첫 번째 a 이후의 인덱스부터 a를 찾습니다.</span>
+<span class="p">}</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">count</span><span class="p">);</span> <span class="c1">// 로그에 14를 출력합니다.</span>
+</code></pre></div></div>
+
+<p>위 코드는 <code class="language-plaintext highlighter-rouge">aaabbbaaabababaaaabaa</code>라는 문자열에서 <code class="language-plaintext highlighter-rouge">a</code>라는 문자가 몇 개가 있는지 셀 수 있는 예제입니다.</p>
+
+<p>위 코드에서 검색하려는 문자를 <code class="language-plaintext highlighter-rouge">a</code>에서 <code class="language-plaintext highlighter-rouge">b</code>로 변경하면 <code class="language-plaintext highlighter-rouge">b</code>가 몇 개가 있는지도 확인할 수 있습니다.</p>
+
+<h3 id="참고-문서">참고 문서</h3>
+
+<div class="related-link-wrap">
+    <a class="related-link" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf" target="_blank" rel="nofollow noopener noreferrer">
+      <div class="related-link-icon">
+         <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="24" height="24" viewBox="0 0 200.000000 200.000000" preserveAspectRatio="xMidYMid meet"><g transform="translate(0.000000,200.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none"><path d="M0 1000 l0 -1000 1000 0 1000 0 0 1000 0 1000 -1000 0 -1000 0 0 -1000z m1033 624 c58 -17 111 -26 142 -24 103 6 124 4 158 -15 34 -18 43 -32 81 -127 18 -44 39 -59 152 -104 144 -57 185 -77 195 -96 16 -29 22 -169 10 -214 -18 -67 -51 -106 -105 -125 -26 -10 -56 -25 -66 -34 -29 -26 -79 -28 -149 -6 -126 41 -235 19 -286 -58 -30 -45 -49 -155 -61 -348 l-7 -113 -26 6 c-99 23 -277 113 -363 184 -98 80 -136 118 -137 132 -1 9 12 50 28 90 l30 73 -100 3 c-54 1 -99 6 -99 10 0 4 30 39 66 77 l66 70 -121 3 c-67 1 -121 6 -121 10 0 4 32 42 71 84 l70 77 -121 3 -121 3 62 65 c287 303 316 326 453 372 106 35 180 36 299 2z" /></g></svg>
+        
+      </div>
+      <div class="link-title-wrap">
+        <div class="link-title">
+          <div class="link-title-text">String.prototype.indexOf() - JavaScript | MDN</div>
+        </div>
+      </div>
+      <div class="display-link-wrap">
+        <div class="display-link">
+          <span class="display-link-text">developer.mozilla.org</span>
+        </div>
+      </div>
+    </a>
+</div>
+
+<h2 id="맺음">맺음</h2>
+
+<p>간단하게 <strong>문자열에서 특정 문자의 개수를 세는 방법</strong>에 대해서 소개해봤습니다. 혹시 궁금하신 점이나 이상한 점이 있으시면 댓글 부탁드리겠습니다.</p>
+
+<p>감사합니다.</p>
+:ET

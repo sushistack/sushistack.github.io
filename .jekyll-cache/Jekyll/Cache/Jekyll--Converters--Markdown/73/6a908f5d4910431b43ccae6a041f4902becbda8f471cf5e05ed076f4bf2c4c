@@ -1,0 +1,67 @@
+I"�<p>간단하게 자바 콘솔 어플리케이션으로 이미지를 처리하는 프로그램을 만들고 싶은 경우가 있을 수 있습니다. 저 또한 간단하게 웹 상에 존재하는 이미지를 다운 받아 이미지에 워터마크를 넣어주는 프로그램을 만들려고 했었습니다.</p>
+
+<p>이 글에서는 Java에서 웹 상에 존재하는 이미지를 받아와서 로컬에 저장하는 예제에 대해서 소개해드리겠습니다.</p>
+
+<h2 id="imageio-패키지">ImageIO 패키지</h2>
+
+<div class="related-link-wrap">
+    <a class="related-link" href="https://docs.oracle.com/javase/7/docs/api/javax/imageio/ImageIO.html" target="_blank" rel="nofollow noopener noreferrer">
+      <div class="related-link-icon">
+        
+        <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg>
+        
+      </div>
+      <div class="link-title-wrap">
+        <div class="link-title">
+          <div class="link-title-text">ImageIO (Java Platform SE 7)</div>
+        </div>
+      </div>
+      <div class="display-link-wrap">
+        <div class="display-link">
+          <span class="display-link-text">docs.oracle.com</span>
+        </div>
+      </div>
+    </a>
+</div>
+
+<p>자바에서 제공하는 Image 관련한 패키지입니다. 다양한 기능들이 있지만 웹 상에 존재하는 이미지의 URL을 통해서 이미지를 로컬에 저장하는 예제를 보여드리겠습니다.</p>
+
+<h3 id="예제-코드">예제 코드</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">javax.imageio.ImageIO</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.image.BufferedImage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.net.URL</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Main</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="kd">static</span> <span class="nc">String</span> <span class="no">IMAGE_URL</span> <span class="o">=</span> <span class="s">"https://www.google.com/favicon.ico"</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="c1">// if you want to get png or jpg ... you can do it</span>
+      <span class="no">URL</span> <span class="n">url</span> <span class="o">=</span> <span class="k">new</span> <span class="no">URL</span><span class="o">(</span><span class="no">IMAGE_URL</span><span class="o">);</span>
+      <span class="nc">String</span> <span class="n">extension</span> <span class="o">=</span> <span class="no">IMAGE_URL</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="no">IMAGE_URL</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="sc">'.'</span><span class="o">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">);</span>
+
+      <span class="nc">BufferedImage</span> <span class="n">image</span> <span class="o">=</span> <span class="nc">ImageIO</span><span class="o">.</span><span class="na">read</span><span class="o">(</span><span class="n">url</span><span class="o">);</span>
+      <span class="nc">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">File</span><span class="o">(</span><span class="s">"test.ico"</span><span class="o">);</span>
+
+      <span class="nc">ImageIO</span><span class="o">.</span><span class="na">write</span><span class="o">(</span><span class="n">image</span><span class="o">,</span> <span class="n">extension</span><span class="o">,</span> <span class="n">file</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>위 예제는 구글의 favicon을 가져와서 로컬에 환경에 저장하는 예제입니다.</p>
+
+<ul>
+  <li>URL을 <code class="language-plaintext highlighter-rouge">ImageIO.read</code>메소드의 파라미터로 넘겨 <code class="language-plaintext highlighter-rouge">BufferedImage</code> 객체에 데이터를 저장합니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">test.ico</code>라는 파일 객체를 만듭니다.</li>
+  <li><code class="language-plaintext highlighter-rouge">ImageIO.write</code> 메소드를 이용하여 로컬에 저장합니다.</li>
+</ul>
+
+<h2 id="맺음">맺음</h2>
+
+<p>간단하게 Java의 ImageIO 패키지를 이용하여 웹 상에 있는 이미지를 로컬에 저장하는 방법에 대해서 알아보았습니다. 궁금하신 점이나 이상한 점은 댓글 부탁드리겠습니다.</p>
+:ET

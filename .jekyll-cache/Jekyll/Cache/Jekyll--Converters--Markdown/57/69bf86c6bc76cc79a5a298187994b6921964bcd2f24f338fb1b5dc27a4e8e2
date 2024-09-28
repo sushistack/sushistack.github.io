@@ -1,0 +1,782 @@
+I"��<p>스프링 배치를 사용하면서 <strong>프레임워크</strong>의 구조에 대한 이해와 사용하고 있는 클래스가 어떤 역할을 하고 있는지에 대해서 알아볼 필요가 있다고 생각합니다.</p>
+
+<p>이 글로 전체적인 구조를 전부 다 설명드릴 수는 없지만, 어떻게 구성이 되어 있고, 각 요소가 하는 역할은 무엇인지 소개해보도록 하겠습니다.</p>
+
+<h2 id="스프링-배치-구조">스프링 배치 구조</h2>
+
+<p><img src="/assets/images/spring-batch-architecture.jpg" alt="spring batch architecture" /></p>
+
+<p>위 다이어그램은 스프링 배치 프레임워크 내의 <strong>요소</strong> 간의 상호작용과 주요 서비스들을 나타냅니다. 다이어그램에서 스프링 배치에서의 <code class="language-plaintext highlighter-rouge">개발자의 책임</code>을 이해하는데 도움이될 수 있도록 각 요소에 특성에 맞는 색으로 표시해두었습니다.</p>
+
+<p><strong>노란색</strong>은 스케줄러 또는 데이터베이스와 같은 <code class="language-plaintext highlighter-rouge">외부 애플리케이션</code>을 나타냅니다. 스케줄링이라는 점은 스프링 배치와 별도로 고려되어야한다는 점에 유의하는 것이 중요합니다.</p>
+
+<p><strong>빨간색</strong>으로 표시한 요소들은 <code class="language-plaintext highlighter-rouge">어플리케이션 서비스</code>를 나타냅니다. 대부분의 서비스들은 스프링 배치에서 제공하고 있지만, 원하는 구조가 있다면 입맛에 맞게 디자인 할 수 있습니다.</p>
+
+<p><strong>초록색</strong>으로 표시된 요소들은 <code class="language-plaintext highlighter-rouge">개발자가 구성해야하는 것</code>들을 나타냅니다. 예를 들어 일정한 주기대로 작업이 시작되도록 설정하거나, 작업을 실행하는 방법 등을 구현해야합니다.</p>
+
+<div class="hint-container info">
+  <div class="hint-type info">
+    <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="none" class="icon-7f6730be--text-3f89f380"><g><path d="M12.2 8.98c.06-.01.12-.03.18-.06.06-.02.12-.05.18-.09l.15-.12c.18-.19.29-.45.29-.71 0-.06-.01-.13-.02-.19a.603.603 0 0 0-.06-.19.757.757 0 0 0-.09-.18c-.03-.05-.08-.1-.12-.15-.28-.27-.72-.37-1.09-.21-.13.05-.23.12-.33.21-.04.05-.09.1-.12.15-.04.06-.07.12-.09.18-.03.06-.05.12-.06.19-.01.06-.02.13-.02.19 0 .26.11.52.29.71.1.09.2.16.33.21.12.05.25.08.38.08.06 0 .13-.01.2-.02M13 16v-4a1 1 0 1 0-2 0v4a1 1 0 1 0 2 0M12 3c-4.962 0-9 4.038-9 9 0 4.963 4.038 9 9 9 4.963 0 9-4.037 9-9 0-4.962-4.037-9-9-9m0 20C5.935 23 1 18.065 1 12S5.935 1 12 1c6.066 0 11 4.935 11 11s-4.934 11-11 11" fill-rule="evenodd"></path></g></svg>
+  </div>
+  <div class="hint-body-container">
+    <div class="hint-body">
+      
+      <ol class="hint-list">
+      
+      
+        <li><strong>Run Tier</strong>: 어플리케이션의 예약 및 시작과 관련이 있는 계층입니다. 배치 작업의 시간 기반 및 상호 의존적인 스케줄링을 제공할뿐만 아니라 병렬 처리 기능을 제공합니다.</li>
+      
+        <li><strong>Job Tier</strong>: 배치 작업의 전체 실행을 담당합니다. 배치 단계를 순차적으로 실행하여 모든 단계가 올바른 상태에 있고 모든 적절한 정책이 시행 되도록합니다.</li>
+      
+        <li><strong>Application Tier</strong>: 프로그램을 실행하는 데 필요한 구성 요소가 포함되어 있습니다. 이 계층에는 요구된 배치의 기능을 처리하고 Tasklet 실행에 대한 정책을 시행하는 특별한 Tasklet이 포함됩니다.</li>
+      
+        <li><strong>Data Tier</strong>: 데이터베이스, 파일 또는 대기열을 포함 할 수있는 물리적 데이터 소스와의 연결을 제공합니다.</li>
+      
+      </ol>
+      
+    </div>
+  </div>
+</div>
+
+<h2 id="job">Job</h2>
+
+<p>Job은 전체 배치 프로세스를 캡슐화하는 엔티티입니다. 다른 스프링 프로젝트와 동일하게 <code class="language-plaintext highlighter-rouge">XML</code> 또는 <code class="language-plaintext highlighter-rouge">Java</code>로 설정할 수 있습니다.</p>
+
+<blockquote>
+  <p>Job 설정에 필요한 구성 요소</p>
+  <ul>
+    <li>작업의 간단한 이름</li>
+    <li>Step인스턴스의 정의 및 순서</li>
+    <li>작업을 다시 시작할 수 있는지 여부</li>
+  </ul>
+</blockquote>
+
+<p>스프링 배치의 Job은 단순하게 표현하면 <code class="language-plaintext highlighter-rouge">Step</code> 인스턴스의 컨테이너입니다. 비즈니스로직을 가지고 있는 여러 Step을 결합하고 재시작 가능성과 같이 모든 Step에 전역 속성을 설정할 수 있습니다.</p>
+
+<p>job을 어떻게 구성하는지 알아보도록 해보겠습니다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// .. 생략</span>
+
+<span class="nd">@Slf4j</span>
+<span class="nd">@Configuration</span>
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TutorialConfig</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">JobBuilderFactory</span> <span class="n">jobBuilderFactory</span><span class="o">;</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="nc">Job</span> <span class="nf">tutorialJob</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">jobBuilderFactory</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"tutorialJob"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">start</span><span class="o">(</span><span class="n">tutorialStep1</span><span class="o">())</span>
+                <span class="o">.</span><span class="na">next</span><span class="o">(</span><span class="n">tutorialStep2</span><span class="o">())</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="c1">// step1 생략</span>
+
+    <span class="nd">@Bean</span>
+    <span class="kd">public</span> <span class="nc">Step</span> <span class="nf">tutorialStep2</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">stepBuilderFactory</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="s">"tutorialStep2"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">tasklet</span><span class="o">((</span><span class="n">contribution</span><span class="o">,</span> <span class="n">chunkContext</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span>
+                    <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"I'm a tutorialStep2"</span><span class="o">);</span>
+                        <span class="k">return</span> <span class="nc">RepeatStatus</span><span class="o">.</span><span class="na">FINISHED</span><span class="o">;</span>
+                <span class="o">})</span>
+                <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <ul>
+    <li>JobBuilderFactory: Job을 쉽게 만들 수 있도록 도와 주는 클래스</li>
+    <li>JobBuilderFactory.get(Job): Job 이름을 tutorialJob으로 설정</li>
+    <li>JobBuilder.start(Step): Job에 처음으로 시작할 스텝을 등록</li>
+    <li>SimpleJobBuilder.next(Step): 처음 등록된 스텝 이후 다음 스텝을 등록</li>
+  </ul>
+</blockquote>
+
+<h3 id="jobrunner">JobRunner</h3>
+
+<p>외부 요청에 의해 작업 실행을 담당하는 클래스입니다. 예를 들어, 쉘 스크립트와 같은 다양한 외부 트리거로 메소드 호출을 할 수 있는 등의 여러 구현 방법들이 있습니다. <strong>JobLauncher의 인스턴스화</strong>를 수행합니다.</p>
+
+<h3 id="jobinstance">JobInstance</h3>
+
+<p><img src="/assets/images/job-instance.jpg" alt="job instance" /></p>
+
+<p>배치 처리에서 Job이 실행될 때 하나의 논리적 작업 실행의 단위입니다. 예를 들어 하루에 한 번씩 실행되는 배치 Job이 있다고 생각해보겠습니다.</p>
+
+<p>이런 배치 Job의 경우, 하루 하나의 <code class="language-plaintext highlighter-rouge">JobInstance</code>가 있다고 생각하시면 됩니다.</p>
+
+<div class="hint-container warning">
+  <div class="hint-type warning">
+    <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><g><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12" y2="16"></line></g></svg>
+  </div>
+  <div class="hint-body-container">
+    <div class="hint-body">
+      
+        <span class="hint-body-text">오늘 작업이 실패한 경우, 내일 같은 Job에 대해서 JobInstance를 사용하게 됩니다. (단, 오늘과 내일은 다른 JobExecution 사용)</span>
+      
+    </div>
+  </div>
+</div>
+
+<h4 id="batch_job_instance-테이블-데이터-예시">BATCH_JOB_INSTANCE 테이블 데이터 예시</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">JOB_INSTANCE_ID</th>
+      <th style="text-align: center">VERSION</th>
+      <th style="text-align: center">JOB_NAME</th>
+      <th style="text-align: center">JOB_KEY</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">tutorialJob</td>
+      <td style="text-align: center">d41d8cd98f00b204e9800998ecf8427e</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>제가 작성한 Job을 실행했을 때 <code class="language-plaintext highlighter-rouge">JOB_INSTANCE</code> 테이블에 실제로 들어가는 내용을 확인 하실 수 있습니다.</p>
+
+<h3 id="jobexecution">JobExecution</h3>
+
+<p>JobExecution은 JobInstance에 대한 한 번의 실행을 나타내는 객체입니다. 예를 들어 오늘 Job이 실패해 내일 다시 동일한 Job을 실행하면 동일한 <code class="language-plaintext highlighter-rouge">JobInstance</code>를 사용합니다.</p>
+
+<h4 id="jobexecution-properties">JobExecution properties</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>속성</th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>status</td>
+      <td>BatchStatus실행의 상태를 나타내는 객체로 실행 중일 때는 BatchStatus.STARTED이고, 실패하면 BatchStatus.FAILED이고, 성공적으로 완료되면 BatchStatus.COMPLETED</td>
+    </tr>
+    <tr>
+      <td>startTime</td>
+      <td>작업이 시작되었을 때 현재 시스템 시간</td>
+    </tr>
+    <tr>
+      <td>endTime</td>
+      <td>작업의 성공 여부와 관계없이 작업이 끝났을 때의 현재 시스템 시간</td>
+    </tr>
+    <tr>
+      <td>exitStatus</td>
+      <td>실행의 결과를 나타내는 상태로 호출 대상에게 반환할 exitCode를 포함하고 있어 중요한 속성</td>
+    </tr>
+    <tr>
+      <td>createTime</td>
+      <td>JobExecution이 처음 지속된 현재 시스템 시간</td>
+    </tr>
+    <tr>
+      <td>lastUpdated</td>
+      <td>JobExecution이 마지막으로 지속된 현재 시스템 시간</td>
+    </tr>
+    <tr>
+      <td>executionContext</td>
+      <td>실행과 실행 사이에 유지되어야 하는 유저정보를 포함하는 속성 데이터 더미</td>
+    </tr>
+    <tr>
+      <td>failureExceptions</td>
+      <td>작업 실행 중에 발생한 예외 목록. 작업 중 둘 이상의 예외가 발생할 경우 유용하게 사용할 수 있음</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>JobExecution 인터페이스에는 위와 같은 다양한 속성에 대한 데이터를 가지고있습니다.</p>
+
+<h4 id="batch_job_execution-데이터-예시">BATCH_JOB_EXECUTION 데이터 예시</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">JOB_EXECUTION_ID</th>
+      <th style="text-align: center">VERSION</th>
+      <th style="text-align: center">JOB_INSTANCE_ID</th>
+      <th style="text-align: center">CREATE_TIME</th>
+      <th style="text-align: center">START_TIME</th>
+      <th style="text-align: center">END_TIME</th>
+      <th style="text-align: center">STATUS</th>
+      <th style="text-align: center">EXIT_CODE</th>
+      <th style="text-align: center">EXIT_MESSAGE</th>
+      <th style="text-align: center">LAST_UPDATED</th>
+      <th style="text-align: center">JOB_CONFIGURATION_LOCATION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">2021-02-08 14:53:09.520000</td>
+      <td style="text-align: center">2021-02-08 14:53:09.653000</td>
+      <td style="text-align: center">2021-02-08 14:53:09.896000</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">2021-02-08 14:53:09.897000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>제가 작성한 Job을 실행 했을 때의 <code class="language-plaintext highlighter-rouge">BATCH_JOB_EXECUTION</code> 테이블에 위와 같은 데이터가 저장됩니다.</p>
+
+<h3 id="jobexecutioncontext">JobExecutionContext</h3>
+
+<p>Job 실행 중 개발자가 지속적으로 유지되었으면 하는 데이터를 저장하는 데이터 컬렉션입니다. 이 컬렉션은 <strong>프레임워크</strong>에 의해 유지 및 관리되고 Job이 실행되는 중간 커밋지점에서 주기적으로 저장됩니다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">ExecutionContext</code>를 사용하면 Job 실행 중 치명적인 오류나 컴퓨터가 다운된 경우에도 상태를 정보를 유지할 수 있습니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">JOB_EXECUTION_ID</th>
+      <th style="text-align: center">SHORT_CONTEXT</th>
+      <th style="text-align: center">SERIALIZED_CONTEXT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">”{““@class””:”“java.util.HashMap””}”</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">”{““@class””:”“java.util.HashMap””}”</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">”{““@class””:”“java.util.HashMap””}”</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="jobparameters">JobParameters</h3>
+
+<p>JobParameters를 소개하기 전에 한 가지 예제를 보겠습니다. 저는 상단에서 <code class="language-plaintext highlighter-rouge">JobParameters</code>를 설정하여 Job을 실행하지 않았었습니다.</p>
+
+<p>이러한 상태에서 <strong>동일한 작업을 실행</strong>하면 어떻게 되는지 실제로 실행해보고 <code class="language-plaintext highlighter-rouge">JobExecution</code>의 데이터를 보면서 알아보겠습니다.</p>
+
+<h4 id="job-중복-실행-시-batch_job_execution-데이터-예시">Job 중복 실행 시 BATCH_JOB_EXECUTION 데이터 예시</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">STATUS</th>
+      <th style="text-align: center">EXIT_CODE</th>
+      <th style="text-align: center">EXIT_MESSAGE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center">NOOP</td>
+      <td style="text-align: center">All steps already completed or no steps configured for this job.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>JobParameters를 설정하지 않고, <strong>중복해서 Job을 실행</strong>할 경우 위와 같이 <code class="language-plaintext highlighter-rouge">NOOP</code>이라는 종료 코드와 함께 작업이 종료됩니다.</p>
+
+<p>중복해서 실행했기 때문에 <code class="language-plaintext highlighter-rouge">전체 스텝들이 이미 완료되었거나 작업에 스텝들이 설정되어 있지 않습니다.</code>라는 종료 메시지도 저장되어 있는 것을 확인하실 수 있습니다.</p>
+
+<p>그럼 한 가지 의문이 드실겁니다. 그럼 스프링 배치에서는 <strong>작업을 한 번씩만</strong> 수행할 수 있는 것일까요?</p>
+
+<p>이러한 의문을 해결해줄 수 있는 것이 바로 <code class="language-plaintext highlighter-rouge">JobParameters</code>입니다.</p>
+
+<p>JobParameters는 배치 Job이 실행될 때 필요한 파라미터 셋을 가지고 있는 객체입니다. 또 JobParameters와 JobInstance는 <code class="language-plaintext highlighter-rouge">1:1 관계</code>이기 때문에  JobParameters는 <strong>JobInstance를 구분</strong>하는 기준이 되기도 합니다.</p>
+
+<h4 id="jobparameters와-scope">JobParameters와 Scope</h4>
+
+<p>스프링 배치에서 JobParameters를 정상적으로 사용하기 위해서 <code class="language-plaintext highlighter-rouge">JobScope</code>나 <code class="language-plaintext highlighter-rouge">StepScope</code>를 함께 사용해주셔야 합니다. 그 이유는 <code class="language-plaintext highlighter-rouge">JobParameters</code>는 <strong>Scope</strong> Bean의 생성 시점에만 함께 생성될 수 있기 때문입니다.</p>
+
+<div class="related-link-wrap">
+    <a class="related-link" href="/back-end/spring/batch-job-and-step-scope" target="_self" rel="noopener noreferrer">
+      <div class="related-link-icon">
+         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Calque_1" width="32" height="32" viewBox="0 0 70 70" style="overflow:visible" xml:space="preserve"><g><g transform="translate(-186.000000, -128.000000)"><path id="GitBook_logo_blue" style="fill:#8a4baf;" d="M217.505,179.83c1.129,0,2.048,0.919,2.048,2.047    c0,1.129-0.919,2.047-2.048,2.047c-1.129,0-2.047-0.919-2.047-2.047C215.457,180.749,216.376,179.83,217.505,179.83     M249.659,167.149c-1.129,0-2.048-0.919-2.048-2.047c0-1.129,0.919-2.048,2.048-2.048c1.129,0,2.047,0.919,2.047,2.048    C251.707,166.23,250.788,167.149,249.659,167.149 M249.659,158.761c-3.496,0-6.341,2.844-6.341,6.341    c0,0.681,0.113,1.359,0.336,2.018l-20.946,11.15c-1.19-1.715-3.119-2.731-5.205-2.731c-2.417,0-4.62,1.383-5.686,3.544    l-18.818-9.921c-1.988-1.045-3.476-4.32-3.318-7.3c0.082-1.555,0.619-2.761,1.437-3.227c0.519-0.295,1.144-0.269,1.807,0.078    l0.126,0.066c4.985,2.627,21.304,11.222,21.991,11.541c1.06,0.49,1.65,0.689,3.456-0.167l33.732-17.543    c0.494-0.187,1.071-0.66,1.071-1.38c0-0.998-1.032-1.391-1.035-1.391c-1.918-0.92-4.867-2.301-7.744-3.647    c-6.148-2.879-13.116-6.141-16.176-7.744c-2.642-1.383-4.768-0.217-5.148,0.019l-0.737,0.365    c-13.772,6.811-32.203,15.939-33.253,16.577c-1.879,1.143-3.043,3.421-3.193,6.249c-0.235,4.483,2.052,9.156,5.321,10.871    l19.898,10.262c0.448,3.105,3.121,5.429,6.27,5.429c3.464,0,6.288-2.792,6.34-6.244l21.915-11.877    c1.111,0.868,2.489,1.345,3.9,1.345c3.496,0,6.341-2.845,6.341-6.341S253.155,158.761,249.659,158.761" /></g></g></svg>
+        
+      </div>
+      <div class="link-title-wrap">
+        <div class="link-title">
+          <div class="link-title-text">[스프링/Spring] Batch Job Scope와 Step Scope</div>
+        </div>
+      </div>
+      <div class="display-link-wrap">
+        <div class="display-link">
+          <span class="display-link-text">deeplify.dev</span>
+        </div>
+      </div>
+    </a>
+</div>
+<p>배치의 스코프와 관련하여 자세한 내용은 위 링크를 통해서 확인하실 수 있습니다.</p>
+
+<h4 id="jobparameters-사용-예제">JobParameters 사용 예제</h4>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// .. 생략</span>
+
+<span class="nd">@Slf4j</span>
+<span class="nd">@StepScope</span>
+<span class="nd">@RequiredArgsConstructor</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TutorialTasklet</span> <span class="kd">implements</span> <span class="nc">Tasklet</span> <span class="o">{</span>
+
+    <span class="c1">// JobParameters 사용</span>
+    <span class="nd">@Value</span><span class="o">(</span><span class="s">"#{jobParameters[datetime]}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">datetime</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">RepeatStatus</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">StepContribution</span> <span class="n">contribution</span><span class="o">,</span> <span class="nc">ChunkContext</span> <span class="n">chunkContext</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"# executed tasklet !!"</span><span class="o">);</span>
+        <span class="n">log</span><span class="o">.</span><span class="na">debug</span><span class="o">(</span><span class="s">"datetime: {}"</span><span class="o">,</span> <span class="n">datetime</span><span class="o">);</span>
+        <span class="k">return</span> <span class="nc">RepeatStatus</span><span class="o">.</span><span class="na">FINISHED</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>JobParameters는 <code class="language-plaintext highlighter-rouge">@Value</code>어노테이션을 이용하여 사용 가능합니다.</p>
+
+<div class="hint-container info">
+  <div class="hint-type info">
+    <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="none" class="icon-7f6730be--text-3f89f380"><g><path d="M12.2 8.98c.06-.01.12-.03.18-.06.06-.02.12-.05.18-.09l.15-.12c.18-.19.29-.45.29-.71 0-.06-.01-.13-.02-.19a.603.603 0 0 0-.06-.19.757.757 0 0 0-.09-.18c-.03-.05-.08-.1-.12-.15-.28-.27-.72-.37-1.09-.21-.13.05-.23.12-.33.21-.04.05-.09.1-.12.15-.04.06-.07.12-.09.18-.03.06-.05.12-.06.19-.01.06-.02.13-.02.19 0 .26.11.52.29.71.1.09.2.16.33.21.12.05.25.08.38.08.06 0 .13-.01.2-.02M13 16v-4a1 1 0 1 0-2 0v4a1 1 0 1 0 2 0M12 3c-4.962 0-9 4.038-9 9 0 4.963 4.038 9 9 9 4.963 0 9-4.037 9-9 0-4.962-4.037-9-9-9m0 20C5.935 23 1 18.065 1 12S5.935 1 12 1c6.066 0 11 4.935 11 11s-4.934 11-11 11" fill-rule="evenodd"></path></g></svg>
+  </div>
+  <div class="hint-body-container">
+    <div class="hint-body">
+      
+        <span class="hint-body-text">설정할 "datetime"은 Intellij 기준 Run/Debug configuration &gt; program arguments 영역에 "datetime=2021-01-01T00:00:00"과 같은 형식으로 넣어주시면 됩니다.</span>
+      
+    </div>
+  </div>
+</div>
+
+<blockquote>
+  <p>JobParameters로 사용 가능한 데이터 타입</p>
+  <ul>
+    <li>Long</li>
+    <li>Double</li>
+    <li>Date</li>
+    <li>String</li>
+  </ul>
+</blockquote>
+
+<p>파라미터를 넣고 실행한 결과를 보도록 하겠습니다.</p>
+
+<h5 id="batch_job_instance">BATCH_JOB_INSTANCE</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">JOB_INSTANCE_ID</th>
+      <th style="text-align: center">VERSION</th>
+      <th style="text-align: center">JOB_NAME</th>
+      <th style="text-align: center">JOB_KEY</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">tutorialJob</td>
+      <td style="text-align: center">d41d8cd98f00b204e9800998ecf8427e</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">tutorialJob</td>
+      <td style="text-align: center">9b96e280f03ff7fc781074b22d62097f</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>동일한 Job 이름을 가지고 있고, <code class="language-plaintext highlighter-rouge">JOB_INSTANCE_ID</code> 값이 1인 데이터가 추가되었습니다.</p>
+
+<h5 id="batch_job_execution">BATCH_JOB_EXECUTION</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">JOB_EXECUTION_ID</th>
+      <th style="text-align: center">VERSION</th>
+      <th style="text-align: center">JOB_INSTANCE_ID</th>
+      <th style="text-align: center">CREATE_TIME</th>
+      <th style="text-align: center">START_TIME</th>
+      <th style="text-align: center">END_TIME</th>
+      <th style="text-align: center">STATUS</th>
+      <th style="text-align: center">EXIT_CODE</th>
+      <th style="text-align: center">EXIT_MESSAGE</th>
+      <th style="text-align: center">LAST_UPDATED</th>
+      <th style="text-align: center">JOB_CONFIGURATION_LOCATION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">2021-02-08 14:53:09.520000</td>
+      <td style="text-align: center">2021-02-08 14:53:09.653000</td>
+      <td style="text-align: center">2021-02-08 14:53:09.896000</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">2021-02-08 14:53:09.897000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">2021-02-08 15:30:16.398000</td>
+      <td style="text-align: center">2021-02-08 15:30:16.516000</td>
+      <td style="text-align: center">2021-02-08 15:30:16.564000</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center">NOOP</td>
+      <td style="text-align: center">All steps already completed or no steps configured for this job.</td>
+      <td style="text-align: center">2021-02-08 15:30:16.564000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">2021-02-08 16:22:35.546000</td>
+      <td style="text-align: center">2021-02-08 16:22:35.676000</td>
+      <td style="text-align: center">2021-02-08 16:22:36.057000</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center">””</td>
+      <td style="text-align: center">2021-02-08 16:22:36.057000</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p><code class="language-plaintext highlighter-rouge">JOB_EXECUTION</code> 데이터를 한 번 살펴보면 <strong>첫 번째</strong> 시도에는 성공적으로 완료가 되었고, <strong>두 번째</strong> 시도에는 EXIT_CODE가 <code class="language-plaintext highlighter-rouge">NOOP</code>인 상태로 Job이 완료가 되었습니다.</p>
+
+<p><strong>세 번째</strong> 시도를 살펴 보면, <code class="language-plaintext highlighter-rouge">JOB_INSTANCE_ID</code>값이 1인 데이터가 추가되었고, EXIT_CODE도 <code class="language-plaintext highlighter-rouge">COMPLETED</code>로 완료된 것을 확인하실 수 있습니다.</p>
+
+<h5 id="batch_job_params-테이블-데이터-예시">BATCH_JOB_PARAMS 테이블 데이터 예시</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">JOB_INSTANCE_ID</th>
+      <th style="text-align: center">TYPE_CD</th>
+      <th style="text-align: center">KEY_NAME</th>
+      <th style="text-align: center">STRING_VAL</th>
+      <th style="text-align: center">DATE_VAL</th>
+      <th>LONG_VAL</th>
+      <th>DOUBLE_VAL</th>
+      <th>IDENTIFYING</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">STRING</td>
+      <td style="text-align: center">datetime</td>
+      <td style="text-align: center">2021-01-01T00:00:00</td>
+      <td style="text-align: center">1970-01-01 00:00:00</td>
+      <td>0</td>
+      <td>0</td>
+      <td>Y</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>세 번째</strong> 시도에는 JobParameters를 설정하고 실행 했습니다. 따라서 위 처럼 처음으로 <code class="language-plaintext highlighter-rouge">JOB_PARAMS</code> 데이터가 들어간 것을 확인하실 수 있습니다.</p>
+
+<div class="hint-container warning">
+  <div class="hint-type warning">
+    <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><g><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12" y2="16"></line></g></svg>
+  </div>
+  <div class="hint-body-container">
+    <div class="hint-body">
+      
+        <span class="hint-body-text">저는 datetime이라는 JobParameters를 String 형태로 전달했기 때문에 위와 같이 STRING_VAL 컬럼에 데이터가 삽입되었습니다. (나머지는 default 값)</span>
+      
+    </div>
+  </div>
+</div>
+
+<h2 id="step">Step</h2>
+
+<h3 id="stepexecution">StepExecution</h3>
+
+<p>Job에 JobExecution Job실행 정보가 있다면 Step에는 StepExecution이라는 Step 실행 정보를 담는 객체가 있습니다.</p>
+
+<h4 id="stepexecution-properties">StepExecution properties</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>속성</th>
+      <th>내용</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>status</td>
+      <td>실행 상태를 나타내는 배치 상태정보를 가지고 있는 객체입니다. 각각 실행 중(BatchStatus.STARTED), 실패(BatchStatus.FAILED), 성공(BatchStatus.COMPLETED)</td>
+    </tr>
+    <tr>
+      <td>startTime</td>
+      <td>실행이 시작되었을 때, 현재 시스템 시간</td>
+    </tr>
+    <tr>
+      <td>endTime</td>
+      <td>실행 성공 여부와 관계없이 작업이 끝났을 때의 현재 시스템 시간</td>
+    </tr>
+    <tr>
+      <td>exitStatus</td>
+      <td>실행 결과에 대한 종료 상태로 호출 대상에게 반환할 exitCode를 포함하고 있어 중요한 속성</td>
+    </tr>
+    <tr>
+      <td>executionContext</td>
+      <td>실행과 실행 사이에 유지되어야 하는 유저정보를 포함하는 속성 데이터 더미</td>
+    </tr>
+    <tr>
+      <td>readCount</td>
+      <td>성공적으로 읽은 아이템의 수</td>
+    </tr>
+    <tr>
+      <td>writeCount</td>
+      <td>성공적으로 쓰여진 아이템의 수</td>
+    </tr>
+    <tr>
+      <td>commitCount</td>
+      <td>해당 실행을 위해 커밋된 트랜잭션의 수</td>
+    </tr>
+    <tr>
+      <td>rollbackCount</td>
+      <td>Step에서 제어하는 비즈니스 트랜잭션이 롤백된 수</td>
+    </tr>
+    <tr>
+      <td>readSkipCount</td>
+      <td>읽기에 실패하여 건너 뛴 아이템의 수</td>
+    </tr>
+    <tr>
+      <td>processSkipCount</td>
+      <td>프로세스가 실패하여 건너 뛴 아이템의 수</td>
+    </tr>
+    <tr>
+      <td>filterCount</td>
+      <td>ItemProcessor에 의해 필터링된 항목 수</td>
+    </tr>
+    <tr>
+      <td>writeSkipCount</td>
+      <td>쓰기에 실패하여 건너 뛴 아이템의 수</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="batch_step_execution-데이터-예시">BATCH_STEP_EXECUTION 데이터 예시</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">STEP_EXECUTION_ID</th>
+      <th style="text-align: center">VERSION</th>
+      <th style="text-align: center">STEP_NAME</th>
+      <th style="text-align: center">JOB_EXECUTION_ID</th>
+      <th style="text-align: center">START_TIME</th>
+      <th style="text-align: center">END_TIME</th>
+      <th style="text-align: center">STATUS</th>
+      <th style="text-align: center">COMMIT_COUNT</th>
+      <th style="text-align: center">READ_COUNT</th>
+      <th style="text-align: center">FILTER_COUNT</th>
+      <th style="text-align: center">WRITE_COUNT</th>
+      <th style="text-align: center">READ_SKIP_COUNT</th>
+      <th style="text-align: center">WRITE_SKIP_COUNT</th>
+      <th style="text-align: center">PROCESS_SKIP_COUNT</th>
+      <th style="text-align: center">ROLLBACK_COUNT</th>
+      <th style="text-align: center">EXIT_CODE</th>
+      <th style="text-align: center">EXIT_MESSAGE</th>
+      <th style="text-align: center">LAST_UPDATED</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">tutorialStep1</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">2021-02-08 14:53:09.713000</td>
+      <td style="text-align: center">2021-02-08 14:53:09.775000</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">2021-02-08 14:53:09.776000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">tutorialStep2</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">2021-02-08 14:53:09.851000</td>
+      <td style="text-align: center">2021-02-08 14:53:09.880000</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">2021-02-08 14:53:09.881000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">tutorialStep1</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">2021-02-08 16:22:35.858000</td>
+      <td style="text-align: center">2021-02-08 16:22:35.938000</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">2021-02-08 16:22:35.939000</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">tutorialStep2</td>
+      <td style="text-align: center">3</td>
+      <td style="text-align: center">2021-02-08 16:22:36.019000</td>
+      <td style="text-align: center">2021-02-08 16:22:36.045000</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center">1</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">0</td>
+      <td style="text-align: center">COMPLETED</td>
+      <td style="text-align: center"> </td>
+      <td style="text-align: center">2021-02-08 16:22:36.045000</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="stepexecutioncontext">StepExecutionContext</h3>
+
+<p><code class="language-plaintext highlighter-rouge">JobExecution</code>과 동일하게 동작하지만 각 Step에 대해서 개발자가 지정한 데이터를 저장합니다.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">STEP_EXECUTION_ID</th>
+      <th>SHORT_CONTEXT</th>
+      <th style="text-align: center">SERIALIZED_CONTEXT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">1</td>
+      <td>{“@class”:”java.util.HashMap”,”TutorialTasklet”,”batch.stepType”:”TaskletStep”}</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">2</td>
+      <td>{“@class”:”java.util.HashMap”,”batch.taskletType”:”TutorialConfig$$Lambda$433/0x00000008003a0c40”,”batch.stepType”:”TaskletStep”}</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">3</td>
+      <td>{“@class”:”java.util.HashMap”,”TutorialTasklet”,”batch.stepType”:”TaskletStep”}</td>
+      <td style="text-align: center"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">4</td>
+      <td>{“@class”:”java.util.HashMap”,”batch.taskletType”:”TutorialConfig$$Lambda$433/0x00000008003a0c40”,”batch.stepType”:”TaskletStep”}</td>
+      <td style="text-align: center"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="batch_step_execution_context-데이터-예시">BATCH_STEP_EXECUTION_CONTEXT 데이터 예시</h4>
+
+<h2 id="jobrepository">JobRepository</h2>
+
+<p>JobRepository는 배치 처리 과정 중 프레임워크에서 사용하는 <strong>메타데이터 정보를 액세스</strong>하는 Facade 클래스입니다. 상단에서 Job을 실행하면서 보여드렸던 테이블의 정보들은 <code class="language-plaintext highlighter-rouge">JobRepository</code>를 통해서 저장되고 관리되었습니다.</p>
+
+<h2 id="joblauncher">JobLauncher</h2>
+
+<p>작업의 시작과 실제 실행을 관리하는 인터페이스로 <code class="language-plaintext highlighter-rouge">JobRunner</code>에 의해 인스턴스화되고, <code class="language-plaintext highlighter-rouge">JobParameters</code>와 함께 배치를 실행하는 주체입니다.</p>
+
+<h2 id="joblocator">JobLocator</h2>
+
+<p>파라미터로 전달된 작업에 대한 구현 계획(작업 스크립트)과 같은 설정 정보를 가져 오는 책임이 있는 클래스입니다. JobRunner와 함께 작동합니다.</p>
+
+<h2 id="tasklet">Tasklet</h2>
+
+<p>배치의 특정 작업을 개발하기 위해 Step의 기본 단위를 만들 수 있는 클래스입니다.</p>
+
+<h2 id="itemreader">ItemReader</h2>
+
+<p>일반적으로 청크 구조에서 사용되는 컴포넌트로 배치 작업에서 모든 데이터에 대한 처리가 될 때까지 DB, File 등의 소스에서 반복적으로 읽는데 사용하는 인터페이스입니다. 프레임워크에서 <code class="language-plaintext highlighter-rouge">Reader</code> 셋을 제공하지만 필요한 경우 개발자가 직접 개발할 수도 있습니다.</p>
+
+<h2 id="itemprocessor">ItemProcessor</h2>
+
+<p>역시 청크 구조에서 사용되는 컴포넌트로 Reader로 읽어온 데이터를 변환하하기 위한 역할을 수행합니다. 경우에 따라서는 <code class="language-plaintext highlighter-rouge">Processor</code>는 사용하지 않아도 됩니다.</p>
+
+<div class="hint-container warning">
+  <div class="hint-type warning">
+    <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><g><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12" y2="16"></line></g></svg>
+  </div>
+  <div class="hint-body-container">
+    <div class="hint-body">
+      
+        <span class="hint-body-text">Reader, Processor, Writer로 분리된 구조는 비즈니스 로직을 분리하기에 용이하고, Reader와 Writer 데이터 타입이 다른 경우 어뎁터의 역할을 할 수도 있습니다.</span>
+      
+    </div>
+  </div>
+</div>
+
+<h2 id="itemwriter">ItemWriter</h2>
+
+<p>Writer 또한 청크 구조에서 사용되는 컴포넌트로 배치에서 데이터를 DB, File 등에 <strong>저장</strong>하기 위한 인터페이스입니다. 동일하게 프레임워크에서 기본적으로 제공하지만 개발자가 직접 개발할 수도 있습니다.</p>
+
+<h2 id="맺음">맺음</h2>
+
+<p>스프링 배치 구조와 구조 내부의 각 요소들에 대해서 간단하게 알아보는 시간을 가져보았습니다. 혹시 궁금하신 점이나 이상한 점이 있으면 댓글 부탁드리겠습니다.</p>
+
+<p>감사합니다.</p>
+:ET

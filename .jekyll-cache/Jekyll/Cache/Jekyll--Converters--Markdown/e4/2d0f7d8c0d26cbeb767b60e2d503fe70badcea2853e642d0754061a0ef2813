@@ -1,0 +1,124 @@
+I"K$<p>개발 환경이 <code class="language-plaintext highlighter-rouge">SPA(Single Page Application)</code> + <code class="language-plaintext highlighter-rouge">spring boot</code>이면서 내장 톰캣(internal tomcat)을 사용 중일 때, 간혹 내장 톰캣에 <code class="language-plaintext highlighter-rouge">SSL</code>을 적용해야할 때가 있습니다.</p>
+
+<h2 id="내장-톰캣-ssl-적용하기">내장 톰캣 SSL 적용하기</h2>
+
+<p>최근에 google chrome 버전 80부터 <code class="language-plaintext highlighter-rouge">SameSite=Secure</code>가 기본으로 설정되도록 정책 변경을 하게 되었고,
+정책이 변경되면서 저희 쪽에 소셜 로그인 쿠키관련 사이드 이펙트가 발생했습니다.</p>
+
+<p>다양한 이슈들이 있었지만, 결론적으로 로그인 관련하여 <code class="language-plaintext highlighter-rouge">http</code> -&gt; <code class="language-plaintext highlighter-rouge">https</code>화 작업이 급하게 진행되었습니다.</p>
+
+<p>저희 쪽 개발자 PC에서도 소셜 로그인이 적용된 채로 개발을 진행중이었는데요, 로컬에서도 <code class="language-plaintext highlighter-rouge">https</code>를 적용해야할 필요가 생겼고, 로컬 tomcat에 ssl을 적용하면서 어떻게 적용했는지 공유하면 좋을 것 같아서 소개해드리려고 합니다.</p>
+
+<h3 id="내장-톰캣-확인하기">내장 톰캣 확인하기</h3>
+
+<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">providedRuntime</span> <span class="err">'</span><span class="n">org</span><span class="p">.</span><span class="n">springframework</span><span class="p">.</span><span class="n">boot</span><span class="p">:</span><span class="n">spring-boot-starter-tomcat</span><span class="err">'</span>
+</code></pre></div></div>
+
+<p>gradle 설정에서 위 dependency를 추가하고 있다면, 내장 톰캣을 사용하는 것이라고 생각하시면 됩니다.</p>
+
+<p>일단 외부 톰캣에 대한 테스트는 해보지 않아서, 될지는 모르겠습니다.</p>
+
+<h3 id="keystore-생성하기">keyStore 생성하기</h3>
+
+<p><code class="language-plaintext highlighter-rouge">keyStore</code>는 Jdk에 있는 <code class="language-plaintext highlighter-rouge">keytool</code>이라는 키생성 툴을 사용할 예정입니다.</p>
+
+<div class="related-link-wrap">
+    <a class="related-link" href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html" target="_blank" rel="nofollow noopener noreferrer">
+      <div class="related-link-icon">
+        
+        <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg>
+        
+      </div>
+      <div class="link-title-wrap">
+        <div class="link-title">
+          <div class="link-title-text">keytool</div>
+        </div>
+      </div>
+      <div class="display-link-wrap">
+        <div class="display-link">
+          <span class="display-link-text">docs.oracle.com</span>
+        </div>
+      </div>
+    </a>
+</div>
+
+<h4 id="커멘드-옵션">커멘드 옵션</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Key and Certificate Management Tool
+
+Commands:
+
+ <span class="nt">-certreq</span>            Generates a certificate request
+ <span class="nt">-changealias</span>        Changes an entry<span class="s1">'s alias
+ -delete             Deletes an entry
+ -exportcert         Exports certificate
+ -genkeypair         Generates a key pair
+ -genseckey          Generates a secret key
+ -gencert            Generates certificate from a certificate request
+ -importcert         Imports a certificate or a certificate chain
+ -importpass         Imports a password
+ -importkeystore     Imports one or all entries from another keystore
+ -keypasswd          Changes the key password of an entry
+ -list               Lists entries in a keystore
+ -printcert          Prints the content of a certificate
+ -printcertreq       Prints the content of a certificate request
+ -printcrl           Prints the content of a CRL file
+ -storepasswd        Changes the store password of a keystore
+
+Use "keytool -?, -h, or --help" for this help message
+Use "keytool -command_name --help" for usage of command_name.
+Use the -conf &lt;url&gt; option to specify a pre-configured options file.
+</span></code></pre></div></div>
+
+<h4 id="key-생성하기">key 생성하기</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>keytool <span class="nt">-genkeypair</span> <span class="nt">-alias</span> tomcat-localhost <span class="nt">-storetype</span> jks <span class="nt">-keyalg</span> RSA <span class="nt">-keysize</span> 2048 <span class="nt">-validity</span> 3650 <span class="nt">-keystore</span> &lt;your project path&gt;/&lt;your project class path&gt;/keystore.jks
+</code></pre></div></div>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> Enter keystore password:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
+<span class="o">&gt;</span> Re-enter new password:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
+<span class="o">&gt;</span> What is your first and last name?
+  <span class="o">[</span>Unknown]:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
+<span class="o">&gt;</span> What is the name of your organizational unit?
+  <span class="o">[</span>Unknown]:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
+<span class="o">&gt;</span> What is the name of your organization?
+  <span class="o">[</span>Unknown]:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
+<span class="o">&gt;</span> What is the name of your City or Locality?
+  <span class="o">[</span>Unknown]:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
+<span class="o">&gt;</span> What is the name of your State or Province?
+  <span class="o">[</span>Unknown]:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
+<span class="o">&gt;</span> What is the two-letter country code <span class="k">for </span>this unit?
+  <span class="o">[</span>Unknown]:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
+<span class="o">&gt;</span> Is <span class="nv">CN</span><span class="o">=</span>, <span class="nv">OU</span><span class="o">=</span>, <span class="nv">O</span><span class="o">=</span>, <span class="nv">L</span><span class="o">=</span>, <span class="nv">ST</span><span class="o">=</span>, <span class="nv">C</span><span class="o">=</span> correct?
+  <span class="o">[</span>no]:  <span class="o">(</span><span class="nb">yes</span><span class="o">)</span>
+<span class="o">&gt;</span> Enter key password <span class="k">for</span> &lt;tomcat-localhost&gt;
+  <span class="o">(</span>RETURN <span class="k">if </span>same as keystore password<span class="o">)</span>:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
+</code></pre></div></div>
+
+<h4 id="key-확인하기">key 확인하기</h4>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>keytool <span class="nt">-list</span>
+</code></pre></div></div>
+
+<h3 id="tomcat-설정하기">tomcat 설정하기</h3>
+
+<p>키를 만들었으니, 이제는 톰캣에 적용을 시켜야합니다. 설정 방법은 생각보다 간단합니다. <code class="language-plaintext highlighter-rouge">application.yml</code> 파일에 다음과 같이 설정하시면 됩니다.</p>
+
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">server</span><span class="pi">:</span>
+  <span class="na">port</span><span class="pi">:</span> <span class="m">8443</span>
+  <span class="na">ssl</span><span class="pi">:</span>
+    <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">key-alias</span><span class="pi">:</span> <span class="s">tomcat-localhost</span>
+    <span class="na">key-password</span><span class="pi">:</span> <span class="s">&lt;your key password&gt;</span>
+    <span class="na">key-store</span><span class="pi">:</span> <span class="s">classpath:keystore.jks</span>
+    <span class="na">key-store-type</span><span class="pi">:</span> <span class="s">PKCS12</span>
+    <span class="na">key-store-password</span><span class="pi">:</span> <span class="s">&lt;your store key password&gt;</span>
+    <span class="na">key-store-provider</span><span class="pi">:</span> <span class="s">SUN</span>
+</code></pre></div></div>
+
+<h2 id="맺음">맺음</h2>
+
+<p>간단하게 내장 톰캣에 SSL을 적용하는 방법에 대해서 알아보았습니다. 혹시 궁금하신 점이나 이상한 점이 있으시면 댓글 부탁드리겠습니다.</p>
+
+<p>감사합니다.</p>
+:ET

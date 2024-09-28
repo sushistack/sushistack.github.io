@@ -1,0 +1,57 @@
+I"�<p>Jpa와 Mysql을 이용하여 공부를 진행하던 중 만난 <code class="language-plaintext highlighter-rouge">authentication</code>관련 에러에 대해서 소개해드리도록 하겠습니다.</p>
+
+<h2 id="client-does-not-support-authentication">Client does not support authentication</h2>
+
+<p>이 이유가 발생하게 된 이유는 Mysql 8.0에서는 다양한 플러그 형태의 인증 방법을 제공합니다. 기본적으로 제공하는 인증 방법은 <code class="language-plaintext highlighter-rouge">caching_sha2_password</code>입니다.</p>
+
+<h3 id="에러-발생-원인은">에러 발생 원인은?</h3>
+
+<p>제가 설치한 Mysql Connector의 버전은 <code class="language-plaintext highlighter-rouge">caching_sha2_password</code> 인증 방법은 지원하지 않는 버전이었기 때문에 인증 에러가 발생했습니다.</p>
+
+<h3 id="에러-해결-방법">에러 해결 방법</h3>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- mysql_native_password 사용하도록 변경</span>
+<span class="k">ALTER</span> <span class="k">USER</span> <span class="s1">'root'</span><span class="o">@</span><span class="s1">'localhost'</span> <span class="n">IDENTIFIED</span> <span class="k">WITH</span> <span class="n">mysql_native_password</span> <span class="k">BY</span> <span class="s1">'YourRootPassword'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>또는</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- mysql_native_password를 사용한 계정을 새로 생성</span>
+<span class="k">CREATE</span> <span class="k">USER</span> <span class="s1">'foo'</span><span class="o">@</span><span class="s1">'%'</span> <span class="n">IDENTIFIED</span> <span class="k">WITH</span> <span class="n">mysql_native_password</span> <span class="k">BY</span> <span class="s1">'bar'</span><span class="p">;</span>
+</code></pre></div></div>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">FLUSH</span> <span class="k">PRIVILEGES</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>위와 같이 Mysql 서버에서 쿼리를 실행하여 Mysql 8.0 이전의 인증 방법으로 사용할 수 있도록 변경해주면 됩니다.</p>
+
+<p>또 다른 방법으로는 caching_sha2_password 인증 방법을 지원하는 버전으로 Mysql Connector의 버전을 변경해주시면 됩니다.</p>
+
+<div class="related-link-wrap">
+    <a class="related-link" href="https://stackoverflow.com/questions/50093144/mysql-8-0-client-does-not-support-authentication-protocol-requested-by-server" target="_blank" rel="nofollow noopener noreferrer">
+      <div class="related-link-icon">
+        
+        <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg>
+        
+      </div>
+      <div class="link-title-wrap">
+        <div class="link-title">
+          <div class="link-title-text">MySQL 8.0 - Client does not support authentication protocol requested by server; consider upgrading MySQL client - Stack Overflow</div>
+        </div>
+      </div>
+      <div class="display-link-wrap">
+        <div class="display-link">
+          <span class="display-link-text">stackoverflow.com</span>
+        </div>
+      </div>
+    </a>
+</div>
+
+<h2 id="맺음">맺음</h2>
+
+<p>간단하게 <code class="language-plaintext highlighter-rouge">Client does not support authentication protocol requested by server</code>에러가 발생하는 원인과 해결 방법에 대해서 알아보았습니다.</p>
+
+<p>혹시 궁금한 점이나 이상한 점이 있으시면 댓글 부탁드리겠습니다.</p>
+
+<p>감사합니다.</p>
+:ET

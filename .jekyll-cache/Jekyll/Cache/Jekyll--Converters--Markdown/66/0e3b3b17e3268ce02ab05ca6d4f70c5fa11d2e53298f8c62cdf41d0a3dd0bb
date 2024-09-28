@@ -1,0 +1,130 @@
+I"�"<p>개발 환경에 스프링부트 어플리케이션을 실행하는 것은 IDE에서 버튼 하나로 간단하게 실행할 수 있습니다. 하지만 실제로 운영할 서버에 배포할 때는 간단하게 <code class="language-plaintext highlighter-rouge">Run</code> 버튼만으로 할 수 없습니다.</p>
+
+<p>보통 운영서버에 spring boot 어플리케이션을 배포할 때는 패키징된 <strong>jar</strong> 파일을 명령어로 실행시키는 방식을 사용합니다.</p>
+
+<p>이번 글에서는 <code class="language-plaintext highlighter-rouge">gradle</code>을 활용하여 패키징 파일을 만들고, 서버에서 실행 배포 하는 방법을 소개해드리도록 하겠습니다.</p>
+
+<h2 id="spring-boot-jar-배포-하는-방법">Spring boot jar 배포 하는 방법</h2>
+
+<p>Spring boot의 <code class="language-plaintext highlighter-rouge">starter-tomcat</code> 사용한다고 가정하고 다음과 같은 순서대로 설명하도록 하겠습니다.</p>
+
+<ol>
+  <li>필요한 gradle 의존성 추가</li>
+  <li>gradle로 jar 패키징</li>
+  <li>서버에서 jar 파일 실행</li>
+</ol>
+
+<h3 id="필요한-gradle-의존성-추가">필요한 gradle 의존성 추가</h3>
+
+<p>보통 spring boot 프로젝트를 spring initializer를 통해서 생성할 때, <code class="language-plaintext highlighter-rouge">spring-boot-start-web</code>을 의존성을 추가하셨다면 아래와 같이 <code class="language-plaintext highlighter-rouge">spring-boot-starter-tomcat</code>도 같이 추가되어 있을 것입니다.</p>
+
+<div class="language-gradle highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">implementation</span><span class="o">(</span><span class="s2">"org.springframework.boot:spring-boot-starter-web"</span><span class="o">)</span>
+<span class="n">providedRuntime</span><span class="o">(</span><span class="s2">"org.springframework.boot:spring-boot-starter-tomcat"</span><span class="o">)</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">starter-tomcat</code>을 이용하면 따로 톰캣을 다운 받거나 설정할 필요 없이 바로 실행이 가능하게 해주는 굉장히 편리한 의존성입니다.</p>
+
+<p><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-7759351195774465" data-ad-slot="8018175067">
+</ins>
+<script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></p>
+
+<h3 id="gradle-jar-패키징">Gradle jar 패키징</h3>
+
+<p>gradle로 jar를 패키징하는 방법은 간단합니다. 다음과 같이 진행해주시면 패키징된 jar 파일을 얻을 수 있습니다.</p>
+
+<h4 id="gradle-탭-열기">Gradle 탭 열기</h4>
+
+<p><img src="/assets/images/springboot-jar1.jpg" alt="gradle 탭 열기" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">⌘</code> + <code class="language-plaintext highlighter-rouge">E</code> (for Mac) 또는 <code class="language-plaintext highlighter-rouge">Ctrl</code> + <code class="language-plaintext highlighter-rouge">E</code> (for windows)를 눌러 <code class="language-plaintext highlighter-rouge">Recent Files</code>를 열고, <strong>Gradle</strong>을 선택합니다.</p>
+
+<h4 id="bootjar-실행">BootJar 실행</h4>
+
+<p><img src="/assets/images/springboot-jar2.jpg" alt="bootjar 실행하기" /></p>
+
+<p>Gradle 탭에서 <code class="language-plaintext highlighter-rouge">Task</code> &gt; <code class="language-plaintext highlighter-rouge">build</code> &gt; <code class="language-plaintext highlighter-rouge">bootJar</code>를 선택하여 실행합니다.</p>
+
+<h4 id="jar-파일-위치-확인">Jar 파일 위치 확인</h4>
+
+<p><img src="/assets/images/springboot-jar3.jpg" alt="Jar 파일 위치 확인" /></p>
+
+<p>bootJar 작업이 끝나면 위 사진과 같은 위치에 jar 파일이 생성됩니다.</p>
+
+<p>이제 jar 파일을 서버에 올려서 배포하는 방법에 대해서 알아보도록 하겠습니다.</p>
+
+<h3 id="서버에서-jar-파일-배포">서버에서 jar 파일 배포</h3>
+
+<p>서버에 jar 파일이 있고, 환경은 <code class="language-plaintext highlighter-rouge">CentOS 7</code> 기준으로 가정하고 배포하는 과정을 설명 드리도록 하겠습니다.</p>
+
+<p><ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-7759351195774465" data-ad-slot="7649976579">
+</ins>
+<script> (adsbygoogle = window.adsbygoogle || []).push({}); </script></p>
+
+<h4 id="jdk-설치-하기">jdk 설치 하기</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>yum <span class="nb">install</span> <span class="nt">-y</span> java-11-openjdk-devel
+</code></pre></div></div>
+
+<p>위 명령어를 통해서 java를 설치해줍니다.</p>
+
+<h4 id="jar-실행-하기">jar 실행 하기</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java –jar <span class="o">[</span>name-of-jar-file].jar
+</code></pre></div></div>
+
+<p>JDK가 잘 설치되었다면, 위 명령어를 통해서 jar 배포를 진행하실 수 있습니다.</p>
+
+<div class="hint-container warning">
+  <div class="hint-type warning">
+    <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><g><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12" y2="16"></line></g></svg>
+  </div>
+  <div class="hint-body-container">
+    <div class="hint-body">
+      
+        <span class="hint-body-text">위 명령어로 실행하는 경우, 프로세스가 foreground 에서 실행되기 때문에 종료를 하거나 로그아웃을 하면 프로세스가 종료됩니다.</span>
+      
+    </div>
+  </div>
+</div>
+
+<h4 id="백그라운드로-jar-배포-하기">백그라운드로 jar 배포 하기</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">nohup </span>java –jar <span class="o">[</span>name-of-jar-file].jar &amp;
+</code></pre></div></div>
+
+<p>위와 같은 명령어로 jar를 실행해주시면 프로세스가 백그라운드에서 실행되게 됩니다. 또한 종료나 로그아웃을 해도 프로세스가 종료지 않습니다.</p>
+
+<div class="hint-container info">
+  <div class="hint-type info">
+    <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" stroke="none" class="icon-7f6730be--text-3f89f380"><g><path d="M12.2 8.98c.06-.01.12-.03.18-.06.06-.02.12-.05.18-.09l.15-.12c.18-.19.29-.45.29-.71 0-.06-.01-.13-.02-.19a.603.603 0 0 0-.06-.19.757.757 0 0 0-.09-.18c-.03-.05-.08-.1-.12-.15-.28-.27-.72-.37-1.09-.21-.13.05-.23.12-.33.21-.04.05-.09.1-.12.15-.04.06-.07.12-.09.18-.03.06-.05.12-.06.19-.01.06-.02.13-.02.19 0 .26.11.52.29.71.1.09.2.16.33.21.12.05.25.08.38.08.06 0 .13-.01.2-.02M13 16v-4a1 1 0 1 0-2 0v4a1 1 0 1 0 2 0M12 3c-4.962 0-9 4.038-9 9 0 4.963 4.038 9 9 9 4.963 0 9-4.037 9-9 0-4.962-4.037-9-9-9m0 20C5.935 23 1 18.065 1 12S5.935 1 12 1c6.066 0 11 4.935 11 11s-4.934 11-11 11" fill-rule="evenodd"></path></g></svg>
+  </div>
+  <div class="hint-body-container">
+    <div class="hint-body">
+      
+        <span class="hint-body-text">nohup으로 jar를 실행하게 되는 경우 jar 실행에 대한 로그는 nohup.out 파일에 쓰여집니다.</span>
+      
+    </div>
+  </div>
+</div>
+
+<h4 id="java-application이-실행-중인지-확인">java application이 실행 중인지 확인</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ps <span class="nt">-ef</span> | <span class="nb">grep </span>java
+<span class="o">[</span>pid]
+</code></pre></div></div>
+
+<p>위 명령어를 이용하여 jar로 실행시킨 java 프로세스를 확인하실 수 있습니다.</p>
+
+<h4 id="java-application-종료">java application 종료</h4>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">kill</span> <span class="nt">-9</span> <span class="o">[</span>pid]
+</code></pre></div></div>
+
+<p>위의 <code class="language-plaintext highlighter-rouge">ps</code> 명령어를 통해 얻은 pid를 통해서 간단하게 프로세스를 종료시킬 수 있습니다.</p>
+
+<h2 id="맺음">맺음</h2>
+
+<p>간단하게 스프링부트로 실행가능한 jar 파일을 만들고, 이를 실행하는 것까지 소개해드렸습니다. 혹시 궁금하신 점이나 이상한 점은 댓글 부탁드리겠습니다.</p>
+
+<p>감사합니다.</p>
+:ET

@@ -1,0 +1,4 @@
+I"D<p>요즘 서버들은 Apache보다는 <strong>Nginx</strong> 웹서버를 많이 사용하는 것 같습니다. 그렇게 느낀 이유는 간혹
+커스텀 notfound 페이지를 설정해 놓지 않은 페이지들이 있는데, nginx default notfound 페이지를
+노출하는 경우를 많이 봤기 때문입니다.</p>
+:ET
