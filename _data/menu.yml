@@ -1,5 +1,5 @@
 - id: front-end
-  name: Front End
+  name: FrontEnd
   child:
     - id: markup
       name: Markup
@@ -10,8 +10,10 @@
     - id: app
       name: App
 - id: back-end
-  name: Back End
+  name: BackEnd
   child:
+    - id: etc
+      name: etc
     - id: java
       name: Java
     - id: kotlin
