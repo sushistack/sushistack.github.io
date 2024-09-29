@@ -29,4 +29,4 @@ jobs:
         publish_dir: ./_site
         publish_branch: master
         # Optional: Add cname if you're using a custom domain
-        # cname: www.example.com
+        cname: www.deeplify.dev
