@@ -1,2 +1,0 @@
-I"L<p>스프링 환경에서 개발을 하면서, 이미지를 가공하여 클라이언트로 내려줘야하는 요구사항이 있었습니다. 이미지 데이터는 스프링 앱 내에서는 <strong>Byte Array</strong> 타입으로, Database 상에서는 <strong>Binary</strong> 타입으로 핸들링되고 있었습니다.</p>
-:ET

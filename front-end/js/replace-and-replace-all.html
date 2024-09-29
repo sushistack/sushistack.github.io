@@ -10,9 +10,9 @@
 
 <meta name="robots" content="index, follow">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>[Js/자바스크립트] 문자열 치환(변환, 대치, 바꾸기): replace, replaceAll | Deeplify</title>
-<meta name="generator" content="Jekyll v4.1.1" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="[Js/자바스크립트] 문자열 치환(변환, 대치, 바꾸기): replace, replaceAll" />
 <meta name="author" content="deeplify" />
 <meta property="og:locale" content="ko" />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Js/자바스크립트] 문자열 치환(변환, 대치, 바꾸기): replace, replaceAll" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"deeplify"},"description":"Javascript의 replace 함수를 이용하여 문자열 내부의 특정 문자 또는 문자열을 변하는 방법에 대해서 소개합니다.","url":"https://deeplify.dev/front-end/js/replace-and-replace-all","headline":"[Js/자바스크립트] 문자열 치환(변환, 대치, 바꾸기): replace, replaceAll","@type":"BlogPosting","dateModified":"2021-01-28T00:00:00+09:00","datePublished":"2021-01-28T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/js/replace-and-replace-all"},"@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"deeplify"},"dateModified":"2021-01-28T00:00:00+09:00","datePublished":"2021-01-28T00:00:00+09:00","description":"Javascript의 replace 함수를 이용하여 문자열 내부의 특정 문자 또는 문자열을 변하는 방법에 대해서 소개합니다.","headline":"[Js/자바스크립트] 문자열 치환(변환, 대치, 바꾸기): replace, replaceAll","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/js/replace-and-replace-all"},"url":"https://deeplify.dev/front-end/js/replace-and-replace-all"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1246,7 +1246,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/leetcode-704">[Leetcode] First Bad Version</a>
+                      <a class="category-post-link" href="/algorithm/problem/leetcode-278">[Leetcode] First Bad Version</a>
                     </span>
                     
                   </li>
@@ -1254,7 +1254,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/boj-1753">[BOJ/백준] 정수 삼각형 (DP)</a>
+                      <a class="category-post-link" href="/algorithm/problem/boj-1932">[BOJ/백준] 정수 삼각형 (DP)</a>
                     </span>
                     
                   </li>
@@ -1543,7 +1543,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <p>자바스크립트에서는 문자열 치환과 관련된 빌트인 함수인 <code class="language-plaintext highlighter-rouge">replace()</code>를 이용하여 문자열을 치환할 수 있습니다.</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="kd">var</span> <span class="nx">newStr</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">정규식</span><span class="o">|</span><span class="nx">부분</span> <span class="nx">문자열</span><span class="p">,</span> <span class="nx">새로운</span> <span class="nx">부분</span> <span class="nx">문자열</span><span class="o">|</span><span class="nx">함수</span><span class="p">)</span>
+<pre class="highlight"><code><span class="kd">var</span> <span class="nx">newStr</span> <span class="o">=</span> <span class="nx">str</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="nx">정규식</span><span class="o">|</span><span class="nx">부분</span> <span class="nx">문자열</span><span class="p">,</span> <span class="nx">새로운</span> <span class="nx">부분</span> <span class="nx">문자열</span><span class="o">|</span><span class="nx">함수</span><span class="p">)</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1596,7 +1596,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <div class="language-js highlighter-rouge"><div class="highlight">
 <pre class="highlight"><code><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">aaaabbbbcccc</span><span class="dl">'</span><span class="p">;</span>
 
-<span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// aaaaabbbcccc</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// aaaaabbbcccc</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1614,8 +1614,8 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <span class="kd">var</span> <span class="nx">regexForC</span> <span class="o">=</span> <span class="sr">/c/gi</span><span class="p">;</span>     <span class="c1">// c 문자 전체</span>
 
 <span class="nx">text</span>
-  <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">regexForB</span><span class="p">,</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">)</span> <span class="c1">// aaaaaaaacccc</span>
-  <span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">regexForC</span><span class="p">,</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">)</span> <span class="c1">// aaaaaaaaaaaa</span>
+  <span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="nx">regexForB</span><span class="p">,</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">)</span> <span class="c1">// aaaaaaaacccc</span>
+  <span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="nx">regexForC</span><span class="p">,</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">)</span> <span class="c1">// aaaaaaaaaaaa</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1638,11 +1638,11 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <div class="language-js highlighter-rouge"><div class="highlight">
 <pre class="highlight"><code><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">aaaabbbbcccc</span><span class="dl">'</span><span class="p">;</span>
 
-<span class="kd">function</span> <span class="nx">replaceWithAddingBrace</span><span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">function</span> <span class="nf">replaceWithAddingBrace</span><span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="dl">'</span><span class="s1">{</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">match</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">}</span><span class="dl">'</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/b/gi</span><span class="p">,</span> <span class="nx">replaceWithAddingBrace</span><span class="p">);</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/b/gi</span><span class="p">,</span> <span class="nx">replaceWithAddingBrace</span><span class="p">);</span>
 <span class="c1">// aaaa{b}{b}{b}{b}cccc</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>

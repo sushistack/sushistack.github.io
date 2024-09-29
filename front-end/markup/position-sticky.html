@@ -10,9 +10,9 @@
 
 <meta name="robots" content="index, follow">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>[HTML/CSS] Position sticky 적용 방법 | Deeplify</title>
-<meta name="generator" content="Jekyll v4.1.1" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="[HTML/CSS] Position sticky 적용 방법" />
 <meta name="author" content="deeplify" />
 <meta property="og:locale" content="ko" />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[HTML/CSS] Position sticky 적용 방법" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"deeplify"},"description":"CSS의 Postion 속성 중 sticky에 대한 소개와 적용 방법을 알아보도록 하겠습니다.","url":"https://deeplify.dev/front-end/markup/position-sticky","headline":"[HTML/CSS] Position sticky 적용 방법","@type":"BlogPosting","dateModified":"2021-10-11T00:00:00+09:00","datePublished":"2021-10-11T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/markup/position-sticky"},"@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"deeplify"},"dateModified":"2021-10-11T00:00:00+09:00","datePublished":"2021-10-11T00:00:00+09:00","description":"CSS의 Postion 속성 중 sticky에 대한 소개와 적용 방법을 알아보도록 하겠습니다.","headline":"[HTML/CSS] Position sticky 적용 방법","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/markup/position-sticky"},"url":"https://deeplify.dev/front-end/markup/position-sticky"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1246,7 +1246,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/leetcode-704">[Leetcode] First Bad Version</a>
+                      <a class="category-post-link" href="/algorithm/problem/leetcode-278">[Leetcode] First Bad Version</a>
                     </span>
                     
                   </li>
@@ -1254,7 +1254,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/boj-1753">[BOJ/백준] 정수 삼각형 (DP)</a>
+                      <a class="category-post-link" href="/algorithm/problem/boj-1932">[BOJ/백준] 정수 삼각형 (DP)</a>
                     </span>
                     
                   </li>
@@ -1676,12 +1676,12 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 
 <div class="language-js highlighter-rouge"><div class="highlight">
 <pre class="highlight"><code><span class="c1">//sticky element selector에 sticky 속성을 사용하고자하는 엘리먼트의 selector 설정</span>
-<span class="kd">let</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">[sticky element selector]</span><span class="dl">'</span><span class="p">).</span><span class="nx">parentElement</span><span class="p">;</span>
+<span class="kd">let</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">[sticky element selector]</span><span class="dl">'</span><span class="p">).</span><span class="nx">parentElement</span><span class="p">;</span>
 
-<span class="k">while</span> <span class="p">(</span><span class="nx">parent</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">const</span> <span class="nx">hasOverflow</span> <span class="o">=</span> <span class="nx">getComputedStyle</span><span class="p">(</span><span class="nx">parent</span><span class="p">).</span><span class="nx">overflow</span><span class="p">;</span>
+<span class="k">while </span><span class="p">(</span><span class="nx">parent</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">hasOverflow</span> <span class="o">=</span> <span class="nf">getComputedStyle</span><span class="p">(</span><span class="nx">parent</span><span class="p">).</span><span class="nx">overflow</span><span class="p">;</span>
   <span class="k">if</span><span class="p">(</span><span class="nx">hasOverflow</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">visible</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hasOverflow</span><span class="p">,</span> <span class="nx">parent</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">hasOverflow</span><span class="p">,</span> <span class="nx">parent</span><span class="p">);</span>
   <span class="p">}</span>
   <span class="nx">parent</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">parentElement</span><span class="p">;</span>
 <span class="p">}</span>

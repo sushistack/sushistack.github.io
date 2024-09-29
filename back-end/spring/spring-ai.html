@@ -10,9 +10,9 @@
 
 <meta name="robots" content="index, follow">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Spring AI 사용해보기 | Deeplify</title>
-<meta name="generator" content="Jekyll v4.1.1" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="Spring AI 사용해보기" />
 <meta name="author" content="deeplify" />
 <meta property="og:locale" content="ko" />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Spring AI 사용해보기" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"deeplify"},"description":"Spring I/O 2024에 소개된 Spring AI에 대해서 알아보고 예제를 통해 사용법을 익혀보는 시간을 가져보겠습니다.","url":"https://deeplify.dev/back-end/spring/spring-ai","headline":"Spring AI 사용해보기","@type":"BlogPosting","dateModified":"2024-06-18T00:00:00+09:00","datePublished":"2024-06-18T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/back-end/spring/spring-ai"},"@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"deeplify"},"dateModified":"2024-06-18T00:00:00+09:00","datePublished":"2024-06-18T00:00:00+09:00","description":"Spring I/O 2024에 소개된 Spring AI에 대해서 알아보고 예제를 통해 사용법을 익혀보는 시간을 가져보겠습니다.","headline":"Spring AI 사용해보기","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/back-end/spring/spring-ai"},"url":"https://deeplify.dev/back-end/spring/spring-ai"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1246,7 +1246,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/leetcode-704">[Leetcode] First Bad Version</a>
+                      <a class="category-post-link" href="/algorithm/problem/leetcode-278">[Leetcode] First Bad Version</a>
                     </span>
                     
                   </li>
@@ -1254,7 +1254,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/boj-1753">[BOJ/백준] 정수 삼각형 (DP)</a>
+                      <a class="category-post-link" href="/algorithm/problem/boj-1932">[BOJ/백준] 정수 삼각형 (DP)</a>
                     </span>
                     
                   </li>
@@ -1669,7 +1669,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
       <span class="na">options</span><span class="pi">:</span>
         <span class="na">model</span><span class="pi">:</span> <span class="s">gpt-4o</span>
   <span class="c1"># virual thread</span>
-  <span class="na">threads.virtual.enabled</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">threads.virtual.enabled</span><span class="pi">:</span> <span class="kc">true</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1680,23 +1680,23 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 
 <div class="language-diff highlighter-rouge"><div class="highlight">
 <pre class="highlight"><code><span class="p">package com.sushistack.spring.private_ai;
-</span>
-import org.springframework.ai.chat.client.ChatClient;
-<span class="p">import org.springframework.boot.ApplicationArguments;
+</span><span class="err">
+</span><span class="p">import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-</span>
-@SpringBootApplication
+</span><span class="err">
+</span>@SpringBootApplication
 <span class="p">public class PrivateAiApplication {
-</span>
-	public static void main(String[] args) {
+</span><span class="err">
+</span>	public static void main(String[] args) {
 		SpringApplication.run(PrivateAiApplication.class, args);
 	}
-
-+	@Bean
-<span class="gi">+   ChatClient chatClient (ChatClient.Builder builder) {
+<span class="err">
+</span><span class="gi">+	@Bean
++   ChatClient chatClient (ChatClient.Builder builder) {
 +		return builder.build();
 +	}
 +
@@ -1716,10 +1716,10 @@ import org.springframework.context.annotation.Bean;
 +			}
 +		};
 +	}
-</span>
-}
-
-</code></pre>
+</span><span class="err">
+</span>}
+<span class="err">
+</span></code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
 

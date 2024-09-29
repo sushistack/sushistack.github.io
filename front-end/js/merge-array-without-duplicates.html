@@ -10,9 +10,9 @@
 
 <meta name="robots" content="index, follow">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>[Js/자바스크립트] 배열 합치기, 중복 제거하는 방법 | Deeplify</title>
-<meta name="generator" content="Jekyll v4.1.1" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="[Js/자바스크립트] 배열 합치기, 중복 제거하는 방법" />
 <meta name="author" content="deeplify" />
 <meta property="og:locale" content="ko" />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Js/자바스크립트] 배열 합치기, 중복 제거하는 방법" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"deeplify"},"description":"Javascript로 값의 중복없이 배열을 합치는 방법에 대해서 알아봅니다.","url":"https://deeplify.dev/front-end/js/merge-array-without-duplicates","headline":"[Js/자바스크립트] 배열 합치기, 중복 제거하는 방법","@type":"BlogPosting","dateModified":"2021-01-25T00:00:00+09:00","datePublished":"2021-01-25T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/js/merge-array-without-duplicates"},"@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"deeplify"},"dateModified":"2021-01-25T00:00:00+09:00","datePublished":"2021-01-25T00:00:00+09:00","description":"Javascript로 값의 중복없이 배열을 합치는 방법에 대해서 알아봅니다.","headline":"[Js/자바스크립트] 배열 합치기, 중복 제거하는 방법","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/js/merge-array-without-duplicates"},"url":"https://deeplify.dev/front-end/js/merge-array-without-duplicates"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1246,7 +1246,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/leetcode-704">[Leetcode] First Bad Version</a>
+                      <a class="category-post-link" href="/algorithm/problem/leetcode-278">[Leetcode] First Bad Version</a>
                     </span>
                     
                   </li>
@@ -1254,7 +1254,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/boj-1753">[BOJ/백준] 정수 삼각형 (DP)</a>
+                      <a class="category-post-link" href="/algorithm/problem/boj-1932">[BOJ/백준] 정수 삼각형 (DP)</a>
                     </span>
                     
                   </li>
@@ -1530,9 +1530,9 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <div class="language-js highlighter-rouge"><div class="highlight">
 <pre class="highlight"><code><span class="kd">var</span> <span class="nx">a1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
 <span class="kd">var</span> <span class="nx">a2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
-<span class="kd">var</span> <span class="nx">a3</span> <span class="o">=</span> <span class="nx">a1</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">a2</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">a3</span> <span class="o">=</span> <span class="nx">a1</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="nx">a2</span><span class="p">);</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a3</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a3</span><span class="p">);</span>
 <span class="c1">// expected output: Array [1, 2, 3, 3, 4, 5, 6]</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
@@ -1569,9 +1569,9 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 
 <div class="language-js highlighter-rouge"><div class="highlight">
 <pre class="highlight"><code><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
-<span class="kd">var</span> <span class="nx">unique</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">pos</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="o">===</span> <span class="nx">pos</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">unique</span> <span class="o">=</span> <span class="nx">a</span><span class="p">.</span><span class="nf">filter</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">pos</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">a</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="o">===</span> <span class="nx">pos</span><span class="p">);</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">unique</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">unique</span><span class="p">);</span>
 <span class="c1">// [1, 2, 3, 4, 5, 6]</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
@@ -1586,10 +1586,10 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <span class="kd">var</span> <span class="nx">a1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
 <span class="kd">var</span> <span class="nx">a2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">];</span>
 
-<span class="kd">var</span> <span class="nx">merged</span> <span class="o">=</span> <span class="nx">a1</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">a2</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">unique</span> <span class="o">=</span> <span class="nx">merged</span><span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">pos</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">merged</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="o">===</span> <span class="nx">pos</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">merged</span> <span class="o">=</span> <span class="nx">a1</span><span class="p">.</span><span class="nf">concat</span><span class="p">(</span><span class="nx">a2</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">unique</span> <span class="o">=</span> <span class="nx">merged</span><span class="p">.</span><span class="nf">filter</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">pos</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">merged</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="o">===</span> <span class="nx">pos</span><span class="p">);</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">unique</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">unique</span><span class="p">);</span>
 <span class="c1">// [1, 2, 3, 4, 5, 6]</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>

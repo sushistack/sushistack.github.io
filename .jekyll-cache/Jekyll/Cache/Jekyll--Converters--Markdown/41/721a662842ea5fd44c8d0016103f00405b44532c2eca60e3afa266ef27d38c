@@ -1,2 +1,0 @@
-I":<p>Mysql DB에 접속하려면 기본적으로 url, username, password 이 세 가지가 필요합니다. 하지만 <code class="language-plaintext highlighter-rouge">Mysql 8.0</code> 버전부터는 보안적인 이슈로 <strong>useSSL</strong> 옵션에 대한 추가적인 설정이 필요해졌습니다.</p>
-:ET

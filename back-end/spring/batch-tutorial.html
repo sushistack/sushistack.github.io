@@ -10,9 +10,9 @@
 
 <meta name="robots" content="index, follow">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>[스프링/Spring] Batch 소개와 간단한 예제 | Deeplify</title>
-<meta name="generator" content="Jekyll v4.1.1" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="[스프링/Spring] Batch 소개와 간단한 예제" />
 <meta name="author" content="deeplify" />
 <meta property="og:locale" content="ko" />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[스프링/Spring] Batch 소개와 간단한 예제" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"deeplify"},"description":"스프링 배치에 대한 기본적인 소개와 예제를 통해서 잡을 실행하는 방법에 대해서 알아보도록 하겠습니다.","url":"https://deeplify.dev/back-end/spring/batch-tutorial","headline":"[스프링/Spring] Batch 소개와 간단한 예제","@type":"BlogPosting","dateModified":"2022-01-23T00:00:00+09:00","datePublished":"2022-01-23T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/back-end/spring/batch-tutorial"},"@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"deeplify"},"dateModified":"2022-01-23T00:00:00+09:00","datePublished":"2022-01-23T00:00:00+09:00","description":"스프링 배치에 대한 기본적인 소개와 예제를 통해서 잡을 실행하는 방법에 대해서 알아보도록 하겠습니다.","headline":"[스프링/Spring] Batch 소개와 간단한 예제","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/back-end/spring/batch-tutorial"},"url":"https://deeplify.dev/back-end/spring/batch-tutorial"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1246,7 +1246,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/leetcode-704">[Leetcode] First Bad Version</a>
+                      <a class="category-post-link" href="/algorithm/problem/leetcode-278">[Leetcode] First Bad Version</a>
                     </span>
                     
                   </li>
@@ -1254,7 +1254,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/boj-1753">[BOJ/백준] 정수 삼각형 (DP)</a>
+                      <a class="category-post-link" href="/algorithm/problem/boj-1932">[BOJ/백준] 정수 삼각형 (DP)</a>
                     </span>
                     
                   </li>
@@ -2037,16 +2037,16 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 
 <div class="language-diff highlighter-rouge"><div class="highlight">
 <pre class="highlight"><code><span class="p">package com.deeplify.tutorial.batch;
-</span>
+</span><span class="err">
 
-<span class="gi">+ @EnableScheduling     // 스케쥴러 기능 활성화
-</span><span class="err">@EnableBatchProcessing</span>  // 배치 기능 활성화
-<span class="err">@SpringBootApplication</span>
-public class BatchApplication {
-    public static void main(String[] args) {
+</span><span class="gi">+ @EnableScheduling     // 스케쥴러 기능 활성화
+</span>@EnableBatchProcessing  // 배치 기능 활성화
+@SpringBootApplication
+<span class="p">public class BatchApplication {
+</span>    public static void main(String[] args) {
     SpringApplication.run(BatchApplication.class, args);
     }
-<span class="err">}</span>
+}
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>

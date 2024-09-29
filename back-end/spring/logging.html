@@ -10,9 +10,9 @@
 
 <meta name="robots" content="index, follow">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>[스프링/Spring] slf4j, log4j2 로그 설정 하는 방법 | Deeplify</title>
-<meta name="generator" content="Jekyll v4.1.1" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="[스프링/Spring] slf4j, log4j2 로그 설정 하는 방법" />
 <meta name="author" content="deeplify" />
 <meta property="og:locale" content="ko" />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[스프링/Spring] slf4j, log4j2 로그 설정 하는 방법" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"deeplify"},"description":"스프링에서 필수적으로 사용해야 하는 로그 (콘솔, 파일) 설정하는 방법에 대해서 소개합니다.","url":"https://deeplify.dev/back-end/spring/logging","headline":"[스프링/Spring] slf4j, log4j2 로그 설정 하는 방법","@type":"BlogPosting","dateModified":"2021-02-02T00:00:00+09:00","datePublished":"2021-02-02T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/back-end/spring/logging"},"@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"deeplify"},"dateModified":"2021-02-02T00:00:00+09:00","datePublished":"2021-02-02T00:00:00+09:00","description":"스프링에서 필수적으로 사용해야 하는 로그 (콘솔, 파일) 설정하는 방법에 대해서 소개합니다.","headline":"[스프링/Spring] slf4j, log4j2 로그 설정 하는 방법","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/back-end/spring/logging"},"url":"https://deeplify.dev/back-end/spring/logging"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1246,7 +1246,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/leetcode-704">[Leetcode] First Bad Version</a>
+                      <a class="category-post-link" href="/algorithm/problem/leetcode-278">[Leetcode] First Bad Version</a>
                     </span>
                     
                   </li>
@@ -1254,7 +1254,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/boj-1753">[BOJ/백준] 정수 삼각형 (DP)</a>
+                      <a class="category-post-link" href="/algorithm/problem/boj-1932">[BOJ/백준] 정수 삼각형 (DP)</a>
                     </span>
                     
                   </li>
@@ -1645,23 +1645,23 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <p><code class="language-plaintext highlighter-rouge">spring-boot-starter-web</code>에는 기본적으로 <code class="language-plaintext highlighter-rouge">logback</code> 로깅 모듈이 포함되어 있지만, 성능 상 <code class="language-plaintext highlighter-rouge">log4j2</code>가 <code class="language-plaintext highlighter-rouge">logback</code> 보다 우수하기 때문에 이를 제외하고 <code class="language-plaintext highlighter-rouge">log4j2</code>를 추가해주는 작업을 해줄 것입니다.</p>
 
 <div class="language-diff highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="err">//</span> ... 생략
-
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+<pre class="highlight"><code>// ... 생략
+<span class="err">
+</span><span class="p">dependencies {
+</span>    implementation 'org.springframework.boot:spring-boot-starter-web'
 <span class="gi">+   implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 </span>    compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-<span class="err">}</span>
-
-<span class="gi">+ configurations {
+}
+<span class="err">
+</span><span class="gi">+ configurations {
 +     all {
 +       exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
 +     }
 + }
-</span>
-// ... 생략
+</span><span class="err">
+</span>// ... 생략
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1678,13 +1678,13 @@ dependencies {
 
 <div class="language-diff highlighter-rouge"><div class="highlight">
 <pre class="highlight"><code><span class="p">main
-</span><span class="err">├──</span> java
-<span class="err">│  </span> └── com
-<span class="err">│  </span>     └── deeplify
-<span class="err">│  </span>         └── tutorial
-<span class="err">│  </span>             └── logging
-<span class="err">│  </span>                 └── LoggingApplication.java
-<span class="err">└──</span> resources
+</span>├── java
+│   └── com
+│       └── deeplify
+│           └── tutorial
+│               └── logging
+│                   └── LoggingApplication.java
+└── resources
     ├── application.yml
 <span class="gi">+   ├── log4j2.xml    // 설정 파일 추가
 </span>    ├── static

@@ -10,9 +10,9 @@
 
 <meta name="robots" content="index, follow">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>[Js/자바스크립트] XMLHttpRequest 사용법 | Deeplify</title>
-<meta name="generator" content="Jekyll v4.1.1" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="[Js/자바스크립트] XMLHttpRequest 사용법" />
 <meta name="author" content="deeplify" />
 <meta property="og:locale" content="ko" />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Js/자바스크립트] XMLHttpRequest 사용법" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"deeplify"},"description":"XMLHttpRequest를 예제를 통해 정확하게 사용하는 방법에 대해서 소개해드리겠습니다.","url":"https://deeplify.dev/front-end/js/xml-http-request","headline":"[Js/자바스크립트] XMLHttpRequest 사용법","@type":"BlogPosting","dateModified":"2020-08-19T00:00:00+09:00","datePublished":"2020-08-19T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/js/xml-http-request"},"@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"deeplify"},"dateModified":"2020-08-19T00:00:00+09:00","datePublished":"2020-08-19T00:00:00+09:00","description":"XMLHttpRequest를 예제를 통해 정확하게 사용하는 방법에 대해서 소개해드리겠습니다.","headline":"[Js/자바스크립트] XMLHttpRequest 사용법","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/js/xml-http-request"},"url":"https://deeplify.dev/front-end/js/xml-http-request"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1246,7 +1246,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/leetcode-704">[Leetcode] First Bad Version</a>
+                      <a class="category-post-link" href="/algorithm/problem/leetcode-278">[Leetcode] First Bad Version</a>
                     </span>
                     
                   </li>
@@ -1254,7 +1254,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/boj-1753">[BOJ/백준] 정수 삼각형 (DP)</a>
+                      <a class="category-post-link" href="/algorithm/problem/boj-1932">[BOJ/백준] 정수 삼각형 (DP)</a>
                     </span>
                     
                   </li>
@@ -1544,20 +1544,20 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <h3 id="예제-코드">예제 코드</h3>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="kd">var</span> <span class="nx">xmlHttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<pre class="highlight"><code><span class="kd">var</span> <span class="nx">xmlHttp</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">XMLHttpRequest</span><span class="p">();</span>
 
-<span class="nx">xmlHttp</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">xmlHttp</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="nx">xmlHttp</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">xmlHttp</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">xmlHttp</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if </span><span class="p">(</span><span class="nx">xmlHttp</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="nx">xmlHttp</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">xmlHttp</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
       <span class="c1">// do something with xmlHttp.responseText</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">xmlHttp</span><span class="p">.</span><span class="nx">responseText</span><span class="p">)</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">xmlHttp</span><span class="p">.</span><span class="nx">responseText</span><span class="p">)</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
       <span class="c1">// handle errors</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">};</span>
-  <span class="nx">xmlHttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">'</span><span class="s1">https://test.com</span><span class="dl">'</span><span class="p">);</span>
-  <span class="nx">xmlHttp</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+  <span class="nx">xmlHttp</span><span class="p">.</span><span class="nf">open</span><span class="p">(</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span> <span class="dl">'</span><span class="s1">https://test.com</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">xmlHttp</span><span class="p">.</span><span class="nf">send</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>

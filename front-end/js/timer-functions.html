@@ -10,9 +10,9 @@
 
 <meta name="robots" content="index, follow">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>[Js/자바스크립트] 타이머 함수: setTimeout, setInterval | Deeplify</title>
-<meta name="generator" content="Jekyll v4.1.1" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="[Js/자바스크립트] 타이머 함수: setTimeout, setInterval" />
 <meta name="author" content="deeplify" />
 <meta property="og:locale" content="ko" />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Js/자바스크립트] 타이머 함수: setTimeout, setInterval" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"deeplify"},"description":"Javascript 타이머 함수인 setTimeout, setInterval에 대하여 소개합니다.","url":"https://deeplify.dev/front-end/js/timer-functions","headline":"[Js/자바스크립트] 타이머 함수: setTimeout, setInterval","@type":"BlogPosting","dateModified":"2021-01-25T00:00:00+09:00","datePublished":"2021-01-25T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/js/timer-functions"},"@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"deeplify"},"dateModified":"2021-01-25T00:00:00+09:00","datePublished":"2021-01-25T00:00:00+09:00","description":"Javascript 타이머 함수인 setTimeout, setInterval에 대하여 소개합니다.","headline":"[Js/자바스크립트] 타이머 함수: setTimeout, setInterval","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/js/timer-functions"},"url":"https://deeplify.dev/front-end/js/timer-functions"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1246,7 +1246,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/leetcode-704">[Leetcode] First Bad Version</a>
+                      <a class="category-post-link" href="/algorithm/problem/leetcode-278">[Leetcode] First Bad Version</a>
                     </span>
                     
                   </li>
@@ -1254,7 +1254,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/boj-1753">[BOJ/백준] 정수 삼각형 (DP)</a>
+                      <a class="category-post-link" href="/algorithm/problem/boj-1932">[BOJ/백준] 정수 삼각형 (DP)</a>
                     </span>
                     
                   </li>
@@ -1550,7 +1550,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <h3 id="settimeout">setTimeout</h3>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">함수</span><span class="o">/</span><span class="nx">코드</span><span class="p">[,</span> <span class="nx">지연시간</span><span class="p">,</span> <span class="nx">파라미터1</span><span class="p">,</span> <span class="nx">파라미터2</span><span class="p">,</span> <span class="p">...])</span>
+<pre class="highlight"><code><span class="nf">setTimeout</span><span class="p">(</span><span class="nx">함수</span><span class="o">/</span><span class="nx">코드</span><span class="p">[,</span> <span class="nx">지연시간</span><span class="p">,</span> <span class="nx">파라미터1</span><span class="p">,</span> <span class="nx">파라미터2</span><span class="p">,</span> <span class="p">...])</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1593,12 +1593,12 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <h4 id="settimeout-예제">setTimeout 예제</h4>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="kd">function</span> <span class="nx">changeBackgroundColor</span> <span class="p">()</span> <span class="p">{</span>
+<pre class="highlight"><code><span class="kd">function</span> <span class="nf">changeBackgroundColor</span> <span class="p">()</span> <span class="p">{</span>
   <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">background</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span>
 <span class="p">}</span>
 
 <span class="c1">// 5초 후에 changeBackgroundColor 함수를 실행</span>
-<span class="kd">var</span> <span class="nx">timeoutId</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">changeBackgroundColor</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">timeoutId</span> <span class="o">=</span> <span class="nf">setTimeout</span><span class="p">(</span><span class="nx">changeBackgroundColor</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1610,15 +1610,15 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <p>clearTimeout 함수는 setTimeout 함수가 시작하면서 반환한 <code class="language-plaintext highlighter-rouge">timeoutId</code>를 이용하여 예약된 타이머를 취소할 수 있는 기능을 가지고 있습니다.</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="kd">function</span> <span class="nx">changeBackgroundColor</span> <span class="p">()</span> <span class="p">{</span>
+<pre class="highlight"><code><span class="kd">function</span> <span class="nf">changeBackgroundColor</span> <span class="p">()</span> <span class="p">{</span>
   <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">background</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span>
 <span class="p">}</span>
 
 <span class="c1">// 5초 후에 changeBackgroundColor 함수를 실행</span>
-<span class="kd">var</span> <span class="nx">timeoutId</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">changeBackgroundColor</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">timeoutId</span> <span class="o">=</span> <span class="nf">setTimeout</span><span class="p">(</span><span class="nx">changeBackgroundColor</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
 
 <span class="c1">// 시작된 타이머를 취소</span>
-<span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timeoutId</span><span class="p">);</span>
+<span class="nf">clearTimeout</span><span class="p">(</span><span class="nx">timeoutId</span><span class="p">);</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1628,7 +1628,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <h3 id="setinterval">setInterval</h3>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="nx">setInterval</span><span class="p">(</span><span class="nx">함수</span><span class="o">/</span><span class="nx">코드</span><span class="p">[,</span> <span class="nx">지연시간</span><span class="p">,</span> <span class="nx">파라미터1</span><span class="p">,</span> <span class="nx">파라미터2</span><span class="p">,</span> <span class="p">...])</span>
+<pre class="highlight"><code><span class="nf">setInterval</span><span class="p">(</span><span class="nx">함수</span><span class="o">/</span><span class="nx">코드</span><span class="p">[,</span> <span class="nx">지연시간</span><span class="p">,</span> <span class="nx">파라미터1</span><span class="p">,</span> <span class="nx">파라미터2</span><span class="p">,</span> <span class="p">...])</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1670,19 +1670,19 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <p>예제를 통해서 사용하는 방법을 소개해드리도록 하겠습니다.</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="kd">function</span> <span class="nx">alertMessage</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="nx">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">I'm AlertMessage</span><span class="dl">"</span><span class="p">);</span>
+<pre class="highlight"><code><span class="kd">function</span> <span class="nf">alertMessage</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nf">alert</span><span class="p">(</span><span class="dl">"</span><span class="s2">I'm AlertMessage</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="c1">// 5초마다 alertMessage 함수를 실행</span>
-<span class="kd">var</span> <span class="nx">intervalId</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="nx">alertMessage</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+<span class="kd">var</span> <span class="nx">intervalId</span> <span class="o">=</span> <span class="nf">setInterval</span><span class="p">(</span><span class="nx">alertMessage</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
 
-<span class="kd">function</span> <span class="nx">stopInterval</span> <span class="p">(</span><span class="nx">intervalId</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">intervalId</span><span class="p">)</span>
+<span class="kd">function</span> <span class="nf">stopInterval</span> <span class="p">(</span><span class="nx">intervalId</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">clearInterval</span><span class="p">(</span><span class="nx">intervalId</span><span class="p">)</span>
 <span class="p">}</span>
 
 <span class="c1">// 20초 후에 실행시켰던 interval 타이머를 종료</span>
-<span class="nx">setTimeout</span><span class="p">(</span><span class="nx">stopInterval</span><span class="p">,</span> <span class="mi">20000</span><span class="p">,</span> <span class="nx">intervalId</span><span class="p">)</span>
+<span class="nf">setTimeout</span><span class="p">(</span><span class="nx">stopInterval</span><span class="p">,</span> <span class="mi">20000</span><span class="p">,</span> <span class="nx">intervalId</span><span class="p">)</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1721,9 +1721,9 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <p>타이머 함수에 대한 클로저 이슈는 setTimeout, setInterval 둘 모두에 해당하므로 setTimeout으로 예제를 소개해보도록 하겠습니다.</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+<pre class="highlight"><code><span class="k">for </span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nf">setTimeout</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
   <span class="p">},</span> <span class="nx">i</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre>
@@ -1745,10 +1745,10 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <p>예제에 대한 실제 로그는 위와 같은 형태로 모두 <code class="language-plaintext highlighter-rouge">4</code>로 찍히게됩니다. 그 이유는 setTimeout 모두는 <code class="language-plaintext highlighter-rouge">for</code> 문이 실행된 이후에 실행되기 때문입니다.</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-  <span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
+<pre class="highlight"><code><span class="k">for </span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">;</span> <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nf">setTimeout</span><span class="p">(</span><span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span>
     <span class="p">},</span> <span class="nx">i</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
   <span class="p">})(</span><span class="nx">i</span><span class="p">);</span>
 <span class="p">}</span>

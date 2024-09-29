@@ -10,9 +10,9 @@
 
 <meta name="robots" content="index, follow">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>[Js/자바스크립트] 배열(리스트) 또는 문자열에서 특정 문자 검색: indexOf 활용 | Deeplify</title>
-<meta name="generator" content="Jekyll v4.1.1" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="[Js/자바스크립트] 배열(리스트) 또는 문자열에서 특정 문자 검색: indexOf 활용" />
 <meta name="author" content="deeplify" />
 <meta property="og:locale" content="ko" />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Js/자바스크립트] 배열(리스트) 또는 문자열에서 특정 문자 검색: indexOf 활용" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"deeplify"},"description":"Javascript 배열 또는 문자열에서 특정 문자를 indexOf 함수를 이용하여 검색하는 방법에 대해서 소개합니다.","url":"https://deeplify.dev/front-end/js/search-text-in-string-with-index-of","headline":"[Js/자바스크립트] 배열(리스트) 또는 문자열에서 특정 문자 검색: indexOf 활용","@type":"BlogPosting","dateModified":"2021-01-26T00:00:00+09:00","datePublished":"2021-01-26T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/js/search-text-in-string-with-index-of"},"@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"deeplify"},"dateModified":"2021-01-26T00:00:00+09:00","datePublished":"2021-01-26T00:00:00+09:00","description":"Javascript 배열 또는 문자열에서 특정 문자를 indexOf 함수를 이용하여 검색하는 방법에 대해서 소개합니다.","headline":"[Js/자바스크립트] 배열(리스트) 또는 문자열에서 특정 문자 검색: indexOf 활용","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/js/search-text-in-string-with-index-of"},"url":"https://deeplify.dev/front-end/js/search-text-in-string-with-index-of"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1246,7 +1246,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/leetcode-704">[Leetcode] First Bad Version</a>
+                      <a class="category-post-link" href="/algorithm/problem/leetcode-278">[Leetcode] First Bad Version</a>
                     </span>
                     
                   </li>
@@ -1254,7 +1254,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/boj-1753">[BOJ/백준] 정수 삼각형 (DP)</a>
+                      <a class="category-post-link" href="/algorithm/problem/boj-1932">[BOJ/백준] 정수 삼각형 (DP)</a>
                     </span>
                     
                   </li>
@@ -1566,7 +1566,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <h4 id="arrayprototypeindexof">Array.prototype.indexOf()</h4>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="nx">array</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">searchElement</span><span class="p">[,</span> <span class="nx">fromIndex</span><span class="p">])</span>
+<pre class="highlight"><code><span class="nx">array</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">searchElement</span><span class="p">[,</span> <span class="nx">fromIndex</span><span class="p">])</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1578,12 +1578,12 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <div class="language-js highlighter-rouge"><div class="highlight">
 <pre class="highlight"><code><span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">c</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">d</span><span class="dl">'</span><span class="p">];</span>
 
-<span class="nx">array</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// 0</span>
-<span class="nx">array</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// 1</span>
-<span class="nx">array</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">c</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// 2</span>
-<span class="nx">array</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">d</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// 3</span>
-<span class="nx">array</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">e</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// -1</span>
-<span class="nx">array</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">except a, b, c, d</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// -1</span>
+<span class="nx">array</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// 0</span>
+<span class="nx">array</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// 1</span>
+<span class="nx">array</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">c</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// 2</span>
+<span class="nx">array</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">d</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// 3</span>
+<span class="nx">array</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">e</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// -1</span>
+<span class="nx">array</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">except a, b, c, d</span><span class="dl">'</span><span class="p">)</span>  <span class="c1">// -1</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1601,16 +1601,16 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <span class="kd">var</span> <span class="nx">searchText</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">def</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="c1">// 검색하려는 문자가 있는 배열의 인덱스</span>
-<span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">array</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">searchText</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">array</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">searchText</span><span class="p">);</span>
 
 <span class="kd">var</span> <span class="nx">logText</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
-<span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+<span class="k">if </span><span class="p">(</span><span class="nx">index</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">logText</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">array[</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">index</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">] = </span><span class="dl">'</span> <span class="o">+</span> <span class="nx">searchText</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
   <span class="nx">logText</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Can not found text in array !</span><span class="dl">'</span>
 <span class="p">}</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">logText</span><span class="p">);</span> <span class="c1">// array[1] = def</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">logText</span><span class="p">);</span> <span class="c1">// array[1] = def</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1630,7 +1630,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <h4 id="stringprototypeindexof">String.prototype.indexOf()</h4>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="nx">str</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">searchValue</span><span class="p">[,</span> <span class="nx">fromIndex</span><span class="p">])</span>
+<pre class="highlight"><code><span class="nx">str</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">searchValue</span><span class="p">[,</span> <span class="nx">fromIndex</span><span class="p">])</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1642,9 +1642,9 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <div class="language-js highlighter-rouge"><div class="highlight">
 <pre class="highlight"><code><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">student</span><span class="dl">'</span><span class="p">;</span>
 
-<span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">s</span><span class="dl">'</span><span class="p">);</span>   <span class="c1">// 0</span>
-<span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">ud</span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// 2</span>
-<span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">x</span><span class="dl">'</span><span class="p">);</span>   <span class="c1">// -1</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">s</span><span class="dl">'</span><span class="p">);</span>   <span class="c1">// 0</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">ud</span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// 2</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">x</span><span class="dl">'</span><span class="p">);</span>   <span class="c1">// -1</span>
 <span class="c1">// ...</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
@@ -1663,11 +1663,11 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <span class="kd">var</span> <span class="nx">searchText</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">dent</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="c1">// 검색하려는 문자가 있는 배열의 인덱스</span>
-<span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">searchText</span><span class="p">);</span> <span class="c1">// index = 3</span>
+<span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">text</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">searchText</span><span class="p">);</span> <span class="c1">// index = 3</span>
 
 <span class="kd">var</span> <span class="nx">isFound</span> <span class="o">=</span> <span class="nx">index</span> <span class="o">!==</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">isFound</span><span class="p">);</span> <span class="c1">// true</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">isFound</span><span class="p">);</span> <span class="c1">// true</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1687,11 +1687,11 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <div class="language-js highlighter-rouge"><div class="highlight">
 <pre class="highlight"><code><span class="kd">var</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">c</span><span class="dl">'</span><span class="p">];</span>
 
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">array</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">currentValue</span><span class="p">)</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">array</span><span class="p">.</span><span class="nf">filter</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">currentValue</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="nx">currentValue</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">a</span><span class="dl">'</span>
 <span class="p">});</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
 <span class="c1">// ['a', 'a']</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
@@ -1713,11 +1713,11 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <span class="p">];</span>
 
 <span class="kd">var</span> <span class="nx">searchText</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">you</span><span class="dl">'</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">sentence</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">sentence</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">you</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nf">filter</span><span class="p">(</span><span class="nf">function </span><span class="p">(</span><span class="nx">sentence</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">sentence</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">you</span><span class="dl">'</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
 <span class="cm">/*
 [
   'I need you to help me',
@@ -1740,10 +1740,10 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <div class="language-js highlighter-rouge"><div class="highlight">
 <pre class="highlight"><code><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">abbabbbba</span><span class="dl">'</span><span class="p">;</span>
 
-<span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span>     <span class="c1">// 0</span>
-<span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>  <span class="c1">// 3</span>
-<span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>  <span class="c1">// 3</span>
-<span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>  <span class="c1">// 8</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span>     <span class="c1">// 0</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>  <span class="c1">// 3</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>  <span class="c1">// 3</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>  <span class="c1">// 8</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1756,10 +1756,10 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <pre class="highlight"><code><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">aABcd</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">searchText</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">ab</span><span class="dl">'</span><span class="p">;</span>
 
-<span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">ab</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// -1</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">ab</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// -1</span>
 
-<span class="nx">text</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">searchText</span><span class="p">.</span><span class="nx">toUpperCase</span><span class="p">());</span> <span class="c1">// 1</span>
-<span class="nx">text</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">searchText</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">());</span> <span class="c1">// 1</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">toUpperCase</span><span class="p">().</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">searchText</span><span class="p">.</span><span class="nf">toUpperCase</span><span class="p">());</span> <span class="c1">// 1</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">toLowerCase</span><span class="p">().</span><span class="nf">indexOf</span><span class="p">(</span><span class="nx">searchText</span><span class="p">.</span><span class="nf">toLowerCase</span><span class="p">());</span> <span class="c1">// 1</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1795,10 +1795,10 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <h5 id="예제-결과">예제 결과</h5>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="nx">array</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 0</span>
-<span class="nx">array</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 2</span>
-<span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// 0</span>
-<span class="nx">text</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// 2</span>
+<pre class="highlight"><code><span class="nx">array</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 0</span>
+<span class="nx">array</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// 2</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">a</span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// 0</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">indexOf</span><span class="p">(</span><span class="dl">'</span><span class="s1">b</span><span class="dl">'</span><span class="p">);</span>  <span class="c1">// 2</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>

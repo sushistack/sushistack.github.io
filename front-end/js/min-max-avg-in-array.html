@@ -10,9 +10,9 @@
 
 <meta name="robots" content="index, follow">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>[Js/자바스크립트] 배열 최소값, 최대값, 평균 구하는 방법 | Deeplify</title>
-<meta name="generator" content="Jekyll v4.1.1" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="[Js/자바스크립트] 배열 최소값, 최대값, 평균 구하는 방법" />
 <meta name="author" content="deeplify" />
 <meta property="og:locale" content="ko" />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Js/자바스크립트] 배열 최소값, 최대값, 평균 구하는 방법" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"deeplify"},"description":"Javascript의 배열의 값 중 최소값 최대값 평균을 구하는 방법을 소개합니다.","url":"https://deeplify.dev/front-end/js/min-max-avg-in-array","headline":"[Js/자바스크립트] 배열 최소값, 최대값, 평균 구하는 방법","@type":"BlogPosting","dateModified":"2021-05-13T00:00:00+09:00","datePublished":"2021-05-13T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/js/min-max-avg-in-array"},"@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"deeplify"},"dateModified":"2021-05-13T00:00:00+09:00","datePublished":"2021-05-13T00:00:00+09:00","description":"Javascript의 배열의 값 중 최소값 최대값 평균을 구하는 방법을 소개합니다.","headline":"[Js/자바스크립트] 배열 최소값, 최대값, 평균 구하는 방법","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/js/min-max-avg-in-array"},"url":"https://deeplify.dev/front-end/js/min-max-avg-in-array"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1246,7 +1246,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/leetcode-704">[Leetcode] First Bad Version</a>
+                      <a class="category-post-link" href="/algorithm/problem/leetcode-278">[Leetcode] First Bad Version</a>
                     </span>
                     
                   </li>
@@ -1254,7 +1254,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/boj-1753">[BOJ/백준] 정수 삼각형 (DP)</a>
+                      <a class="category-post-link" href="/algorithm/problem/boj-1932">[BOJ/백준] 정수 삼각형 (DP)</a>
                     </span>
                     
                   </li>
@@ -1524,7 +1524,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <div class="language-js highlighter-rouge"><div class="highlight">
 <pre class="highlight"><code><span class="kd">const</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
-<span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span>   <span class="c1">// 1</span>
+<span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">.</span><span class="nf">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span>   <span class="c1">// 1</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1543,7 +1543,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <div class="language-js highlighter-rouge"><div class="highlight">
 <pre class="highlight"><code><span class="kd">const</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 
-<span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span>   <span class="c1">// 5</span>
+<span class="nb">Math</span><span class="p">.</span><span class="nx">max</span><span class="p">.</span><span class="nf">apply</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">array</span><span class="p">)</span>   <span class="c1">// 5</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1553,10 +1553,10 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <h3 id="배열의-평균-값">배열의 평균 값</h3>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="kd">const</span> <span class="nx">average</span> <span class="o">=</span> <span class="nx">arr</span> <span class="o">=&gt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">p</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">p</span> <span class="o">+</span> <span class="nx">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
+<pre class="highlight"><code><span class="kd">const</span> <span class="nx">average</span> <span class="o">=</span> <span class="nx">arr</span> <span class="o">=&gt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nf">reduce</span><span class="p">((</span><span class="nx">p</span><span class="p">,</span> <span class="nx">c</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">p</span> <span class="o">+</span> <span class="nx">c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-<span class="nx">average</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span>  <span class="c1">// 3</span>
+<span class="nf">average</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span>  <span class="c1">// 3</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>

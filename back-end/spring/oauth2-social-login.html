@@ -10,9 +10,9 @@
 
 <meta name="robots" content="index, follow">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>[Spring Boot] OAuth2 소셜 로그인 가이드 (구글, 페이스북, 네이버, 카카오) | Deeplify</title>
-<meta name="generator" content="Jekyll v4.1.1" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="[Spring Boot] OAuth2 소셜 로그인 가이드 (구글, 페이스북, 네이버, 카카오)" />
 <meta name="author" content="deeplify" />
 <meta property="og:locale" content="ko" />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Spring Boot] OAuth2 소셜 로그인 가이드 (구글, 페이스북, 네이버, 카카오)" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"deeplify"},"description":"스프링부트를 이용하여 구글, 페이스북, 네이버, 카카오 OAuth2 로그인 구현하는 방법에 대해서 소개합니다.","url":"https://deeplify.dev/back-end/spring/oauth2-social-login","headline":"[Spring Boot] OAuth2 소셜 로그인 가이드 (구글, 페이스북, 네이버, 카카오)","@type":"BlogPosting","dateModified":"2023-08-28T00:00:00+09:00","datePublished":"2023-08-28T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/back-end/spring/oauth2-social-login"},"@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"deeplify"},"dateModified":"2023-08-28T00:00:00+09:00","datePublished":"2023-08-28T00:00:00+09:00","description":"스프링부트를 이용하여 구글, 페이스북, 네이버, 카카오 OAuth2 로그인 구현하는 방법에 대해서 소개합니다.","headline":"[Spring Boot] OAuth2 소셜 로그인 가이드 (구글, 페이스북, 네이버, 카카오)","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/back-end/spring/oauth2-social-login"},"url":"https://deeplify.dev/back-end/spring/oauth2-social-login"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1246,7 +1246,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/leetcode-704">[Leetcode] First Bad Version</a>
+                      <a class="category-post-link" href="/algorithm/problem/leetcode-278">[Leetcode] First Bad Version</a>
                     </span>
                     
                   </li>
@@ -1254,7 +1254,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/boj-1753">[BOJ/백준] 정수 삼각형 (DP)</a>
+                      <a class="category-post-link" href="/algorithm/problem/boj-1932">[BOJ/백준] 정수 삼각형 (DP)</a>
                     </span>
                     
                   </li>
@@ -2342,25 +2342,25 @@ https://api.provider.com/user/me
 <span class="k">import</span> <span class="p">{</span> <span class="nx">mapMutations</span><span class="p">,</span> <span class="nx">mapActions</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vuex</span><span class="dl">'</span>
 
 <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="nx">created</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nf">created </span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// 컴포넌트 렌더링이 되었을 때,</span>
 
     <span class="c1">// 쿼리스트링으로부터 토큰을 획득</span>
     <span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$route</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">token</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span> <span class="nx">token</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span> <span class="nx">token</span><span class="p">)</span>
 
     <span class="c1">// 토큰이 존재하는 경우, Vuex Store에 토큰을 저장한다.</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">setToken</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">fetchUser</span><span class="p">()</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">setToken</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">fetchUser</span><span class="p">()</span>
     <span class="p">}</span>
 
     <span class="c1">// 토큰이 있던 없던, 루트 페이지로 이동한다.</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">$router</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$router</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">)</span>
   <span class="p">},</span>
   <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
-    <span class="p">...</span><span class="nx">mapActions</span><span class="p">([</span><span class="dl">'</span><span class="s1">fetchUser</span><span class="dl">'</span><span class="p">]),</span>
-    <span class="p">...</span><span class="nx">mapMutations</span><span class="p">([</span><span class="dl">'</span><span class="s1">setToken</span><span class="dl">'</span><span class="p">])</span>
+    <span class="p">...</span><span class="nf">mapActions</span><span class="p">([</span><span class="dl">'</span><span class="s1">fetchUser</span><span class="dl">'</span><span class="p">]),</span>
+    <span class="p">...</span><span class="nf">mapMutations</span><span class="p">([</span><span class="dl">'</span><span class="s1">setToken</span><span class="dl">'</span><span class="p">])</span>
   <span class="p">}</span>
 <span class="p">}</span>
 <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
@@ -2431,13 +2431,13 @@ http://localhost:3000/oauth/redirect?token={jwt-token}
       <span class="na">password</span><span class="pi">:</span> <span class="s">${spring.datasource.password}</span>
       <span class="na">driver-class-name</span><span class="pi">:</span> <span class="s">${spring.datasource.driver-class-name}</span>
       <span class="na">data-source-properties</span><span class="pi">:</span>
-        <span class="na">rewriteBatchedStatements</span><span class="pi">:</span> <span class="no">true</span>
+        <span class="na">rewriteBatchedStatements</span><span class="pi">:</span> <span class="kc">true</span>
   <span class="c1"># JPA 설정</span>
   <span class="na">jpa</span><span class="pi">:</span>
-    <span class="na">generate-ddl</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">generate-ddl</span><span class="pi">:</span> <span class="kc">true</span>
     <span class="na">hibernate</span><span class="pi">:</span>
       <span class="na">ddl-auto</span><span class="pi">:</span> <span class="s">update</span>
-    <span class="na">show-sql</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">show-sql</span><span class="pi">:</span> <span class="kc">true</span>
     <span class="na">properties</span><span class="pi">:</span>
       <span class="na">hibernate</span><span class="pi">:</span>
         <span class="na">dialect</span><span class="pi">:</span> <span class="s">org.hibernate.dialect.MySQL8Dialect</span>
@@ -2445,9 +2445,9 @@ http://localhost:3000/oauth/redirect?token={jwt-token}
         <span class="na">current_session_context_class</span><span class="pi">:</span> <span class="s">org.springframework.orm.hibernate5.SpringSessionContext</span>
         <span class="na">default_batch_fetch_size</span><span class="pi">:</span> <span class="s">${chunkSize:100}</span>
         <span class="na">jdbc.batch_size</span><span class="pi">:</span> <span class="m">20</span>
-        <span class="na">order_inserts</span><span class="pi">:</span> <span class="no">true</span>
-        <span class="na">order_updates</span><span class="pi">:</span> <span class="no">true</span>
-        <span class="na">format_sql</span><span class="pi">:</span> <span class="no">true</span>
+        <span class="na">order_inserts</span><span class="pi">:</span> <span class="kc">true</span>
+        <span class="na">order_updates</span><span class="pi">:</span> <span class="kc">true</span>
+        <span class="na">format_sql</span><span class="pi">:</span> <span class="kc">true</span>
   <span class="c1"># Security OAuth</span>
   <span class="na">security</span><span class="pi">:</span>
     <span class="na">oauth2.client</span><span class="pi">:</span>

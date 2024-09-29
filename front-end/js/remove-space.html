@@ -10,9 +10,9 @@
 
 <meta name="robots" content="index, follow">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>[Js/자바스크립트] 공백(space) 제거 하는 방법: trim, replace | Deeplify</title>
-<meta name="generator" content="Jekyll v4.1.1" />
+<meta name="generator" content="Jekyll v4.3.4" />
 <meta property="og:title" content="[Js/자바스크립트] 공백(space) 제거 하는 방법: trim, replace" />
 <meta name="author" content="deeplify" />
 <meta property="og:locale" content="ko" />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[Js/자바스크립트] 공백(space) 제거 하는 방법: trim, replace" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"deeplify"},"description":"Javascript에서 trim과 replace를 이용하여 공백을 제거하는 방법 소개합니다.","url":"https://deeplify.dev/front-end/js/remove-space","headline":"[Js/자바스크립트] 공백(space) 제거 하는 방법: trim, replace","@type":"BlogPosting","dateModified":"2021-01-19T00:00:00+09:00","datePublished":"2021-01-19T00:00:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/js/remove-space"},"@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"deeplify"},"dateModified":"2021-01-19T00:00:00+09:00","datePublished":"2021-01-19T00:00:00+09:00","description":"Javascript에서 trim과 replace를 이용하여 공백을 제거하는 방법 소개합니다.","headline":"[Js/자바스크립트] 공백(space) 제거 하는 방법: trim, replace","mainEntityOfPage":{"@type":"WebPage","@id":"https://deeplify.dev/front-end/js/remove-space"},"url":"https://deeplify.dev/front-end/js/remove-space"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -1246,7 +1246,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/leetcode-704">[Leetcode] First Bad Version</a>
+                      <a class="category-post-link" href="/algorithm/problem/leetcode-278">[Leetcode] First Bad Version</a>
                     </span>
                     
                   </li>
@@ -1254,7 +1254,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
                   <li class="category-post-wrap">
                     
                     <span class="category-post">
-                      <a class="category-post-link" href="/algorithm/problem/boj-1753">[BOJ/백준] 정수 삼각형 (DP)</a>
+                      <a class="category-post-link" href="/algorithm/problem/boj-1932">[BOJ/백준] 정수 삼각형 (DP)</a>
                     </span>
                     
                   </li>
@@ -1541,7 +1541,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <h3 id="stringprototypetrim">String.prototype.trim()</h3>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="nx">str</span><span class="p">.</span><span class="nx">trim</span><span class="p">()</span>
+<pre class="highlight"><code><span class="nx">str</span><span class="p">.</span><span class="nf">trim</span><span class="p">()</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1555,9 +1555,9 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <span class="kd">var</span> <span class="nx">text2</span> <span class="o">=</span> <span class="dl">'</span><span class="se">\t</span><span class="s1">test</span><span class="se">\t</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">text3</span> <span class="o">=</span> <span class="dl">'</span><span class="se">\n</span><span class="s1">test</span><span class="se">\n</span><span class="dl">'</span><span class="p">;</span>
 
-<span class="nx">text1</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>   <span class="c1">// test</span>
-<span class="nx">text2</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>   <span class="c1">// test</span>
-<span class="nx">text3</span><span class="p">.</span><span class="nx">trim</span><span class="p">();</span>   <span class="c1">// test</span>
+<span class="nx">text1</span><span class="p">.</span><span class="nf">trim</span><span class="p">();</span>   <span class="c1">// test</span>
+<span class="nx">text2</span><span class="p">.</span><span class="nf">trim</span><span class="p">();</span>   <span class="c1">// test</span>
+<span class="nx">text3</span><span class="p">.</span><span class="nf">trim</span><span class="p">();</span>   <span class="c1">// test</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1601,7 +1601,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <span class="c1">// 또는</span>
 <span class="c1">// var regex = /\s/gi;</span>
 
-<span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">regex</span><span class="p">,</span> <span class="dl">''</span><span class="p">);</span>  <span class="c1">// 'abcde'</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="nx">regex</span><span class="p">,</span> <span class="dl">''</span><span class="p">);</span>  <span class="c1">// 'abcde'</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1614,7 +1614,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <pre class="highlight"><code><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">    a b c     d e</span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">regex</span> <span class="o">=</span> <span class="sr">/^</span><span class="se">[\s\u</span><span class="sr">FEFF</span><span class="se">\x</span><span class="sr">A0</span><span class="se">]</span><span class="sr">+/gi</span><span class="p">;</span>
 
-<span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">regex</span><span class="p">,</span> <span class="dl">''</span><span class="p">);</span>  <span class="c1">// 'a b c     d e'</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="nx">regex</span><span class="p">,</span> <span class="dl">''</span><span class="p">);</span>  <span class="c1">// 'a b c     d e'</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1629,7 +1629,7 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <pre class="highlight"><code><span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="dl">'</span><span class="s1"> a b c     d e     </span><span class="dl">'</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">regex</span> <span class="o">=</span> <span class="sr">/</span><span class="se">[\s\u</span><span class="sr">FEFF</span><span class="se">\x</span><span class="sr">A0</span><span class="se">]</span><span class="sr">+$/gi</span><span class="p">;</span>
 
-<span class="nx">text</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="nx">regex</span><span class="p">,</span> <span class="dl">''</span><span class="p">);</span>  <span class="c1">// ' a b c     d e'</span>
+<span class="nx">text</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="nx">regex</span><span class="p">,</span> <span class="dl">''</span><span class="p">);</span>  <span class="c1">// ' a b c     d e'</span>
 </code></pre>
 <button type="button" class="copy-code-btn">Copy</button>
 </div></div>
@@ -1661,9 +1661,9 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
 <h3 id="trim-크로스-브라우저-이슈-해결-방법">Trim 크로스 브라우저 이슈 해결 방법</h3>
 
 <div class="language-js highlighter-rouge"><div class="highlight">
-<pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">trim</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">trim</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/^</span><span class="se">[\s\u</span><span class="sr">FEFF</span><span class="se">\x</span><span class="sr">A0</span><span class="se">]</span><span class="sr">+|</span><span class="se">[\s\u</span><span class="sr">FEFF</span><span class="se">\x</span><span class="sr">A0</span><span class="se">]</span><span class="sr">+$/g</span><span class="p">,</span> <span class="dl">''</span><span class="p">);</span>
+<pre class="highlight"><code><span class="k">if </span><span class="p">(</span><span class="o">!</span><span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">trim</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">String</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">trim</span> <span class="o">=</span> <span class="nf">function </span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="sr">/^</span><span class="se">[\s\u</span><span class="sr">FEFF</span><span class="se">\x</span><span class="sr">A0</span><span class="se">]</span><span class="sr">+|</span><span class="se">[\s\u</span><span class="sr">FEFF</span><span class="se">\x</span><span class="sr">A0</span><span class="se">]</span><span class="sr">+$/g</span><span class="p">,</span> <span class="dl">''</span><span class="p">);</span>
   <span class="p">};</span>
 <span class="p">}</span>
 </code></pre>

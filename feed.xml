@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="https://deeplify.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://deeplify.dev/" rel="alternate" type="text/html" hreflang="ko" /><updated>2024-09-28T11:49:43+09:00</updated><id>https://deeplify.dev/feed.xml</id><title type="html">Deeplify</title><entry><title type="html">토쓰 Slash 2024 참여</title><link href="https://deeplify.dev/back-end/etc/toss-slash24" rel="alternate" type="text/html" title="토쓰 Slash 2024 참여" /><published>2024-09-14T00:00:00+09:00</published><updated>2024-09-14T00:00:00+09:00</updated><id>https://deeplify.dev/back-end/etc/toss-slash24</id><content type="html" xml:base="https://deeplify.dev/back-end/etc/toss-slash24"><![CDATA[<p>얼마 전에 MongoDB.local 2024를 다녀온지 얼마 안되었지만, 팀원 한 분이 토쓰 Slash24에 당첨되었는데 일정상 가지 못하게 되어 양도 받을 사람을 구하셨습니다.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://deeplify.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://deeplify.dev/" rel="alternate" type="text/html" hreflang="ko" /><updated>2024-09-29T13:46:07+09:00</updated><id>https://deeplify.dev/feed.xml</id><title type="html">Deeplify</title><entry><title type="html">토쓰 Slash 2024 참여</title><link href="https://deeplify.dev/back-end/etc/toss-slash24" rel="alternate" type="text/html" title="토쓰 Slash 2024 참여" /><published>2024-09-14T00:00:00+09:00</published><updated>2024-09-14T00:00:00+09:00</updated><id>https://deeplify.dev/back-end/etc/toss-slash24</id><content type="html" xml:base="https://deeplify.dev/back-end/etc/toss-slash24"><![CDATA[<p>얼마 전에 MongoDB.local 2024를 다녀온지 얼마 안되었지만, 팀원 한 분이 토쓰 Slash24에 당첨되었는데 일정상 가지 못하게 되어 양도 받을 사람을 구하셨습니다.
 그런데 아무도 가지 않는다고 하여 제가 낚아챘습니다. 최근 컨퍼런스 몇 개를 참석해 봤는데 재미도 있고, 다양한 아이디어도 얻을 수 있어서 연차를 쓰더라도 가야겠다고 생각했습니다.</p>
 
 <div class="related-link-wrap">
@@ -264,7 +264,7 @@
       <span class="na">options</span><span class="pi">:</span>
         <span class="na">model</span><span class="pi">:</span> <span class="s">gpt-4o</span>
   <span class="c1"># virual thread</span>
-  <span class="na">threads.virtual.enabled</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="na">threads.virtual.enabled</span><span class="pi">:</span> <span class="kc">true</span>
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">application.yml</code>파일에 위와 같은 내용을 작성했습니다.</p>
@@ -272,23 +272,23 @@
 <h3 id="4-chatgpt에게-질문하기">4. ChatGPT에게 질문하기</h3>
 
 <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">package com.sushistack.spring.private_ai;
-</span>
-import org.springframework.ai.chat.client.ChatClient;
-<span class="p">import org.springframework.boot.ApplicationArguments;
+</span><span class="err">
+</span><span class="p">import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-</span>
-@SpringBootApplication
+</span><span class="err">
+</span>@SpringBootApplication
 <span class="p">public class PrivateAiApplication {
-</span>
-	public static void main(String[] args) {
+</span><span class="err">
+</span>	public static void main(String[] args) {
 		SpringApplication.run(PrivateAiApplication.class, args);
 	}
-
-+	@Bean
-<span class="gi">+   ChatClient chatClient (ChatClient.Builder builder) {
+<span class="err">
+</span><span class="gi">+	@Bean
++   ChatClient chatClient (ChatClient.Builder builder) {
 +		return builder.build();
 +	}
 +
@@ -308,10 +308,10 @@ import org.springframework.context.annotation.Bean;
 +			}
 +		};
 +	}
-</span>
-}
-
-</code></pre></div></div>
+</span><span class="err">
+</span>}
+<span class="err">
+</span></code></pre></div></div>
 
 <p>위 처럼 ChantClient와 ChatClient를 이용하여 ChatGPT에게 쿼리를 요청하는 ApplicationRunner를 Bean으로 각각 등록해줍니다.</p>
 
@@ -1794,25 +1794,25 @@ https://api.provider.com/user/me
 <span class="k">import</span> <span class="p">{</span> <span class="nx">mapMutations</span><span class="p">,</span> <span class="nx">mapActions</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vuex</span><span class="dl">'</span>
 
 <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="nx">created</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nf">created </span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">// 컴포넌트 렌더링이 되었을 때,</span>
 
     <span class="c1">// 쿼리스트링으로부터 토큰을 획득</span>
     <span class="kd">const</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$route</span><span class="p">.</span><span class="nx">query</span><span class="p">.</span><span class="nx">token</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span> <span class="nx">token</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">token</span><span class="dl">'</span><span class="p">,</span> <span class="nx">token</span><span class="p">)</span>
 
     <span class="c1">// 토큰이 존재하는 경우, Vuex Store에 토큰을 저장한다.</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">setToken</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">fetchUser</span><span class="p">()</span>
+    <span class="k">if </span><span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">setToken</span><span class="p">(</span><span class="nx">token</span><span class="p">)</span>
+      <span class="k">this</span><span class="p">.</span><span class="nf">fetchUser</span><span class="p">()</span>
     <span class="p">}</span>
 
     <span class="c1">// 토큰이 있던 없던, 루트 페이지로 이동한다.</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">$router</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">)</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">$router</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">)</span>
   <span class="p">},</span>
   <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
-    <span class="p">...</span><span class="nx">mapActions</span><span class="p">([</span><span class="dl">'</span><span class="s1">fetchUser</span><span class="dl">'</span><span class="p">]),</span>
-    <span class="p">...</span><span class="nx">mapMutations</span><span class="p">([</span><span class="dl">'</span><span class="s1">setToken</span><span class="dl">'</span><span class="p">])</span>
+    <span class="p">...</span><span class="nf">mapActions</span><span class="p">([</span><span class="dl">'</span><span class="s1">fetchUser</span><span class="dl">'</span><span class="p">]),</span>
+    <span class="p">...</span><span class="nf">mapMutations</span><span class="p">([</span><span class="dl">'</span><span class="s1">setToken</span><span class="dl">'</span><span class="p">])</span>
   <span class="p">}</span>
 <span class="p">}</span>
 <span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
@@ -1874,13 +1874,13 @@ http://localhost:3000/oauth/redirect?token={jwt-token}
       <span class="na">password</span><span class="pi">:</span> <span class="s">${spring.datasource.password}</span>
       <span class="na">driver-class-name</span><span class="pi">:</span> <span class="s">${spring.datasource.driver-class-name}</span>
       <span class="na">data-source-properties</span><span class="pi">:</span>
-        <span class="na">rewriteBatchedStatements</span><span class="pi">:</span> <span class="no">true</span>
+        <span class="na">rewriteBatchedStatements</span><span class="pi">:</span> <span class="kc">true</span>
   <span class="c1"># JPA 설정</span>
   <span class="na">jpa</span><span class="pi">:</span>
-    <span class="na">generate-ddl</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">generate-ddl</span><span class="pi">:</span> <span class="kc">true</span>
     <span class="na">hibernate</span><span class="pi">:</span>
       <span class="na">ddl-auto</span><span class="pi">:</span> <span class="s">update</span>
-    <span class="na">show-sql</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">show-sql</span><span class="pi">:</span> <span class="kc">true</span>
     <span class="na">properties</span><span class="pi">:</span>
       <span class="na">hibernate</span><span class="pi">:</span>
         <span class="na">dialect</span><span class="pi">:</span> <span class="s">org.hibernate.dialect.MySQL8Dialect</span>
@@ -1888,9 +1888,9 @@ http://localhost:3000/oauth/redirect?token={jwt-token}
         <span class="na">current_session_context_class</span><span class="pi">:</span> <span class="s">org.springframework.orm.hibernate5.SpringSessionContext</span>
         <span class="na">default_batch_fetch_size</span><span class="pi">:</span> <span class="s">${chunkSize:100}</span>
         <span class="na">jdbc.batch_size</span><span class="pi">:</span> <span class="m">20</span>
-        <span class="na">order_inserts</span><span class="pi">:</span> <span class="no">true</span>
-        <span class="na">order_updates</span><span class="pi">:</span> <span class="no">true</span>
-        <span class="na">format_sql</span><span class="pi">:</span> <span class="no">true</span>
+        <span class="na">order_inserts</span><span class="pi">:</span> <span class="kc">true</span>
+        <span class="na">order_updates</span><span class="pi">:</span> <span class="kc">true</span>
+        <span class="na">format_sql</span><span class="pi">:</span> <span class="kc">true</span>
   <span class="c1"># Security OAuth</span>
   <span class="na">security</span><span class="pi">:</span>
     <span class="na">oauth2.client</span><span class="pi">:</span>
@@ -3625,11 +3625,11 @@ github.com
   <li>README .md 를 아래와 같이 수정</li>
 </ol>
 
-<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-# This is a Gihub CLI Tutorial
-
-- 안녕하세요.
-</code></pre></div></div>
+<div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">
+</span># This is a Gihub CLI Tutorial
+<span class="err">
+</span><span class="gd">- 안녕하세요.
+</span></code></pre></div></div>
 
 <ol>
   <li>PR 생성하기</li>
@@ -4147,7 +4147,7 @@ Use the -conf &lt;url&gt; option to specify a pre-configured options file.
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">server</span><span class="pi">:</span>
   <span class="na">port</span><span class="pi">:</span> <span class="m">8443</span>
   <span class="na">ssl</span><span class="pi">:</span>
-    <span class="na">enabled</span><span class="pi">:</span> <span class="no">true</span>
+    <span class="na">enabled</span><span class="pi">:</span> <span class="kc">true</span>
     <span class="na">key-alias</span><span class="pi">:</span> <span class="s">tomcat-localhost</span>
     <span class="na">key-password</span><span class="pi">:</span> <span class="s">&lt;your key password&gt;</span>
     <span class="na">key-store</span><span class="pi">:</span> <span class="s">classpath:keystore.jks</span>
