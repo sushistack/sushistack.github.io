@@ -27,7 +27,7 @@ tags:
 
 좀 더 자세하게 설명을 보고 싶다면 아래 링크를 통해서 확인하실 수 있습니다.
 
-{% include base/components/link.html title='Travis CI로 Jekyll & Github Pages 배포 자동화 하는 방법' internal_url='/tools/ci/github-pages-travis-ci' %}
+{% include base/components/link.html title='Travis CI로 Jekyll & Github Pages 배포 자동화 하는 방법' internal_link='/tools/ci/github-pages-travis-ci' %}
 
 ## Github Action
 

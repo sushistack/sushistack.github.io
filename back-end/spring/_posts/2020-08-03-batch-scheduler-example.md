@@ -55,7 +55,7 @@ Spring Boot에서 yml 파일에 해야하는 설정은 굉장히 단순합니다
 
 scheme 설정의 경우, 배치 관련 테이블을 생성해주는 sql 쿼리가 들어있습니다. mysql 관련 설정이나 자세한 설명은 아래 링크를 통해 확인 가능합니다.
 
-{% include base/components/link.html title='Table BATCH_JOB_INSTANCE not found' internal_url='/back-end/spring/batch-meta-error' %}
+{% include base/components/link.html title='Table BATCH_JOB_INSTANCE not found' internal_link='/back-end/spring/batch-meta-error' %}
 
 ```yml
 spring:
