@@ -1,4 +1,105 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://deeplify.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://deeplify.dev/" rel="alternate" type="text/html" hreflang="ko" /><updated>2024-09-29T14:21:32+09:00</updated><id>https://deeplify.dev/feed.xml</id><title type="html">Deeplify</title><entry><title type="html">토쓰 Slash 2024 참여</title><link href="https://deeplify.dev/back-end/etc/toss-slash24" rel="alternate" type="text/html" title="토쓰 Slash 2024 참여" /><published>2024-09-14T00:00:00+09:00</published><updated>2024-09-14T00:00:00+09:00</updated><id>https://deeplify.dev/back-end/etc/toss-slash24</id><content type="html" xml:base="https://deeplify.dev/back-end/etc/toss-slash24"><![CDATA[<p>얼마 전에 MongoDB.local 2024를 다녀온지 얼마 안되었지만, 팀원 한 분이 토쓰 Slash24에 당첨되었는데 일정상 가지 못하게 되어 양도 받을 사람을 구하셨습니다.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://deeplify.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://deeplify.dev/" rel="alternate" type="text/html" hreflang="ko" /><updated>2024-10-14T10:00:22+09:00</updated><id>https://deeplify.dev/feed.xml</id><title type="html">Deeplify</title><entry><title type="html">CKAD 자격증 취득 후기</title><link href="https://deeplify.dev/back-end/etc/ckad" rel="alternate" type="text/html" title="CKAD 자격증 취득 후기" /><published>2024-10-10T00:00:00+09:00</published><updated>2024-10-10T00:00:00+09:00</updated><id>https://deeplify.dev/back-end/etc/ckad</id><content type="html" xml:base="https://deeplify.dev/back-end/etc/ckad"><![CDATA[<p>이 번 글은 CKAD 자격증을 취득 후기입니다. 회사 동료 분이 이 자격증을 위해 공부한다는 소식을 듣고, 저도 자격증을 갖고 싶다는 생각이 들었습니다.
+동료 분이 엄청 착하신 분이라서 강의를 듣고 싶으면 들으라고 하셔서 udemy 라는 강의 사이트에서 CKAD 취득을 위한 강의를 듣게 되었습니다.</p>
+
+<div class="related-link-wrap">
+    <a class="related-link" href="" target="_blank" rel="noopener noreferrer">
+      <div class="related-link-icon">
+        
+        <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg>
+        
+      </div>
+      <div class="link-title-wrap">
+        <div class="link-title">
+          <div class="link-title-text">Certified Kubernetes Application Developer (CKAD) - Linux Foundation - Education</div>
+        </div>
+      </div>
+      <div class="display-link-wrap">
+        <div class="display-link">
+          <span class="display-link-text"></span>
+        </div>
+      </div>
+    </a>
+</div>
+
+<p>위 링크를 보면 CKAD 자격증에 대한 정보를 볼 수 있습니다.</p>
+
+<h2 id="ckad란">CKAD란?</h2>
+
+<div class="hint-container success">
+  <div class="hint-type success">
+    <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor"><g><path d="M22 11.07V12a10 10 0 1 1-5.93-9.14"></path><polyline points="23 3 12 14 9 11"></polyline></g></svg>
+  </div>
+  <div class="hint-body-container">
+    <div class="hint-body">
+      
+        <span class="hint-body-text">CKAD(Certified Kubernetes Application Developer)는 Cloud Native Computing Foundation (CNCF)에서 제공하는 인증으로, Kubernetes 환경에서 애플리케이션을 개발, 관리, 배포할 수 있는 능력을 검증하는 자격증입니다.</span>
+      
+    </div>
+  </div>
+</div>
+
+<h3 id="시험-목적">시험 목적</h3>
+
+<blockquote>
+  <ol>
+    <li>Kubernetes 클러스터에서 애플리케이션을 배포, 관리, 스케일링, 문제 해결하는 능력</li>
+    <li>Kubernetes 리소스를 이해하고, Pod, Deployment, Service, ConfigMap, Secret 등의 리소스를 활용할 수 있는 능력</li>
+    <li>컨테이너화된 애플리케이션의 동작과 구조를 이해하고, 애플리케이션 개발에 Kubernetes를 효과적으로 사용하는 능력</li>
+  </ol>
+</blockquote>
+
+<p>CKAD 자격증은 위와 같은 능력을 가진 개발자를 인증합니다.</p>
+
+<h3 id="시험-후기">시험 후기</h3>
+
+<p>우선 시험에 대한 정보를 말씀드리면, 시험 시간은 <strong>2 시간</strong>이고, 환경은 PSI(?) 라는 가상 환경에 접근 가능한 브라우저에서 치뤄집니다.</p>
+
+<p>시험을 치루기 전에 회사 동료 분에게 여러가지 팁들을 들어둔 상태여서, 스터디 룸을 3시간 빌려서 시험을 진행했습니다.
+들었던 것 보다 엄청 깐깐하게 시험환경을 체크합니다. 책상 위에 아무 것도 없는지, 물은 투명한 컵에 들어 있는지 바닥에 누가 있는지, 스마트폰이 꺼져 있는지 등을 체크했습니다.</p>
+
+<p>시험을 치룰 떄도 귀에 에어팟이 없는지, 입을 가리고 있는지, 혼잣말을 하는지 등을 체크힙니다.
+저는 ‘자 시작해볼까?’ 한마디 했다가 경고 받았습니다. 또 생각한다고 잠시 입을 가렸는데, 메신저로 입 가리지 말라고 하더군요.</p>
+
+<p>아무튼 2시간 동안 열심히 풀었습니다.
+제가 생각했을 때는 1문제를 제외하고 다 풀었지만, 푼 문제가 맞는다는 보장이 없으니 약간 걱정이 되었습니다.</p>
+
+<h3 id="결과">결과</h3>
+
+<blockquote>
+  <p>합격 커트라인: 66점
+받은 점수: 90점</p>
+</blockquote>
+
+<p>통과했습니다.</p>
+
+<div class="related-link-wrap">
+    <a class="related-link" href="" target="_blank" rel="noopener noreferrer">
+      <div class="related-link-icon">
+        
+        <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg>
+        
+      </div>
+      <div class="link-title-wrap">
+        <div class="link-title">
+          <div class="link-title-text">sushistack/CKAD: CKAD study documents</div>
+        </div>
+      </div>
+      <div class="display-link-wrap">
+        <div class="display-link">
+          <span class="display-link-text"></span>
+        </div>
+      </div>
+    </a>
+</div>
+
+<p>공부했던 내용과 기억나는 대로 적은 기출 문제는 위 레파지토리에 정리해두었습니다.</p>
+
+<h2 id="맺음">맺음</h2>
+
+<p>이 번 글에서는 CKAD 취득에 대한 후기를 작성해 보았습니다. CKAD 자격증 시험은 $395 로 엄첨 비싸지만, 블랙프라이 데이 등에 할인을 잘 받으면 50% 넘게 까지도 할인된 가격에 구매할 수 있습니다.
+저 같은 경우, 40% 정도 할인 된 가격에 구매한 후 2달 정도 여유롭게 공부한 뒤 취득했습니다.</p>
+
+<p>감사합니다.</p>]]></content><author><name>deeplify</name></author><category term="back-end" /><category term="etc" /><category term="ckad" /><category term="k8s" /><category term="kube" /><category term="kubernetes" /><summary type="html"><![CDATA[쿠버네티스 자격증인 CKAD를 취득한 후기를 공유합니다.]]></summary></entry><entry><title type="html">토쓰 Slash 2024 참여</title><link href="https://deeplify.dev/back-end/etc/toss-slash24" rel="alternate" type="text/html" title="토쓰 Slash 2024 참여" /><published>2024-09-14T00:00:00+09:00</published><updated>2024-09-14T00:00:00+09:00</updated><id>https://deeplify.dev/back-end/etc/toss-slash24</id><content type="html" xml:base="https://deeplify.dev/back-end/etc/toss-slash24"><![CDATA[<p>얼마 전에 MongoDB.local 2024를 다녀온지 얼마 안되었지만, 팀원 한 분이 토쓰 Slash24에 당첨되었는데 일정상 가지 못하게 되어 양도 받을 사람을 구하셨습니다.
 그런데 아무도 가지 않는다고 하여 제가 낚아챘습니다. 최근 컨퍼런스 몇 개를 참석해 봤는데 재미도 있고, 다양한 아이디어도 얻을 수 있어서 연차를 쓰더라도 가야겠다고 생각했습니다.</p>
 
 <div class="related-link-wrap">
@@ -4038,126 +4139,4 @@ $ vi .github/workflows/auto_pr_labeling.yml
         </div>
       </div>
     </a>
-</div>]]></content><author><name>deeplify</name></author><category term="back-end" /><category term="kotlin" /><category term="kotlin" /><category term="coroutines" /><category term="fuel" /><category term="thread" /><category term="코틀린" /><category term="코루틴" /><category term="멀티 스레드" /><summary type="html"><![CDATA[Kotlin의 coroutines를 이용하여 멀티 스레드 예제를 통해서 간단하게 소개합니다.]]></summary></entry><entry><title type="html">[Spring/스프링] 내장 톰캣 SSL 적용하기</title><link href="https://deeplify.dev/back-end/spring/tomcat-ssl" rel="alternate" type="text/html" title="[Spring/스프링] 내장 톰캣 SSL 적용하기" /><published>2022-09-01T00:00:00+09:00</published><updated>2022-09-01T00:00:00+09:00</updated><id>https://deeplify.dev/back-end/spring/tomcat-ssl</id><content type="html" xml:base="https://deeplify.dev/back-end/spring/tomcat-ssl"><![CDATA[<p>개발 환경이 <code class="language-plaintext highlighter-rouge">SPA(Single Page Application)</code> + <code class="language-plaintext highlighter-rouge">spring boot</code>이면서 내장 톰캣(internal tomcat)을 사용 중일 때, 간혹 내장 톰캣에 <code class="language-plaintext highlighter-rouge">SSL</code>을 적용해야할 때가 있습니다.</p>
-
-<h2 id="내장-톰캣-ssl-적용하기">내장 톰캣 SSL 적용하기</h2>
-
-<p>최근에 google chrome 버전 80부터 <code class="language-plaintext highlighter-rouge">SameSite=Secure</code>가 기본으로 설정되도록 정책 변경을 하게 되었고,
-정책이 변경되면서 저희 쪽에 소셜 로그인 쿠키관련 사이드 이펙트가 발생했습니다.</p>
-
-<p>다양한 이슈들이 있었지만, 결론적으로 로그인 관련하여 <code class="language-plaintext highlighter-rouge">http</code> -&gt; <code class="language-plaintext highlighter-rouge">https</code>화 작업이 급하게 진행되었습니다.</p>
-
-<p>저희 쪽 개발자 PC에서도 소셜 로그인이 적용된 채로 개발을 진행중이었는데요, 로컬에서도 <code class="language-plaintext highlighter-rouge">https</code>를 적용해야할 필요가 생겼고, 로컬 tomcat에 ssl을 적용하면서 어떻게 적용했는지 공유하면 좋을 것 같아서 소개해드리려고 합니다.</p>
-
-<h3 id="내장-톰캣-확인하기">내장 톰캣 확인하기</h3>
-
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">providedRuntime</span> <span class="err">'</span><span class="n">org</span><span class="p">.</span><span class="n">springframework</span><span class="p">.</span><span class="n">boot</span><span class="p">:</span><span class="n">spring-boot-starter-tomcat</span><span class="err">'</span>
-</code></pre></div></div>
-
-<p>gradle 설정에서 위 dependency를 추가하고 있다면, 내장 톰캣을 사용하는 것이라고 생각하시면 됩니다.</p>
-
-<p>일단 외부 톰캣에 대한 테스트는 해보지 않아서, 될지는 모르겠습니다.</p>
-
-<h3 id="keystore-생성하기">keyStore 생성하기</h3>
-
-<p><code class="language-plaintext highlighter-rouge">keyStore</code>는 Jdk에 있는 <code class="language-plaintext highlighter-rouge">keytool</code>이라는 키생성 툴을 사용할 예정입니다.</p>
-
-<div class="related-link-wrap">
-    <a class="related-link" href="https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html" target="_blank" rel="nofollow noopener noreferrer">
-      <div class="related-link-icon">
-        
-        <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg>
-        
-      </div>
-      <div class="link-title-wrap">
-        <div class="link-title">
-          <div class="link-title-text">keytool</div>
-        </div>
-      </div>
-      <div class="display-link-wrap">
-        <div class="display-link">
-          <span class="display-link-text">docs.oracle.com</span>
-        </div>
-      </div>
-    </a>
-</div>
-
-<h4 id="커멘드-옵션">커멘드 옵션</h4>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Key and Certificate Management Tool
-
-Commands:
-
- <span class="nt">-certreq</span>            Generates a certificate request
- <span class="nt">-changealias</span>        Changes an entry<span class="s1">'s alias
- -delete             Deletes an entry
- -exportcert         Exports certificate
- -genkeypair         Generates a key pair
- -genseckey          Generates a secret key
- -gencert            Generates certificate from a certificate request
- -importcert         Imports a certificate or a certificate chain
- -importpass         Imports a password
- -importkeystore     Imports one or all entries from another keystore
- -keypasswd          Changes the key password of an entry
- -list               Lists entries in a keystore
- -printcert          Prints the content of a certificate
- -printcertreq       Prints the content of a certificate request
- -printcrl           Prints the content of a CRL file
- -storepasswd        Changes the store password of a keystore
-
-Use "keytool -?, -h, or --help" for this help message
-Use "keytool -command_name --help" for usage of command_name.
-Use the -conf &lt;url&gt; option to specify a pre-configured options file.
-</span></code></pre></div></div>
-
-<h4 id="key-생성하기">key 생성하기</h4>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>keytool <span class="nt">-genkeypair</span> <span class="nt">-alias</span> tomcat-localhost <span class="nt">-storetype</span> jks <span class="nt">-keyalg</span> RSA <span class="nt">-keysize</span> 2048 <span class="nt">-validity</span> 3650 <span class="nt">-keystore</span> &lt;your project path&gt;/&lt;your project class path&gt;/keystore.jks
-</code></pre></div></div>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> Enter keystore password:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
-<span class="o">&gt;</span> Re-enter new password:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
-<span class="o">&gt;</span> What is your first and last name?
-  <span class="o">[</span>Unknown]:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
-<span class="o">&gt;</span> What is the name of your organizational unit?
-  <span class="o">[</span>Unknown]:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
-<span class="o">&gt;</span> What is the name of your organization?
-  <span class="o">[</span>Unknown]:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
-<span class="o">&gt;</span> What is the name of your City or Locality?
-  <span class="o">[</span>Unknown]:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
-<span class="o">&gt;</span> What is the name of your State or Province?
-  <span class="o">[</span>Unknown]:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
-<span class="o">&gt;</span> What is the two-letter country code <span class="k">for </span>this unit?
-  <span class="o">[</span>Unknown]:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
-<span class="o">&gt;</span> Is <span class="nv">CN</span><span class="o">=</span>, <span class="nv">OU</span><span class="o">=</span>, <span class="nv">O</span><span class="o">=</span>, <span class="nv">L</span><span class="o">=</span>, <span class="nv">ST</span><span class="o">=</span>, <span class="nv">C</span><span class="o">=</span> correct?
-  <span class="o">[</span>no]:  <span class="o">(</span><span class="nb">yes</span><span class="o">)</span>
-<span class="o">&gt;</span> Enter key password <span class="k">for</span> &lt;tomcat-localhost&gt;
-  <span class="o">(</span>RETURN <span class="k">if </span>same as keystore password<span class="o">)</span>:  <span class="o">(</span>입력하시면 됩니다.<span class="o">)</span>
-</code></pre></div></div>
-
-<h4 id="key-확인하기">key 확인하기</h4>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>keytool <span class="nt">-list</span>
-</code></pre></div></div>
-
-<h3 id="tomcat-설정하기">tomcat 설정하기</h3>
-
-<p>키를 만들었으니, 이제는 톰캣에 적용을 시켜야합니다. 설정 방법은 생각보다 간단합니다. <code class="language-plaintext highlighter-rouge">application.yml</code> 파일에 다음과 같이 설정하시면 됩니다.</p>
-
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">server</span><span class="pi">:</span>
-  <span class="na">port</span><span class="pi">:</span> <span class="m">8443</span>
-  <span class="na">ssl</span><span class="pi">:</span>
-    <span class="na">enabled</span><span class="pi">:</span> <span class="kc">true</span>
-    <span class="na">key-alias</span><span class="pi">:</span> <span class="s">tomcat-localhost</span>
-    <span class="na">key-password</span><span class="pi">:</span> <span class="s">&lt;your key password&gt;</span>
-    <span class="na">key-store</span><span class="pi">:</span> <span class="s">classpath:keystore.jks</span>
-    <span class="na">key-store-type</span><span class="pi">:</span> <span class="s">PKCS12</span>
-    <span class="na">key-store-password</span><span class="pi">:</span> <span class="s">&lt;your store key password&gt;</span>
-    <span class="na">key-store-provider</span><span class="pi">:</span> <span class="s">SUN</span>
-</code></pre></div></div>
-
-<h2 id="맺음">맺음</h2>
-
-<p>간단하게 내장 톰캣에 SSL을 적용하는 방법에 대해서 알아보았습니다. 혹시 궁금하신 점이나 이상한 점이 있으시면 댓글 부탁드리겠습니다.</p>
-
-<p>감사합니다.</p>]]></content><author><name>deeplify</name></author><category term="back-end" /><category term="spring" /><category term="spring boot" /><category term="tomcat" /><category term="SSL" /><category term="https" /><category term="톰캣" /><summary type="html"><![CDATA[스프링 부트 내장 톰캣 SSL 적용하는 방법에 대해서 소개해드립니다.]]></summary></entry></feed>
+</div>]]></content><author><name>deeplify</name></author><category term="back-end" /><category term="kotlin" /><category term="kotlin" /><category term="coroutines" /><category term="fuel" /><category term="thread" /><category term="코틀린" /><category term="코루틴" /><category term="멀티 스레드" /><summary type="html"><![CDATA[Kotlin의 coroutines를 이용하여 멀티 스레드 예제를 통해서 간단하게 소개합니다.]]></summary></entry></feed>
