@@ -120,7 +120,7 @@ tags:
 - Order는 어그리게이트 루트로서, 주문의 상태를 변경하거나 주문 항목을 추가/삭제하는 책임을 가짐.
 
 
-```kt
+```kotlin
 // Value Object: Money
 data class Money(val amount: Double, val currency: String)
 
@@ -193,7 +193,7 @@ class Order(
 
 ### 예시
 
-```kt
+```kotlin
 import java.time.LocalDateTime
 
 // 도메인 이벤트 클래스
