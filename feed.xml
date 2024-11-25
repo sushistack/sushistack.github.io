@@ -1,4 +1,341 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://deeplify.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://deeplify.dev/" rel="alternate" type="text/html" hreflang="ko" /><updated>2024-10-14T10:43:06+09:00</updated><id>https://deeplify.dev/feed.xml</id><title type="html">Deeplify</title><entry><title type="html">CKAD 자격증 취득 후기</title><link href="https://deeplify.dev/back-end/etc/ckad" rel="alternate" type="text/html" title="CKAD 자격증 취득 후기" /><published>2024-10-10T00:00:00+09:00</published><updated>2024-10-10T00:00:00+09:00</updated><id>https://deeplify.dev/back-end/etc/ckad</id><content type="html" xml:base="https://deeplify.dev/back-end/etc/ckad"><![CDATA[<p>이 번 글은 CKAD 자격증을 취득 후기입니다. 회사 동료 분이 이 자격증을 위해 공부한다는 소식을 듣고, 저도 자격증을 갖고 싶다는 생각이 들었습니다.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ko"><generator uri="https://jekyllrb.com/" version="4.3.4">Jekyll</generator><link href="https://deeplify.dev/feed.xml" rel="self" type="application/atom+xml" /><link href="https://deeplify.dev/" rel="alternate" type="text/html" hreflang="ko" /><updated>2024-11-25T10:40:26+09:00</updated><id>https://deeplify.dev/feed.xml</id><title type="html">Deeplify</title><entry><title type="html">DDD(Domain Driven Design) 왜 탄생했을까?</title><link href="https://deeplify.dev/back-end/etc/what-is-domain-driven-design" rel="alternate" type="text/html" title="DDD(Domain Driven Design) 왜 탄생했을까?" /><published>2024-11-01T00:00:00+09:00</published><updated>2024-11-01T00:00:00+09:00</updated><id>https://deeplify.dev/back-end/etc/what-is-domain-driven-design</id><content type="html" xml:base="https://deeplify.dev/back-end/etc/what-is-domain-driven-design"><![CDATA[<p>소프트웨어 개발이 점점 복잡해짐에 따라 비즈니스 도메인의 복잡성을 효과적으로 관리하고 코드에 반영하는 것이 중요해졌습니다. 기존의 개발 방식은 기술적인 구현에만 초점을 맞추는 경향이 있었고, 이는 비즈니스 요구사항과 코드 사이의 격차를 발생시켰습니다. 이러한 문제를 해결하기 위해 <strong>에릭 에반스(Eric Evans)</strong>는 2003년에 <strong>Domain-Driven Design: Tackling Complexity in the Heart of Software</strong>라는 책을 통해 DDD 개념을 제시했습니다.</p>
+
+<h2 id="목적">목적</h2>
+
+<blockquote>
+  <ol>
+    <li>비즈니스 도메인 중심의 설계: 비즈니스 로직과 규칙을 코드에 명확하고 일관되게 반영합니다.</li>
+    <li>공통 언어(Ubiquitous Language) 사용: 개발자와 비즈니스 전문가가 동일한 언어를 사용하여 의사소통의 오류를 줄입니다.</li>
+    <li>복잡성 관리: 도메인을 모듈화하고 분리하여 시스템의 복잡성을 줄이고 유지보수성을 향상시킵니다.</li>
+  </ol>
+</blockquote>
+
+<h2 id="간단한-예시">간단한 예시</h2>
+
+<p>시나리오: 온라인 주문 시스템을 개발한다고 가정합니다.</p>
+
+<h3 id="엔티티entity">엔티티(Entity)</h3>
+
+<ul>
+  <li>Order(주문): 주문 ID, 주문 날짜, 고객 정보 등을 포함합니다.</li>
+  <li>Customer(고객): 고객 ID, 이름, 연락처 정보를 포함합니다.</li>
+</ul>
+
+<h3 id="밸류-오브젝트value-object">밸류 오브젝트(Value Object)</h3>
+
+<ul>
+  <li>Address(주소): 도로명, 도시, 우편번호 등을 포함하며 불변 객체로 취급됩니다.</li>
+  <li>Money(금액): 통화와 금액을 나타내며, 계산 로직에 사용됩니다.</li>
+</ul>
+
+<h3 id="어그리게이트aggregate와-어그리게이트-루트aggregate-root">어그리게이트(Aggregate)와 어그리게이트 루트(Aggregate Root)</h3>
+
+<ul>
+  <li>Order는 여러 OrderItem(주문 항목)을 포함하며, Order가 어그리게이트 루트입니다.</li>
+</ul>
+
+<h3 id="리포지토리repository">리포지토리(Repository)</h3>
+
+<ul>
+  <li>OrderRepository: 주문 정보를 저장하고 검색하는 인터페이스를 제공합니다.</li>
+</ul>
+
+<h3 id="서비스service">서비스(Service)</h3>
+
+<ul>
+  <li>OrderService: 주문 생성, 취소 등의 비즈니스 로직을 처리합니다.</li>
+</ul>
+
+<h3 id="도메인-이벤트domain-event">도메인 이벤트(Domain Event)</h3>
+
+<ul>
+  <li>OrderPlacedEvent: 주문이 생성되었을 때 발생하며, 재고 감소나 알림 전송 등의 후속 작업을 트리거합니다.</li>
+</ul>
+
+<h2 id="entity-vs-value-object">Entity vs Value Object</h2>
+
+<h3 id="엔티티entity-1">엔티티(Entity)</h3>
+
+<blockquote>
+  <ul>
+    <li>정의: 엔티티는 고유한 식별자를 가지며, 해당 식별자를 통해 동일성을 판단하는 도메인 객체입니다.</li>
+    <li>특징
+      <blockquote>
+        <ul>
+          <li>식별성: 시스템 내에서 유일하게 구분될 수 있는 식별자를 가집니다.</li>
+          <li>상태 변화: 시간이 지남에 따라 속성이나 상태가 변할 수 있지만, 동일한 식별자를 통해 동일한 엔티티로 인식됩니다.</li>
+          <li>생명주기: 생성부터 삭제까지의 독립적인 생명주기를 가집니다.</li>
+        </ul>
+      </blockquote>
+    </li>
+    <li>예시
+      <blockquote>
+        <ul>
+          <li>User(사용자): 사용자 ID를 통해 식별되며, 이름이나 이메일이 변경되더라도 동일한 사용자로 간주됩니다.</li>
+          <li>Order(주문): 주문 번호로 식별되며, 주문 상태나 내용이 변경될 수 있습니다.</li>
+        </ul>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<h3 id="값-객체value-object-vo">값 객체(Value Object, VO)</h3>
+
+<blockquote>
+  <ul>
+    <li>정의: 값 객체는 식별자가 없으며, 속성 값 자체로 동일성을 판단하는 불변 객체입니다.</li>
+    <li>특징:
+      <blockquote>
+        <ul>
+          <li>불변성: 생성 후 상태가 변경되지 않으며, 변경이 필요하면 새로운 객체를 생성합니다.</li>
+          <li>동일성 판단: 모든 속성 값이 같다면 동일한 값 객체로 간주합니다.</li>
+          <li>재사용성: 동일한 값을 가지는 경우 여러 곳에서 재사용할 수 있습니다.</li>
+        </ul>
+      </blockquote>
+    </li>
+    <li>예시:
+      <blockquote>
+        <ul>
+          <li>Money(금액): 통화와 금액이 동일하면 같은 값으로 간주합니다.</li>
+          <li>Address(주소): 거리, 도시, 우편번호 등이 동일하면 같은 주소로 인식됩니다.</li>
+        </ul>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+
+<h2 id="어그리게이트aggregate와-어그리게이트-루트aggregate-root-1">어그리게이트(Aggregate)와 어그리게이트 루트(Aggregate Root)</h2>
+
+<h3 id="어그리게이트aggregate">어그리게이트(Aggregate)</h3>
+
+<p>어그리게이트는 관련된 엔티티(Entity)와 값 객체(Value Object)를 하나의 단위로 묶은 도메인 모델의 집합입니다. 도메인의 복잡성을 줄이고, 데이터 일관성을 보장하며, 외부에서 이를 효과적으로 관리할 수 있도록 설계된 구조입니다.</p>
+
+<h4 id="역할">역할</h4>
+
+<blockquote>
+  <ol>
+    <li>모델 단위 관리: 어그리게이트 내부의 모든 객체는 특정 비즈니스 개념을 나타내며, 하나의 논리적 단위로 관리됩니다.</li>
+    <li>일관성 보장: 어그리게이트 내부의 상태 변화는 어그리게이트의 책임으로 제한되어, 불필요한 외부 침투를 막습니다.</li>
+    <li>트랜잭션 경계 설정: 어그리게이트 내부는 단일 트랜잭션 내에서 처리되도록 설계됩니다.</li>
+  </ol>
+</blockquote>
+
+<h3 id="어그리게이트-루트aggregate-root">어그리게이트 루트(Aggregate Root)</h3>
+
+<p>어그리게이트 루트는 어그리게이트의 진입점이 되는 객체입니다. 외부에서 어그리게이트를 조작하거나 접근할 때는 어그리게이트 루트를 통해야 합니다.</p>
+
+<h4 id="역할-1">역할</h4>
+
+<blockquote>
+  <ol>
+    <li>어그리게이트 외부 인터페이스: 외부에서 어그리게이트의 내부 객체에 접근하지 못하도록 보호합니다.</li>
+    <li>불변성 제어: 어그리게이트의 상태를 변경하거나 검증하는 책임을 가집니다.</li>
+    <li>ID 제공: 어그리게이트를 식별할 수 있는 고유 식별자를 제공합니다.</li>
+  </ol>
+</blockquote>
+
+<h3 id="예시">예시</h3>
+
+<ul>
+  <li>고객이 여러 상품을 장바구니에 담아 주문을 생성합니다.</li>
+  <li>주문 내역은 고객, 상품, 배송 정보 등을 포함하며, 각 주문 항목은 주문에 종속됩니다.</li>
+</ul>
+
+<h4 id="어그리게이트aggregate-1">어그리게이트(Aggregate)</h4>
+
+<ul>
+  <li>Order(주문): 주문에 관련된 모든 데이터를 하나의 논리적 단위로 묶음.</li>
+  <li>내부 구성 요소:
+    <ul>
+      <li>OrderItem(주문 항목): 개별 상품에 대한 정보를 담는 엔티티.</li>
+      <li>Address(배송 주소): 값 객체로, 주소 정보를 불변으로 표현.</li>
+      <li>Money(총 금액): 값 객체로, 금액 계산 로직 포함.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="어그리게이트-루트aggregate-root-1">어그리게이트 루트(Aggregate Root)</h4>
+
+<ul>
+  <li>Order는 어그리게이트 루트로서, 주문의 상태를 변경하거나 주문 항목을 추가/삭제하는 책임을 가짐.</li>
+</ul>
+
+<pre><code class="language-kt">// Value Object: Money
+data class Money(val amount: Double, val currency: String)
+
+// Value Object: Address
+data class Address(val street: String, val city: String, val zipCode: String)
+
+// Entity: OrderItem
+class OrderItem(
+    val productId: String,
+    val productName: String,
+    val quantity: Int,
+    val price: Money
+)
+
+// Aggregate Root: Order
+class Order(
+    val orderId: String,
+    private val customerId: String,
+    private var shippingAddress: Address,
+    private val items: MutableList&lt;OrderItem&gt; = mutableListOf()
+) {
+    // Add an order item
+    fun addItem(item: OrderItem) {
+        items.add(item)
+    }
+
+    // Remove an order item
+    fun removeItem(productId: String) {
+        items.removeIf { it.productId == productId }
+    }
+
+    // Update shipping address
+    fun updateShippingAddress(newAddress: Address) {
+        shippingAddress = newAddress
+    }
+
+    // Calculate total price
+    fun calculateTotal(): Money {
+        val totalAmount = items.sumOf { it.price.amount * it.quantity }
+        return Money(totalAmount, "USD")
+    }
+}
+</code></pre>
+
+<h2 id="domain-event">Domain Event</h2>
+
+<blockquote>
+  <ul>
+    <li>도메인 이벤트는 도메인에서 중요한 상태 변화나 비즈니스 사건을 나타냅니다.</li>
+    <li>도메인 모델 내부에서 발생하는 이벤트로, 다른 부분에 알릴 필요가 있는 중요한 행동이나 결과를 캡슐화합니다.</li>
+    <li>DDD의 핵심 개념 중 하나로, 어플리케이션에서 도메인 로직을 중심으로 구성하고 결합도를 낮추는 데 중요한 역할을 합니다.</li>
+  </ul>
+</blockquote>
+
+<h3 id="특징">특징</h3>
+
+<blockquote>
+  <ol>
+    <li>의미 있는 비즈니스 사건: 도메인 전문가와 이해 관계자들이 관심을 가지는 사건을 모델링합니다.</li>
+    <li>독립적이고 불변: 도메인 이벤트는 발생한 시점의 상태를 캡슐화하며, 이후에는 변경되지 않습니다.</li>
+    <li>비동기적 처리 가능: 도메인 이벤트를 다른 컴포넌트에서 비동기로 처리하여 결합도를 낮출 수 있습니다.</li>
+    <li>발생 시점 기록: 이벤트가 발생한 시간이나 관련 데이터를 포함해 히스토리를 추적할 수 있습니다.</li>
+  </ol>
+</blockquote>
+
+<h3 id="도메인-이벤트-설계">도메인 이벤트 설계</h3>
+
+<ol>
+  <li>도메인 이벤트 정의:
+    <ul>
+      <li>중요한 비즈니스 사건을 나타냅니다.</li>
+      <li>예: OrderPlacedEvent (주문 생성됨)</li>
+    </ul>
+  </li>
+  <li>이벤트 발행:
+    <ul>
+      <li>특정 비즈니스 로직이 실행된 후 이벤트를 발행합니다.</li>
+    </ul>
+  </li>
+  <li>이벤트 처리:
+    <ul>
+      <li>다른 컴포넌트에서 해당 이벤트를 구독하고, 후속 작업을 처리합니다.</li>
+      <li>예: 이메일 발송, 재고 업데이트.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="예시-1">예시</h3>
+
+<pre><code class="language-kt">import java.time.LocalDateTime
+
+// 도메인 이벤트 클래스
+data class OrderPlacedEvent(
+    val orderId: String,
+    val customerId: String,
+    val orderTotal: Double,
+    val occurredAt: LocalDateTime = LocalDateTime.now()
+)
+
+// 어그리게이트 루트: Order
+class Order(
+    val orderId: String,
+    private val customerId: String,
+    private val items: List&lt;OrderItem&gt;
+) {
+    private val domainEvents = mutableListOf&lt;Any&gt;()
+
+    fun placeOrder() {
+        // 주문 관련 비즈니스 로직 실행 (예: 결제 검증)
+
+        // 도메인 이벤트 생성
+        val event = OrderPlacedEvent(
+            orderId = orderId,
+            customerId = customerId,
+            orderTotal = calculateTotal()
+        )
+
+        // 이벤트 발행
+        domainEvents.add(event)
+    }
+
+    fun getDomainEvents(): List&lt;Any&gt; = domainEvents
+
+    private fun calculateTotal(): Double {
+        return items.sumOf { it.price * it.quantity }
+    }
+}
+
+// OrderItem 클래스
+data class OrderItem(
+    val productId: String,
+    val price: Double,
+    val quantity: Int
+)
+
+// 이벤트 리스너
+class OrderEventListener {
+    fun onOrderPlaced(event: OrderPlacedEvent) {
+        println("Order placed! Sending email to customer: ${event.customerId}")
+        // 이메일 발송 로직
+    }
+}
+
+// 메인 실행
+fun main() {
+    val order = Order(
+        orderId = "12345",
+        customerId = "customer1",
+        items = listOf(
+            OrderItem("prod1", 50.0, 2),
+            OrderItem("prod2", 30.0, 1)
+        )
+    )
+
+    // 주문 생성
+    order.placeOrder()
+
+    // 이벤트 처리
+    val eventListener = OrderEventListener()
+    order.getDomainEvents().forEach { event -&gt;
+        if (event is OrderPlacedEvent) {
+            eventListener.onOrderPlaced(event)
+        }
+    }
+}
+</code></pre>
+
+<h3 id="도메인-이벤트의-장점">도메인 이벤트의 장점</h3>
+
+<blockquote>
+  <ol>
+    <li>결합도 감소:	어플리케이션 내의 다른 컴포넌트 간 의존성을 줄일 수 있습니다,	주문 처리와 이메일 발송 로직이 분리됩니다.</li>
+    <li>확장성 증가:	새로운 이벤트 처리 로직을 추가해도 기존 코드에 영향을 주지 않습니다.</li>
+    <li>비즈니스 로직 중심 설계:	도메인 이벤트를 통해 비즈니스 중심의 설계가 가능합니다.</li>
+  </ol>
+</blockquote>]]></content><author><name>deeplify</name></author><category term="back-end" /><category term="etc" /><category term="ddd" /><category term="domain driven" /><category term="domain driven design" /><summary type="html"><![CDATA[DDD의 출현 배경과 목적을 알아봅니다.]]></summary></entry><entry><title type="html">CKAD 자격증 취득 후기</title><link href="https://deeplify.dev/back-end/etc/ckad" rel="alternate" type="text/html" title="CKAD 자격증 취득 후기" /><published>2024-10-10T00:00:00+09:00</published><updated>2024-10-10T00:00:00+09:00</updated><id>https://deeplify.dev/back-end/etc/ckad</id><content type="html" xml:base="https://deeplify.dev/back-end/etc/ckad"><![CDATA[<p>이 번 글은 CKAD 자격증을 취득 후기입니다. 회사 동료 분이 이 자격증을 위해 공부한다는 소식을 듣고, 저도 자격증을 갖고 싶다는 생각이 들었습니다.
 동료 분이 엄청 착하신 분이라서 강의를 듣고 싶으면 들으라고 하셔서 udemy 라는 강의 사이트에서 CKAD 취득을 위한 강의를 듣게 되었습니다.</p>
 
 <div class="related-link-wrap">
@@ -3994,150 +4331,4 @@ $ vi .github/workflows/auto_pr_labeling.yml
         </div>
       </div>
     </a>
-</div>]]></content><author><name>deeplify</name></author><category term="tools" /><category term="git" /><category term="git" /><category term="github" /><category term="cli" /><summary type="html"><![CDATA[Github CLI에 대해서 알아보겠습니다.]]></summary></entry><entry><title type="html">[Kotlin/코틀린] Coroutines Multithreading (feat. Fuel)</title><link href="https://deeplify.dev/back-end/kotlin/coroutines-multi-thread" rel="alternate" type="text/html" title="[Kotlin/코틀린] Coroutines Multithreading (feat. Fuel)" /><published>2022-09-30T00:00:00+09:00</published><updated>2022-09-30T00:00:00+09:00</updated><id>https://deeplify.dev/back-end/kotlin/coroutines-multi-thread</id><content type="html" xml:base="https://deeplify.dev/back-end/kotlin/coroutines-multi-thread"><![CDATA[<p>Java를 사용하던 시절에는 멀티 스레드를 이용한 병렬 프로그래밍은 조심해서 사용해야합니다. 자칫 잘못해서 성능이 떨어질 수도 있고, 의도하지 않은 대로 동작하는 경우가 많습니다. 하지만 코틀린에서는 <strong>Coroutines</strong>라는 라이브러리를 통해서 멀티스레딩을 간단하면서도 컨트롤 하기 쉽도록 해줍니다.</p>
-
-<h3 id="coroutines-multithreading">Coroutines Multithreading</h3>
-
-<p>이번 글에서는 코루틴에 대해서 간단하게만 소개하고, 이를 이용하여 Fuel을 이용하여 네트워크 통신을 Parallel하게 전송하고 받는 예제를 보여드리도록 하겠습니다.</p>
-
-<blockquote>
-  <p>Key Points</p>
-  <ul>
-    <li>CoroutineScope: 새로운 coroutine에 대한 범위를 정의합니다.</li>
-    <li>CoroutineContext: coroutine이 실행될 스레드를 결정합니다.</li>
-    <li>Dispatchers: context의 요소(동작 방식 등)들로 미리 정의되어 있습니다.</li>
-  </ul>
-</blockquote>
-
-<h3 id="coroutines">Coroutines</h3>
-
-<p>위에서 간단하게 정리를 해보았는데, 좀더 자세히 알아보도록 하겠습니다.</p>
-
-<h4 id="coroutinescope">CoroutineScope</h4>
-
-<p>이름 그대로 코루틴의 범위를 결정하는 것으로 다음과 같이 인터페이스 형태로 구현되어 있습니다.</p>
-
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="nn">kotlinx.coroutines</span>
-
-<span class="k">public</span> <span class="kd">interface</span> <span class="nc">CoroutineScope</span> <span class="p">{</span>
-    <span class="k">public</span> <span class="k">abstract</span> <span class="kd">val</span> <span class="py">coroutineContext</span><span class="p">:</span> <span class="n">kotlin</span><span class="p">.</span><span class="n">coroutines</span><span class="p">.</span><span class="nc">CoroutineContext</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>또한 코루틴 <code class="language-plaintext highlighter-rouge">Scope</code>를 다음과 같은 코드로 간단하게 생성이 가능합니다.</p>
-
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">val</span> <span class="py">scope</span> <span class="p">=</span> <span class="nc">CoroutineScope</span><span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="nc">Default</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p>하지만, 보통 더 간단하고, 흔히 사용되는 <code class="language-plaintext highlighter-rouge">Scope</code>는 다음과 같이 미리 Singleton 객체로 정의가 되어있습니다.</p>
-
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="nn">kotlinx.coroutines</span>
-
-<span class="k">public</span> <span class="kd">object</span> <span class="nc">GlobalScope</span> <span class="p">:</span> <span class="n">kotlinx</span><span class="p">.</span><span class="n">coroutines</span><span class="p">.</span><span class="nc">CoroutineScope</span> <span class="p">{</span>
-    <span class="k">public</span> <span class="k">open</span> <span class="kd">val</span> <span class="py">coroutineContext</span><span class="p">:</span> <span class="n">kotlin</span><span class="p">.</span><span class="n">coroutines</span><span class="p">.</span><span class="nc">CoroutineContext</span> <span class="cm">/* compiled code */</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<h4 id="coroutinecontext--dispatchers">CoroutineContext &amp; Dispatchers</h4>
-
-<p>코루틴이 어떻 방식으로 실행되고, 어떤 스레드에서 실행되는지 등 코루틴이 동작하는데 필요한 여러가지 정보들을 가지고 있습니다. 요소로는 <strong>Job</strong>과 <strong>Dispatcher</strong> 두 가지가 있습니다.</p>
-
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="kd">interface</span> <span class="nc">Job</span> <span class="p">:</span> <span class="n">kotlin</span><span class="p">.</span><span class="n">coroutines</span><span class="p">.</span><span class="nc">CoroutineContext</span><span class="p">.</span><span class="nc">Element</span> <span class="p">{</span> <span class="cm">/*...생략...*/</span> <span class="p">}</span>
-
-<span class="k">public</span> <span class="k">abstract</span> <span class="kd">class</span> <span class="nc">CoroutineDispatcher</span> <span class="k">public</span> <span class="k">constructor</span><span class="p">()</span> <span class="p">:</span> <span class="n">kotlin</span><span class="p">.</span><span class="n">coroutines</span><span class="p">.</span><span class="nc">AbstractCoroutineContextElement</span><span class="p">,</span> <span class="n">kotlin</span><span class="p">.</span><span class="n">coroutines</span><span class="p">.</span><span class="nc">ContinuationInterceptor</span> <span class="p">{</span> <span class="cm">/*...생략...*/</span> <span class="p">}</span>
-</code></pre></div></div>
-
-<p>위 두 가지 또한 많이 사용할 것 같은 것을 미리 싱글톤으로 구현을 해놓았습니다.</p>
-
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="nn">kotlinx.coroutines</span>
-
-<span class="k">public</span> <span class="kd">object</span> <span class="nc">Dispatchers</span> <span class="p">{</span>
-    <span class="err">@</span><span class="n">kotlin</span><span class="p">.</span><span class="n">jvm</span><span class="p">.</span><span class="nc">JvmStatic</span> <span class="k">public</span> <span class="k">final</span> <span class="kd">val</span> <span class="py">Default</span><span class="p">:</span> <span class="n">kotlinx</span><span class="p">.</span><span class="n">coroutines</span><span class="p">.</span><span class="nc">CoroutineDispatcher</span> <span class="cm">/* compiled code */</span>
-
-    <span class="err">@</span><span class="n">kotlin</span><span class="p">.</span><span class="n">jvm</span><span class="p">.</span><span class="nc">JvmStatic</span> <span class="k">public</span> <span class="k">final</span> <span class="kd">val</span> <span class="py">IO</span><span class="p">:</span> <span class="n">kotlinx</span><span class="p">.</span><span class="n">coroutines</span><span class="p">.</span><span class="nc">CoroutineDispatcher</span> <span class="cm">/* compiled code */</span>
-
-    <span class="err">@</span><span class="n">kotlin</span><span class="p">.</span><span class="n">jvm</span><span class="p">.</span><span class="nc">JvmStatic</span> <span class="k">public</span> <span class="k">final</span> <span class="kd">val</span> <span class="py">Main</span><span class="p">:</span> <span class="n">kotlinx</span><span class="p">.</span><span class="n">coroutines</span><span class="p">.</span><span class="nc">MainCoroutineDispatcher</span> <span class="cm">/* compiled code */</span>
-
-    <span class="err">@</span><span class="n">kotlin</span><span class="p">.</span><span class="n">jvm</span><span class="p">.</span><span class="nc">JvmStatic</span> <span class="k">public</span> <span class="k">final</span> <span class="kd">val</span> <span class="py">Unconfined</span><span class="p">:</span> <span class="n">kotlinx</span><span class="p">.</span><span class="n">coroutines</span><span class="p">.</span><span class="nc">CoroutineDispatcher</span> <span class="cm">/* compiled code */</span>
-<span class="p">}</span>
-</code></pre></div></div>
-
-<p>각각의 Dispatcher들의 특징이 있는데,</p>
-
-<ul>
-  <li>Default: 메인 스레드에서 작업하기에 벅찬 작업들을 실행하기에 적합합니다. 컨텍스트가 지정되지 않은 경우 이 디스패처가 사용됩니다.</li>
-  <li>IO: 네트워크, 디스크 등 IO 작업에 적합합니다.</li>
-  <li>Main: UI 객체로 동작하는 단일 스레드입니다.</li>
-  <li>Unconfined: 특정 스레드에 국한되지 않는 디스패처입니다.</li>
-</ul>
-
-<h3 id="coroutines-example">Coroutines Example</h3>
-
-<p>기본 예제들은 다른 블로그나 공식 문서에도 잘 정리되어 있어, Coroutines와 Fuel을 이용하여 네트워크 통신을 Parallel 하게 하는 예제를 보도록하겠습니다.</p>
-
-<div class="language-kotlin highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-  <span class="kd">val</span> <span class="py">jobs</span> <span class="p">=</span> <span class="nc">List</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nc">GlobalScope</span><span class="p">.</span><span class="nf">launch</span> <span class="p">(</span><span class="nc">Dispatchers</span><span class="p">.</span><span class="nc">IO</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nf">println</span><span class="p">(</span><span class="s">"------- Request: $it --------"</span><span class="p">)</span>
-      <span class="kd">val</span> <span class="py">result</span> <span class="p">=</span> <span class="nf">request</span><span class="p">()</span>
-      <span class="nf">println</span><span class="p">(</span><span class="s">"Status Code: ${result.statusCode}"</span><span class="p">)</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-
-  <span class="nf">runBlocking</span> <span class="p">{</span> <span class="n">jobs</span><span class="p">.</span><span class="nf">forEach</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="nf">join</span><span class="p">()</span> <span class="p">}</span> <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">fun</span> <span class="nf">request</span><span class="p">()</span> <span class="p">=</span>
-  <span class="nc">Fuel</span><span class="p">.</span><span class="k">get</span><span class="p">(</span><span class="s">"https://google.com"</span><span class="p">)</span>
-      <span class="p">.</span><span class="nf">responseString</span><span class="p">().</span><span class="n">second</span>
-</code></pre></div></div>
-
-<h5 id="결과">결과</h5>
-
-<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>------- Request: 2 --------
-------- Request: 1 --------
-------- Request: 4 --------
-------- Request: 3 --------
-------- Request: 0 --------
-------- Request: 8 --------
-------- Request: 5 --------
-------- Request: 7 --------
-------- Request: 9 --------
-------- Request: 6 --------
-200
-200
-200
-200
-200
-200
-200
-200
-200
-200
-</code></pre></div></div>
-
-<h2 id="맺음">맺음</h2>
-
-<p>간단하게 코루틴의 기초에 대해서 알아보고, 코루틴을 이용하여 네트워크 통신을 병렬로 처리하는 예제를 소개해드렸습니다. 혹시 궁금하신 점이나 이상한 점이 있다면 댓글 부탁드리겠습니다.</p>
-
-<h4 id="ref">Ref</h4>
-
-<div class="related-link-wrap">
-    <a class="related-link" href="https://kotlinlang.org/docs/reference/coroutines/basics.html" target="_blank" rel="nofollow noopener noreferrer">
-      <div class="related-link-icon">
-        
-        <svg preserveAspectRatio="xMidYMid meet" height="1em" width="1em" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" class="icon-7f6730be--text-3f89f380"><g><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></g></svg>
-        
-      </div>
-      <div class="link-title-wrap">
-        <div class="link-title">
-          <div class="link-title-text">Basics - Kotlin Programming Language</div>
-        </div>
-      </div>
-      <div class="display-link-wrap">
-        <div class="display-link">
-          <span class="display-link-text">kotlinlang.org</span>
-        </div>
-      </div>
-    </a>
-</div>]]></content><author><name>deeplify</name></author><category term="back-end" /><category term="kotlin" /><category term="kotlin" /><category term="coroutines" /><category term="fuel" /><category term="thread" /><category term="코틀린" /><category term="코루틴" /><category term="멀티 스레드" /><summary type="html"><![CDATA[Kotlin의 coroutines를 이용하여 멀티 스레드 예제를 통해서 간단하게 소개합니다.]]></summary></entry></feed>
+</div>]]></content><author><name>deeplify</name></author><category term="tools" /><category term="git" /><category term="git" /><category term="github" /><category term="cli" /><summary type="html"><![CDATA[Github CLI에 대해서 알아보겠습니다.]]></summary></entry></feed>
