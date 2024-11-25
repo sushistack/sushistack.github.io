@@ -1723,49 +1723,52 @@ pre.highlight::-webkit-scrollbar-thumb{background:#f4d1c6;} /* Handle */
   <li>Order는 어그리게이트 루트로서, 주문의 상태를 변경하거나 주문 항목을 추가/삭제하는 책임을 가짐.</li>
 </ul>
 
-<pre><code class="language-kt">// Value Object: Money
-data class Money(val amount: Double, val currency: String)
+<div class="language-kotlin highlighter-rouge"><div class="highlight">
+<pre class="highlight"><code><span class="c1">// Value Object: Money</span>
+<span class="kd">data class</span> <span class="nc">Money</span><span class="p">(</span><span class="kd">val</span> <span class="py">amount</span><span class="p">:</span> <span class="nc">Double</span><span class="p">,</span> <span class="kd">val</span> <span class="py">currency</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span>
 
-// Value Object: Address
-data class Address(val street: String, val city: String, val zipCode: String)
+<span class="c1">// Value Object: Address</span>
+<span class="kd">data class</span> <span class="nc">Address</span><span class="p">(</span><span class="kd">val</span> <span class="py">street</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="kd">val</span> <span class="py">city</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span> <span class="kd">val</span> <span class="py">zipCode</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span>
 
-// Entity: OrderItem
-class OrderItem(
-    val productId: String,
-    val productName: String,
-    val quantity: Int,
-    val price: Money
-)
+<span class="c1">// Entity: OrderItem</span>
+<span class="kd">class</span> <span class="nc">OrderItem</span><span class="p">(</span>
+    <span class="kd">val</span> <span class="py">productId</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">productName</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">quantity</span><span class="p">:</span> <span class="nc">Int</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">price</span><span class="p">:</span> <span class="nc">Money</span>
+<span class="p">)</span>
 
-// Aggregate Root: Order
-class Order(
-    val orderId: String,
-    private val customerId: String,
-    private var shippingAddress: Address,
-    private val items: MutableList&lt;OrderItem&gt; = mutableListOf()
-) {
-    // Add an order item
-    fun addItem(item: OrderItem) {
-        items.add(item)
-    }
+<span class="c1">// Aggregate Root: Order</span>
+<span class="kd">class</span> <span class="nc">Order</span><span class="p">(</span>
+    <span class="kd">val</span> <span class="py">orderId</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">customerId</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="k">private</span> <span class="kd">var</span> <span class="py">shippingAddress</span><span class="p">:</span> <span class="nc">Address</span><span class="p">,</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">items</span><span class="p">:</span> <span class="nc">MutableList</span><span class="p">&lt;</span><span class="nc">OrderItem</span><span class="p">&gt;</span> <span class="p">=</span> <span class="nf">mutableListOf</span><span class="p">()</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Add an order item</span>
+    <span class="k">fun</span> <span class="nf">addItem</span><span class="p">(</span><span class="n">item</span><span class="p">:</span> <span class="nc">OrderItem</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">items</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="p">}</span>
 
-    // Remove an order item
-    fun removeItem(productId: String) {
-        items.removeIf { it.productId == productId }
-    }
+    <span class="c1">// Remove an order item</span>
+    <span class="k">fun</span> <span class="nf">removeItem</span><span class="p">(</span><span class="n">productId</span><span class="p">:</span> <span class="nc">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">items</span><span class="p">.</span><span class="nf">removeIf</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">productId</span> <span class="p">==</span> <span class="n">productId</span> <span class="p">}</span>
+    <span class="p">}</span>
 
-    // Update shipping address
-    fun updateShippingAddress(newAddress: Address) {
-        shippingAddress = newAddress
-    }
+    <span class="c1">// Update shipping address</span>
+    <span class="k">fun</span> <span class="nf">updateShippingAddress</span><span class="p">(</span><span class="n">newAddress</span><span class="p">:</span> <span class="nc">Address</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">shippingAddress</span> <span class="p">=</span> <span class="n">newAddress</span>
+    <span class="p">}</span>
 
-    // Calculate total price
-    fun calculateTotal(): Money {
-        val totalAmount = items.sumOf { it.price.amount * it.quantity }
-        return Money(totalAmount, "USD")
-    }
-}
+    <span class="c1">// Calculate total price</span>
+    <span class="k">fun</span> <span class="nf">calculateTotal</span><span class="p">():</span> <span class="nc">Money</span> <span class="p">{</span>
+        <span class="kd">val</span> <span class="py">totalAmount</span> <span class="p">=</span> <span class="n">items</span><span class="p">.</span><span class="nf">sumOf</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">price</span><span class="p">.</span><span class="n">amount</span> <span class="p">*</span> <span class="n">it</span><span class="p">.</span><span class="n">quantity</span> <span class="p">}</span>
+        <span class="k">return</span> <span class="nc">Money</span><span class="p">(</span><span class="n">totalAmount</span><span class="p">,</span> <span class="s">"USD"</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+<button type="button" class="copy-code-btn">Copy</button>
+</div></div>
 
 <h2 id="domain-event">Domain Event</h2>
 
@@ -1812,83 +1815,86 @@ class Order(
 
 <h3 id="예시-1">예시</h3>
 
-<pre><code class="language-kt">import java.time.LocalDateTime
+<div class="language-kotlin highlighter-rouge"><div class="highlight">
+<pre class="highlight"><code><span class="k">import</span> <span class="nn">java.time.LocalDateTime</span>
 
-// 도메인 이벤트 클래스
-data class OrderPlacedEvent(
-    val orderId: String,
-    val customerId: String,
-    val orderTotal: Double,
-    val occurredAt: LocalDateTime = LocalDateTime.now()
-)
+<span class="c1">// 도메인 이벤트 클래스</span>
+<span class="kd">data class</span> <span class="nc">OrderPlacedEvent</span><span class="p">(</span>
+    <span class="kd">val</span> <span class="py">orderId</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">customerId</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">orderTotal</span><span class="p">:</span> <span class="nc">Double</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">occurredAt</span><span class="p">:</span> <span class="nc">LocalDateTime</span> <span class="p">=</span> <span class="nc">LocalDateTime</span><span class="p">.</span><span class="nf">now</span><span class="p">()</span>
+<span class="p">)</span>
 
-// 어그리게이트 루트: Order
-class Order(
-    val orderId: String,
-    private val customerId: String,
-    private val items: List&lt;OrderItem&gt;
-) {
-    private val domainEvents = mutableListOf&lt;Any&gt;()
+<span class="c1">// 어그리게이트 루트: Order</span>
+<span class="kd">class</span> <span class="nc">Order</span><span class="p">(</span>
+    <span class="kd">val</span> <span class="py">orderId</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">customerId</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">items</span><span class="p">:</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">OrderItem</span><span class="p">&gt;</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="kd">val</span> <span class="py">domainEvents</span> <span class="p">=</span> <span class="n">mutableListOf</span><span class="p">&lt;</span><span class="nc">Any</span><span class="p">&gt;()</span>
 
-    fun placeOrder() {
-        // 주문 관련 비즈니스 로직 실행 (예: 결제 검증)
+    <span class="k">fun</span> <span class="nf">placeOrder</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// 주문 관련 비즈니스 로직 실행 (예: 결제 검증)</span>
 
-        // 도메인 이벤트 생성
-        val event = OrderPlacedEvent(
-            orderId = orderId,
-            customerId = customerId,
-            orderTotal = calculateTotal()
-        )
+        <span class="c1">// 도메인 이벤트 생성</span>
+        <span class="kd">val</span> <span class="py">event</span> <span class="p">=</span> <span class="nc">OrderPlacedEvent</span><span class="p">(</span>
+            <span class="n">orderId</span> <span class="p">=</span> <span class="n">orderId</span><span class="p">,</span>
+            <span class="n">customerId</span> <span class="p">=</span> <span class="n">customerId</span><span class="p">,</span>
+            <span class="n">orderTotal</span> <span class="p">=</span> <span class="nf">calculateTotal</span><span class="p">()</span>
+        <span class="p">)</span>
 
-        // 이벤트 발행
-        domainEvents.add(event)
-    }
+        <span class="c1">// 이벤트 발행</span>
+        <span class="n">domainEvents</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+    <span class="p">}</span>
 
-    fun getDomainEvents(): List&lt;Any&gt; = domainEvents
+    <span class="k">fun</span> <span class="nf">getDomainEvents</span><span class="p">():</span> <span class="nc">List</span><span class="p">&lt;</span><span class="nc">Any</span><span class="p">&gt;</span> <span class="p">=</span> <span class="n">domainEvents</span>
 
-    private fun calculateTotal(): Double {
-        return items.sumOf { it.price * it.quantity }
-    }
-}
+    <span class="k">private</span> <span class="k">fun</span> <span class="nf">calculateTotal</span><span class="p">():</span> <span class="nc">Double</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">items</span><span class="p">.</span><span class="nf">sumOf</span> <span class="p">{</span> <span class="n">it</span><span class="p">.</span><span class="n">price</span> <span class="p">*</span> <span class="n">it</span><span class="p">.</span><span class="n">quantity</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-// OrderItem 클래스
-data class OrderItem(
-    val productId: String,
-    val price: Double,
-    val quantity: Int
-)
+<span class="c1">// OrderItem 클래스</span>
+<span class="kd">data class</span> <span class="nc">OrderItem</span><span class="p">(</span>
+    <span class="kd">val</span> <span class="py">productId</span><span class="p">:</span> <span class="nc">String</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">price</span><span class="p">:</span> <span class="nc">Double</span><span class="p">,</span>
+    <span class="kd">val</span> <span class="py">quantity</span><span class="p">:</span> <span class="nc">Int</span>
+<span class="p">)</span>
 
-// 이벤트 리스너
-class OrderEventListener {
-    fun onOrderPlaced(event: OrderPlacedEvent) {
-        println("Order placed! Sending email to customer: ${event.customerId}")
-        // 이메일 발송 로직
-    }
-}
+<span class="c1">// 이벤트 리스너</span>
+<span class="kd">class</span> <span class="nc">OrderEventListener</span> <span class="p">{</span>
+    <span class="k">fun</span> <span class="nf">onOrderPlaced</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="nc">OrderPlacedEvent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">println</span><span class="p">(</span><span class="s">"Order placed! Sending email to customer: ${event.customerId}"</span><span class="p">)</span>
+        <span class="c1">// 이메일 발송 로직</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 
-// 메인 실행
-fun main() {
-    val order = Order(
-        orderId = "12345",
-        customerId = "customer1",
-        items = listOf(
-            OrderItem("prod1", 50.0, 2),
-            OrderItem("prod2", 30.0, 1)
-        )
-    )
+<span class="c1">// 메인 실행</span>
+<span class="k">fun</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">val</span> <span class="py">order</span> <span class="p">=</span> <span class="nc">Order</span><span class="p">(</span>
+        <span class="n">orderId</span> <span class="p">=</span> <span class="s">"12345"</span><span class="p">,</span>
+        <span class="n">customerId</span> <span class="p">=</span> <span class="s">"customer1"</span><span class="p">,</span>
+        <span class="n">items</span> <span class="p">=</span> <span class="nf">listOf</span><span class="p">(</span>
+            <span class="nc">OrderItem</span><span class="p">(</span><span class="s">"prod1"</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+            <span class="nc">OrderItem</span><span class="p">(</span><span class="s">"prod2"</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
 
-    // 주문 생성
-    order.placeOrder()
+    <span class="c1">// 주문 생성</span>
+    <span class="n">order</span><span class="p">.</span><span class="nf">placeOrder</span><span class="p">()</span>
 
-    // 이벤트 처리
-    val eventListener = OrderEventListener()
-    order.getDomainEvents().forEach { event -&gt;
-        if (event is OrderPlacedEvent) {
-            eventListener.onOrderPlaced(event)
-        }
-    }
-}
+    <span class="c1">// 이벤트 처리</span>
+    <span class="kd">val</span> <span class="py">eventListener</span> <span class="p">=</span> <span class="nc">OrderEventListener</span><span class="p">()</span>
+    <span class="n">order</span><span class="p">.</span><span class="nf">getDomainEvents</span><span class="p">().</span><span class="nf">forEach</span> <span class="p">{</span> <span class="n">event</span> <span class="p">-&gt;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">event</span> <span class="k">is</span> <span class="nc">OrderPlacedEvent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">eventListener</span><span class="p">.</span><span class="nf">onOrderPlaced</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </code></pre>
+<button type="button" class="copy-code-btn">Copy</button>
+</div></div>
 
 <h3 id="도메인-이벤트의-장점">도메인 이벤트의 장점</h3>
 
